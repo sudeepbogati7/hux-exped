@@ -17,9 +17,9 @@ export default function WhyChooseUs() {
           </Reveal>
           <Reveal variant="up" delay={0.1}>
             <p className="max-w-sm leading-relaxed text-ink-soft lg:pb-2">
-              We&apos;re a small Kathmandu outfit run by people who&apos;d rather
-              walk the hard route than the popular one. Here&apos;s what that
-              means for you.
+              We&apos;re a small outfit run by people who&apos;d rather walk the
+              hard route than the popular one. Here&apos;s what that means for
+              you.
             </p>
           </Reveal>
         </div>

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import StatCounter from "@/components/ui/StatCounter";
 import { HeartIcon, CameraIcon } from "@/components/ui/icons";
-import { stats, uns } from "@/lib/data";
+import { stats, photos } from "@/lib/data";
 
 export default function AboutUs() {
   return (
@@ -21,9 +21,8 @@ export default function AboutUs() {
             </Reveal>
             <Reveal variant="up" delay={0.1}>
               <p className="mt-8 max-w-md text-lg leading-relaxed text-ink">
-                HUX EXPED started in a Thamel back-room with a simple idea:
-                Nepal is so much more than the three treks everyone&apos;s heard
-                of.
+                HUX EXPED started with a simple idea: Nepal is so much more than
+                the three treks everyone&apos;s heard of.
               </p>
               <p className="mt-5 max-w-md leading-relaxed text-ink-soft">
                 Two decades on, we run small-group expeditions into the
@@ -44,7 +43,7 @@ export default function AboutUs() {
           <Reveal variant="mask" className="relative">
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm">
               <Image
-                src={uns("1492146433370-dea32142adc3", 1200)}
+                src={photos.baseCamp}
                 alt="A HUX EXPED photography expedition at altitude"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

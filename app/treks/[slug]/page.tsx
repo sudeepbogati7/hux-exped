@@ -54,8 +54,8 @@ export default async function TrekPage({
                 <ArrowIcon className="h-4 w-4 rotate-180" /> All treks
               </Link>
               <p className="eyebrow mb-3 text-cream/70">{trek.region}</p>
-              <h1 className="display max-w-4xl text-6xl leading-[0.9] text-cream sm:text-8xl">{trek.name}</h1>
-              <p className="mt-4 max-w-xl text-lg text-cream/85">{trek.tagline}</p>
+              <h1 className="display max-w-4xl text-5xl leading-[0.9] text-cream sm:text-7xl lg:text-8xl">{trek.name}</h1>
+              <p className="mt-4 max-w-xl text-base text-cream/85 sm:text-lg">{trek.tagline}</p>
             </div>
           </div>
         </section>

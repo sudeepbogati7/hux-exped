@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import { ArrowIcon } from "@/components/ui/icons";
-import { uns } from "@/lib/data";
+import { photos } from "@/lib/data";
 
 export default function CTA() {
   return (
     <section className="relative overflow-hidden bg-ink py-32 text-cream sm:py-44">
       <Image
-        src={uns("1645033393602-4f7623917853", 2000)}
+        src={photos.nightSky}
         alt=""
         fill
         sizes="100vw"

@@ -9,11 +9,8 @@ export default function Footer() {
     <footer className="bg-ink text-cream">
       <div className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8">
         {/* big wordmark */}
-        <div className="flex items-end justify-between gap-6 border-b border-cream/15 pb-12">
-          <div className="flex items-center gap-4">
-            <Logo className="h-12 w-16 text-cream" />
-            <span className="display text-5xl tracking-tight sm:text-7xl">HUX EXPED</span>
-          </div>
+        <div className="flex items-center justify-between gap-6 border-b border-cream/15 pb-12">
+          <Logo invert className="h-20 sm:h-28" />
           <a href="#top" className="hidden shrink-0 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-cream/60 transition-colors hover:text-coral sm:inline">
             Back to top ↑
           </a>
@@ -32,7 +29,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               {navLinks.map((l) => (
                 <li key={l.href}>
-                  <a href={l.href} className="text-cream/80 hover:text-coral">{l.label}</a>
+                  <a href={l.href.startsWith("#") ? `/${l.href}` : l.href} className="text-cream/80 hover:text-coral">{l.label}</a>
                 </li>
               ))}
             </ul>
@@ -59,7 +56,7 @@ export default function Footer() {
 
           <div>
             <h4 className="eyebrow mb-5 text-cream/50">Get in touch</h4>
-            <p className="text-sm text-cream/80">Thamel, Kathmandu</p>
+            <p className="text-sm text-cream/80">Offbeat Himalaya · Nepal</p>
             <p className="mt-2 text-sm text-cream/80">hello@huxexped.com</p>
             <a href="#" className="mt-6 inline-block rounded-full bg-coral px-6 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-cream transition-colors hover:bg-coral-dark">
               Plan a trip

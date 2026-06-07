@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import { CameraIcon, ArrowIcon } from "@/components/ui/icons";
-import { uns } from "@/lib/data";
+import { photos } from "@/lib/data";
 
 export default function Photography() {
   return (
@@ -12,7 +12,7 @@ export default function Photography() {
           <Reveal variant="mask" className="relative order-1">
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-cream-deep">
               <Image
-                src={uns("1492146433370-dea32142adc3", 1400)}
+                src={photos.carries}
                 alt="Photographer shooting first light in the Nepal Himalaya"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

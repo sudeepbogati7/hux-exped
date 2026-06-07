@@ -65,9 +65,9 @@ export default function TrekCard({
 
       {/* text */}
       <div className={flip ? "lg:order-1" : ""}>
-        <span className="display text-7xl text-line">0{index + 1}</span>
+        <span className="display text-6xl text-line sm:text-7xl">0{index + 1}</span>
         <p className="eyebrow mt-2">{trek.region}</p>
-        <h3 className="display mt-3 text-6xl text-ink sm:text-7xl">{trek.name}</h3>
+        <h3 className="display mt-3 text-5xl text-ink sm:text-6xl lg:text-7xl">{trek.name}</h3>
         <p className="mt-6 max-w-md leading-relaxed text-ink-soft">{trek.blurb}</p>
 
         <dl className="mt-8 grid max-w-md grid-cols-3 gap-4 border-t border-line pt-6">

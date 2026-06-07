@@ -15,7 +15,7 @@ import { art } from "@/lib/data";
  */
 export default function Hero() {
   const root = useRef<HTMLDivElement>(null);
-  const clouds = Array.from({ length: 12 });
+  const clouds = Array.from({ length: 34 });
 
   const peakMask = {
     WebkitMaskImage:
@@ -53,10 +53,11 @@ export default function Hero() {
       const tl = gsap.timeline({
         scrollTrigger: { trigger: root.current, start: "top top", end: "bottom top", scrub: true },
       });
-      // bg + main scroll by the SAME amount → main always sits on top of the bg
+      // bg, primary peak AND clouds all rise together → the cloud bank stays
+      // glued to the base of the primary peak as it climbs and covers the text
       tl.to(".hero-bg-mtn", { yPercent: -34, ease: "none" }, 0)
-        .to(".hero-clouds", { yPercent: -16, ease: "none" }, 0)
-        .to(".hero-mtn", { yPercent: -34, ease: "none" }, 0);
+        .to(".hero-mtn", { yPercent: -34, ease: "none" }, 0)
+        .to(".hero-clouds", { yPercent: -34, ease: "none" }, 0);
     }, root);
     return () => ctx.revert();
   }, []);
@@ -64,24 +65,24 @@ export default function Hero() {
   return (
     <section id="top" ref={root} className="relative isolate h-screen overflow-hidden bg-cream">
       {/* mountain3 — faint background range, floating high above the primary */}
-      <div style={bgMask} className="hero-bg-mtn absolute inset-x-0 bottom-[24vh] z-0 opacity-[0.22] blur-[2px]">
+      <div style={bgMask} className="hero-bg-mtn absolute inset-x-0 bottom-[13vh] z-0 opacity-[0.22] blur-[2px]">
         <Image src={art.peaks[2]} alt="" width={2400} height={1600} sizes="100vw" className="h-auto w-full grayscale" priority />
       </div>
 
-      {/* header content */}
+      {/* header content — anchored high & fixed so the peaks never cover it at rest */}
       <div className="absolute inset-0 z-10">
-        <div className="mx-auto flex h-full max-w-[1400px] flex-col px-5 pt-[15vh] sm:px-8 lg:pt-[13vh]">
-          <p className="hero-eyebrow eyebrow mb-7">Est. Kathmandu · Offbeat Nepal</p>
-          <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
+        <div className="mx-auto flex h-full max-w-[1400px] flex-col px-5 pt-[19vh] sm:px-8 sm:pt-[17vh] lg:pt-[18vh]">
+          <p className="hero-eyebrow eyebrow mb-5 sm:mb-7">Restricted trails · Real Himalaya</p>
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
             <h1 className="display text-ink">
               <span className="block overflow-hidden">
-                <span className="hero-line block text-[16vw] leading-[0.82] sm:text-[11vw] lg:text-[9rem]">Beyond</span>
+                <span className="hero-line block text-[19vw] leading-[0.82] sm:text-[13vw] lg:text-[8.5rem]">Beyond</span>
               </span>
               <span className="block overflow-hidden">
-                <span className="hero-line block text-[16vw] leading-[0.82] sm:text-[11vw] lg:text-[9rem]">the trail</span>
+                <span className="hero-line block text-[19vw] leading-[0.82] sm:text-[13vw] lg:text-[8.5rem]">the trail</span>
               </span>
             </h1>
-            <p className="hero-para max-w-sm text-[0.98rem] leading-relaxed text-ink-soft lg:pt-4">
+            <p className="hero-para max-w-sm text-[0.95rem] leading-relaxed text-ink-soft sm:text-[0.98rem] lg:pt-4">
               HUX EXPED leads small groups into Nepal&apos;s wildest,
               least-trodden mountains — not Everest Base Camp, but{" "}
               <span className="ulink">Kanchenjunga</span> and{" "}
@@ -99,12 +100,12 @@ export default function Hero() {
       {/* cream blend dissolving the peak base into the next section */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[21] h-[22vh] bg-linear-to-t from-cream via-cream/75 to-transparent" />
 
-      {/* white clouds — dense, single direction (right → left), gradient-smoothed base */}
-      <div className="hero-clouds pointer-events-none absolute inset-x-0 bottom-0 z-[22] h-[34vh]">
-        <div className="fog-track absolute bottom-2 flex w-max items-end opacity-80" style={{ animationDuration: "120s" }}>
+      {/* white clouds — dense bank, slow single-direction drift (right → left) */}
+      <div className="hero-clouds pointer-events-none absolute inset-x-0 bottom-0 z-[22] h-[38vh]">
+        <div className="fog-track absolute -bottom-4 flex w-max items-end opacity-100" style={{ animationDuration: "560s" }}>
           {clouds.concat(clouds).map((_, i) => (
-            <div key={i} className="relative -mr-48 h-[170px] w-[540px] shrink-0 sm:h-[250px] sm:w-[800px]">
-              <Image src={art.fog} alt="" fill sizes="800px" className="object-contain" />
+            <div key={i} className="relative -mr-[22rem] h-[200px] w-[540px] shrink-0 sm:h-[300px] sm:w-[820px]">
+              <Image src={art.fog} alt="" fill sizes="820px" className="object-contain" />
             </div>
           ))}
         </div>

@@ -73,6 +73,12 @@ export const CompassIcon = stroke("CompassIcon", "M12 21a9 9 0 1 0 0-18 9 9 0 0 
 export const UsersIcon = stroke("UsersIcon", "M16 19v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1|M9.5 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6|M17 19v-1a4 4 0 0 0-3-3.9|M15 4.1a3 3 0 0 1 0 5.8");
 export const ShieldIcon = stroke("ShieldIcon", "M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z|M9 12l2 2 4-4");
 export const PeakIcon = stroke("PeakIcon", "M3 20h18|M5 20l5-11 3 5 2-3 4 9");
+export const ClockIcon = stroke("ClockIcon", "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z|M12 7.5V12l3 2");
+export const MapPinIcon = stroke("MapPinIcon", "M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z|M12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z");
+export const GaugeIcon = stroke("GaugeIcon", "M4 18a8 8 0 1 1 16 0|M12 18l4-5");
+export const RouteIcon = stroke("RouteIcon", "M6.5 20a2.5 2.5 0 1 0 0-5h11a2.5 2.5 0 1 0 0-5h-11a2.5 2.5 0 1 1 0-5|M6.5 4.5v0|M17.5 19.5v0");
+export const FlagIcon = stroke("FlagIcon", "M5 21V4|M5 4h11l-2 3 2 3H5");
+export const MountainIcon = stroke("MountainIcon", "M3 20h18|M4 20l6-13 4 7|M12.5 11l2.5-4 5 13");
 
 export const InstagramIcon = ({ className = "h-5 w-5" }: P) => (
   <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth={1.7}>
