@@ -1,0 +1,120 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import Image from "next/image";
+import { gsap } from "@/lib/gsap";
+import { art } from "@/lib/data";
+
+/**
+ * Hero (no pin):
+ *   z0  — mountain3 faint full-width BACKGROUND (slight parallax)
+ *   z10 — header text
+ *   z20 — mountain1 single PRIMARY peak, climbs on scroll & covers the text
+ *   z22 — cloud2 clouds (mix-blend-screen) banked at the base + smoothing
+ *         the seam into the next section
+ */
+export default function Hero() {
+  const root = useRef<HTMLDivElement>(null);
+  const clouds = Array.from({ length: 12 });
+
+  const peakMask = {
+    WebkitMaskImage:
+      "linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%), linear-gradient(to top, transparent 0, #000 18%, #000 100%)",
+    maskImage:
+      "linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%), linear-gradient(to top, transparent 0, #000 18%, #000 100%)",
+    WebkitMaskComposite: "source-in",
+    maskComposite: "intersect" as const,
+  };
+  // background range: feather sides + fade its lower half so only the upper
+  // peaks float high above the primary peak (clear gap, no muddy overlap)
+  const bgMask = {
+    WebkitMaskImage:
+      "linear-gradient(to right, transparent, #000 9%, #000 91%, transparent), linear-gradient(to top, transparent 0, #000 55%, #000 100%)",
+    maskImage:
+      "linear-gradient(to right, transparent, #000 9%, #000 91%, transparent), linear-gradient(to top, transparent 0, #000 55%, #000 100%)",
+    WebkitMaskComposite: "source-in",
+    maskComposite: "intersect" as const,
+  };
+
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const ctx = gsap.context(() => {
+      if (reduce) return;
+
+      gsap
+        .timeline({ defaults: { ease: "power4.out" } })
+        .from(".hero-bg-mtn", { autoAlpha: 0, yPercent: 10, duration: 1.5 }, 0.2)
+        .from(".hero-eyebrow", { autoAlpha: 0, y: 18, duration: 0.6 }, 0.35)
+        .from(".hero-line", { yPercent: 115, duration: 1.0, stagger: 0.1 }, 0.45)
+        .from(".hero-para", { autoAlpha: 0, y: 24, duration: 0.8 }, 0.75)
+        .from(".hero-mtn", { yPercent: 14, autoAlpha: 0, duration: 1.4, ease: "power3.out" }, 0.55)
+        .from(".hero-clouds", { autoAlpha: 0, duration: 1.4 }, 0.9);
+
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: root.current, start: "top top", end: "bottom top", scrub: true },
+      });
+      // bg + main scroll by the SAME amount → main always sits on top of the bg
+      tl.to(".hero-bg-mtn", { yPercent: -34, ease: "none" }, 0)
+        .to(".hero-clouds", { yPercent: -16, ease: "none" }, 0)
+        .to(".hero-mtn", { yPercent: -34, ease: "none" }, 0);
+    }, root);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section id="top" ref={root} className="relative isolate h-screen overflow-hidden bg-cream">
+      {/* mountain3 — faint background range, floating high above the primary */}
+      <div style={bgMask} className="hero-bg-mtn absolute inset-x-0 bottom-[24vh] z-0 opacity-[0.22] blur-[2px]">
+        <Image src={art.peaks[2]} alt="" width={2400} height={1600} sizes="100vw" className="h-auto w-full grayscale" priority />
+      </div>
+
+      {/* header content */}
+      <div className="absolute inset-0 z-10">
+        <div className="mx-auto flex h-full max-w-[1400px] flex-col px-5 pt-[15vh] sm:px-8 lg:pt-[13vh]">
+          <p className="hero-eyebrow eyebrow mb-7">Est. Kathmandu · Offbeat Nepal</p>
+          <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
+            <h1 className="display text-ink">
+              <span className="block overflow-hidden">
+                <span className="hero-line block text-[16vw] leading-[0.82] sm:text-[11vw] lg:text-[9rem]">Beyond</span>
+              </span>
+              <span className="block overflow-hidden">
+                <span className="hero-line block text-[16vw] leading-[0.82] sm:text-[11vw] lg:text-[9rem]">the trail</span>
+              </span>
+            </h1>
+            <p className="hero-para max-w-sm text-[0.98rem] leading-relaxed text-ink-soft lg:pt-4">
+              HUX EXPED leads small groups into Nepal&apos;s wildest,
+              least-trodden mountains — not Everest Base Camp, but{" "}
+              <span className="ulink">Kanchenjunga</span> and{" "}
+              <span className="ulink">Dolpo</span>, where the map runs out.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* PRIMARY peak — single image, climbs & covers content */}
+      <div style={peakMask} className="hero-mtn pointer-events-none absolute inset-x-0 bottom-0 z-20">
+        <Image src={art.peaks[0]} alt="Himalayan peaks" width={2400} height={1350} priority sizes="100vw" className="h-auto w-full grayscale contrast-[1.04]" />
+      </div>
+
+      {/* cream blend dissolving the peak base into the next section */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[21] h-[22vh] bg-linear-to-t from-cream via-cream/75 to-transparent" />
+
+      {/* white clouds — dense, single direction (right → left), gradient-smoothed base */}
+      <div className="hero-clouds pointer-events-none absolute inset-x-0 bottom-0 z-[22] h-[34vh]">
+        <div className="fog-track absolute bottom-2 flex w-max items-end opacity-80" style={{ animationDuration: "120s" }}>
+          {clouds.concat(clouds).map((_, i) => (
+            <div key={i} className="relative -mr-48 h-[170px] w-[540px] shrink-0 sm:h-[250px] sm:w-[800px]">
+              <Image src={art.fog} alt="" fill sizes="800px" className="object-contain" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* scroll cue */}
+      <div className="absolute inset-x-0 bottom-7 z-30 mx-auto flex max-w-[1400px] items-center justify-between px-5 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-ink/55 sm:px-8">
+        <span>Scroll to ascend</span>
+        <span className="hidden sm:inline">3,000m → 8,167m</span>
+      </div>
+    </section>
+  );
+}

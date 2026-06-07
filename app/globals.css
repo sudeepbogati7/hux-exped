@@ -1,26 +1,210 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------ */
+/*  HUX EXPED — design tokens (Tailwind v4 @theme)                     */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-cream: #f4f1ea;
+  --color-cream-deep: #ece7dc;
+  --color-ink: #141414;
+  --color-ink-soft: #2b2b2b;
+  --color-muted: #8d887e;
+  --color-line: #d8d2c6;
+  --color-coral: #f9492f;
+  --color-coral-dark: #e23a22;
+
+  --font-display: var(--font-archivo), "Arial Black", sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: auto; /* Lenis owns scrolling */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reusable editorial primitives                                      */
+/* ------------------------------------------------------------------ */
+.display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* Coral text-highlight box (matches reference "what we do") */
+.mark {
+  background: var(--color-coral);
+  color: var(--color-cream);
+  padding: 0 0.12em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Inline underlined link, reference style */
+.ulink {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--color-muted);
+  transition: text-decoration-color 0.3s var(--ease-out-expo);
+}
+.ulink:hover {
+  text-decoration-color: var(--color-coral);
+}
+
+/* Reveal — initial hidden state set by JS-capable clients only.
+   The .reveal class is applied; GSAP toggles .is-in. Falls back to
+   visible if JS/GSAP never runs. */
+[data-reveal] {
+  will-change: transform, opacity;
+}
+
+/* Grain / paper feel on large surfaces */
+.paper {
+  background-color: var(--color-cream);
+  background-image: radial-gradient(
+    transparent 0,
+    rgba(20, 20, 20, 0.015) 100%
+  );
+}
+
+/* Region marquee (track is duplicated content; -50% loops seamlessly) */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Moving light along a card border (orbiting conic-gradient segment) */
+@property --beam-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes beam-rotate {
+  to {
+    --beam-angle: 360deg;
+  }
+}
+.beam {
+  position: relative;
+}
+.beam::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--beam-angle, 0deg),
+    transparent 0 72%,
+    rgba(249, 73, 47, 0.85) 86%,
+    #fff 92%,
+    transparent 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: beam-rotate 6s linear infinite;
+  animation-delay: var(--beam-delay, 0s);
+}
+@media (prefers-reduced-motion: reduce) {
+  .beam::before {
+    animation: none;
+  }
+}
+
+/* Drifting fog (track is duplicated; -50% loops seamlessly) */
+@keyframes fog-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.fog-track {
+  animation: fog-drift linear infinite;
+}
+.fog-rev {
+  animation-direction: reverse;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fog-track {
+    animation: none;
+  }
+}
+
+::selection {
+  background: var(--color-coral);
+  color: var(--color-cream);
+}
+
+/* Thin custom scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }

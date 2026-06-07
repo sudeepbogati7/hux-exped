@@ -1,0 +1,49 @@
+import Image from "next/image";
+import Reveal from "@/components/ui/Reveal";
+import { ArrowIcon } from "@/components/ui/icons";
+import { uns } from "@/lib/data";
+
+export default function CTA() {
+  return (
+    <section className="relative overflow-hidden bg-ink py-32 text-cream sm:py-44">
+      <Image
+        src={uns("1645033393602-4f7623917853", 2000)}
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover opacity-30 grayscale"
+      />
+      <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/60 to-ink/70" />
+      <div className="relative mx-auto max-w-[1100px] px-5 text-center sm:px-8">
+        <Reveal variant="up">
+          <p className="eyebrow mb-6 text-cream/60">Active trips with unusual people</p>
+          <h2 className="display text-5xl leading-[0.95] sm:text-7xl">
+            The map runs out.
+            <br />
+            That&apos;s where we <span className="text-coral">begin.</span>
+          </h2>
+          <p className="mx-auto mt-7 max-w-xl leading-relaxed text-cream/80">
+            Tell us where you want to go — or how far out of your comfort zone
+            you&apos;re willing to walk — and we&apos;ll build the expedition
+            around you.
+          </p>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="#treks"
+              className="group inline-flex items-center gap-3 rounded-full bg-coral px-9 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-cream transition-colors hover:bg-coral-dark"
+            >
+              Find your trek
+              <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+            <a
+              href="#"
+              className="rounded-full border border-cream/40 px-9 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-cream transition-colors hover:bg-cream hover:text-ink"
+            >
+              Text us
+            </a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
