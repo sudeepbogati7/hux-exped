@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { ChevronLeft, ChevronRight } from "@/components/ui/icons";
-import { galleryPhotos } from "@/lib/data";
+import { galleryPhotos, type GalleryItem } from "@/lib/data";
 
 function Frame() {
   const base = "pointer-events-none absolute h-6 w-6 border-coral opacity-0 transition-all duration-500 group-hover:opacity-100";
@@ -18,7 +18,7 @@ function Frame() {
   );
 }
 
-export default function GalleryMasonry() {
+export default function GalleryMasonry({ items = galleryPhotos }: { items?: GalleryItem[] } = {}) {
   const root = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState<number | null>(null);
 
@@ -40,19 +40,19 @@ export default function GalleryMasonry() {
     if (open === null) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(null);
-      if (e.key === "ArrowRight") setOpen((i) => (i === null ? i : (i + 1) % galleryPhotos.length));
-      if (e.key === "ArrowLeft") setOpen((i) => (i === null ? i : (i - 1 + galleryPhotos.length) % galleryPhotos.length));
+      if (e.key === "ArrowRight") setOpen((i) => (i === null ? i : (i + 1) % items.length));
+      if (e.key === "ArrowLeft") setOpen((i) => (i === null ? i : (i - 1 + items.length) % items.length));
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [open]);
+  }, [open, items.length]);
 
-  const active = open === null ? null : galleryPhotos[open];
+  const active = open === null ? null : items[open];
 
   return (
     <div ref={root}>
       <div className="columns-2 gap-4 sm:columns-3 lg:columns-4 [&>*]:mb-4">
-        {galleryPhotos.map((p, i) => (
+        {items.map((p, i) => (
           <button
             key={p.src}
             onClick={() => setOpen(i)}
@@ -87,14 +87,14 @@ export default function GalleryMasonry() {
             Close ✕
           </button>
           <button
-            onClick={(e) => { e.stopPropagation(); setOpen((i) => (i! - 1 + galleryPhotos.length) % galleryPhotos.length); }}
+            onClick={(e) => { e.stopPropagation(); setOpen((i) => (i! - 1 + items.length) % items.length); }}
             aria-label="Previous"
             className="absolute left-3 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-cream/25 text-cream transition-colors hover:bg-coral hover:border-coral sm:left-6"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
           <button
-            onClick={(e) => { e.stopPropagation(); setOpen((i) => (i! + 1) % galleryPhotos.length); }}
+            onClick={(e) => { e.stopPropagation(); setOpen((i) => (i! + 1) % items.length); }}
             aria-label="Next"
             className="absolute right-3 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-cream/25 text-cream transition-colors hover:bg-coral hover:border-coral sm:right-6"
           >

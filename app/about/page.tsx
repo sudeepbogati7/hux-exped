@@ -5,8 +5,10 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Reveal from "@/components/ui/Reveal";
 import StatCounter from "@/components/ui/StatCounter";
-import { ArrowIcon, HeartIcon, MountainIcon } from "@/components/ui/icons";
-import { about, giveBack, stats, photos } from "@/lib/data";
+import WhyChooseUs from "@/components/sections/WhyChooseUs";
+import Testimonials from "@/components/sections/Testimonials";
+import { ArrowIcon, HeartIcon, MountainIcon, ShieldIcon } from "@/components/ui/icons";
+import { about, giveBack, stats, photos, team, certifications } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "About — HUX EXPED",
@@ -44,7 +46,7 @@ export default function AboutPage() {
         </section>
 
         {/* mission */}
-        <section className="paper py-24 sm:py-32">
+        <section id="our-story" className="paper py-24 sm:py-32">
           <div className="mx-auto grid max-w-[1400px] items-center gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
             <Reveal variant="mask" className="relative order-2 lg:order-1">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-cream-deep">
@@ -95,6 +97,82 @@ export default function AboutPage() {
             ))}
           </div>
         </section>
+
+        {/* our team */}
+        <section id="our-team" className="paper py-24 sm:py-32">
+          <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
+            <Reveal variant="up">
+              <p className="eyebrow mb-5 inline-flex items-center gap-2">
+                <MountainIcon className="h-4 w-4 text-coral" /> Our team
+              </p>
+              <h2 className="display max-w-3xl text-4xl text-ink sm:text-5xl lg:text-6xl">
+                The people who get you up there
+              </h2>
+            </Reveal>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {team.map((m, i) => (
+                <Reveal key={m.name} variant="up" delay={(i % 4) * 0.08}>
+                  <div className="group">
+                    <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-cream-deep">
+                      <Image
+                        src={m.img}
+                        alt={m.name}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        className="object-cover grayscale transition-all duration-700 group-hover:scale-[1.04] group-hover:grayscale-0"
+                      />
+                    </div>
+                    <h3 className="display mt-4 text-2xl text-ink">{m.name}</h3>
+                    <p className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-coral">{m.role}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-soft">{m.note}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* certifications & associations */}
+        <section id="certifications" className="bg-cream-deep py-24 sm:py-32">
+          <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
+            <div className="grid items-end gap-8 border-b border-line pb-12 lg:grid-cols-[1.4fr_1fr]">
+              <Reveal variant="up">
+                <p className="eyebrow mb-5 inline-flex items-center gap-2">
+                  <ShieldIcon className="h-4 w-4 text-coral" /> Certifications &amp; associations
+                </p>
+                <h2 className="display text-4xl text-ink sm:text-5xl lg:text-6xl">
+                  Licensed, insured
+                  <br />
+                  and accountable
+                </h2>
+              </Reveal>
+              <Reveal variant="up" delay={0.1}>
+                <p className="max-w-sm leading-relaxed text-ink-soft lg:pb-2">
+                  We hold the permits and memberships that keep you safe and our
+                  crew fairly treated — and we&apos;re happy to show them.
+                </p>
+              </Reveal>
+            </div>
+            <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+              {certifications.map((crt) => (
+                <Reveal key={crt.short} variant="fade" className="bg-cream">
+                  <div className="flex h-full items-center gap-5 p-7 sm:p-8">
+                    <span className="display grid h-16 w-16 shrink-0 place-items-center rounded-full border border-line text-sm text-coral">
+                      {crt.short}
+                    </span>
+                    <span className="text-ink">{crt.name}</span>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* why us */}
+        <WhyChooseUs id="why-us" />
+
+        {/* testimonials */}
+        <Testimonials id="testimonials" />
 
         {/* why we give back */}
         <section id="give-back" className="bg-cream-deep py-24 sm:py-32">

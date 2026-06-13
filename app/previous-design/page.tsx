@@ -1,6 +1,7 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
-import HeroVideo from "@/components/hero/HeroVideo";
-import Manifesto from "@/components/sections/Manifesto";
+import Hero from "@/components/hero/Hero";
+import Statement from "@/components/sections/Statement";
 import SearchBar from "@/components/sections/SearchBar";
 import OffbeatTreks from "@/components/sections/OffbeatTreks";
 import Flagships from "@/components/sections/Flagships";
@@ -16,14 +17,18 @@ import CTA from "@/components/sections/CTA";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
 
-/** Variation B (primary) — cinematic video hero + editorial intro. */
-export default function Home() {
+export const metadata: Metadata = {
+  title: "HUX EXPED — Offbeat Himalaya (original design)",
+};
+
+/** Variation A — the original light/parallax hero. */
+export default function PreviousDesign() {
   return (
     <>
-      <Navbar overDark />
+      <Navbar />
       <main>
-        <HeroVideo />
-        <Manifesto />
+        <Hero />
+        <Statement />
         <SearchBar />
         <OffbeatTreks />
         <Flagships />

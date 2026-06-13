@@ -1,46 +1,41 @@
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "@/components/ui/Reveal";
-import { PeakIcon, MountainIcon, ArrowIcon } from "@/components/ui/icons";
-import { peaks6000, peaks7000, photos, type Peak } from "@/lib/data";
+import ExpeditionCard from "@/components/ui/ExpeditionCard";
+import { MountainIcon, PeakIcon, ArrowIcon } from "@/components/ui/icons";
+import { peaks7000, peaks6000, photos } from "@/lib/data";
 
-function PeakList({
+function Band({
+  id,
   icon: Icon,
-  band,
+  title,
   label,
   peaks,
 }: {
+  id: string;
   icon: typeof PeakIcon;
-  band: string;
+  title: string;
   label: string;
-  peaks: Peak[];
+  peaks: typeof peaks6000;
 }) {
   return (
-    <div className="rounded-2xl border border-cream/12 bg-white/[0.03] p-7 sm:p-9">
-      <div className="flex items-center gap-4 border-b border-cream/12 pb-6">
+    <div id={id} className="scroll-mt-28">
+      <div className="mb-6 flex items-center gap-4">
         <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-coral text-cream">
           <Icon className="h-6 w-6" />
         </span>
         <div>
-          <span className="display block text-2xl text-cream">{band}</span>
-          <span className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-cream/50">
-            {label}
-          </span>
+          <h3 className="display text-2xl text-cream sm:text-3xl">{title}</h3>
+          <p className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-cream/50">{label}</p>
         </div>
       </div>
-      <ul>
-        {peaks.map((p) => (
-          <li
-            key={p.name}
-            className="flex items-baseline justify-between gap-4 border-b border-cream/10 py-4 last:border-0"
-          >
-            <span>
-              <span className="block font-semibold text-cream">{p.name}</span>
-              <span className="block text-[0.78rem] text-cream/45">{p.note}</span>
-            </span>
-            <span className="display shrink-0 text-xl text-coral">{p.height}</span>
-          </li>
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {peaks.map((p, i) => (
+          <Reveal key={p.slug} variant="up" delay={(i % 3) * 0.08}>
+            <ExpeditionCard item={p} />
+          </Reveal>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
@@ -48,14 +43,7 @@ function PeakList({
 export default function Mountaineering() {
   return (
     <section id="mountaineering" className="relative overflow-hidden bg-ink py-24 text-cream sm:py-32 lg:py-36">
-      {/* faint backdrop */}
-      <Image
-        src={photos.nightSky}
-        alt=""
-        fill
-        sizes="100vw"
-        className="object-cover opacity-[0.14] grayscale"
-      />
+      <Image src={photos.nightSky} alt="" fill sizes="100vw" className="object-cover opacity-[0.12] grayscale" />
       <div className="absolute inset-0 bg-linear-to-b from-ink via-ink/85 to-ink" />
 
       <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8">
@@ -78,17 +66,23 @@ export default function Mountaineering() {
           </Reveal>
         </div>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-2">
-          <Reveal variant="up">
-            <PeakList icon={PeakIcon} band="Trekking Peaks" label="6,000 m · first summits" peaks={peaks6000} />
-          </Reveal>
-          <Reveal variant="up" delay={0.1}>
-            <PeakList icon={MountainIcon} band="Expedition Peaks" label="7,000 m+ · big objectives" peaks={peaks7000} />
-          </Reveal>
+        <div className="mt-14 space-y-16">
+          <Band id="peaks-7000" icon={MountainIcon} title="7000m Peaks" label="Expedition objectives" peaks={peaks7000} />
+          <Band id="peaks-6000" icon={PeakIcon} title="6000m Peaks" label="Trekking peaks · first summits" peaks={peaks6000} />
         </div>
 
-        <Reveal variant="fade" delay={0.15}>
-          <div className="mt-12 flex flex-col items-start justify-between gap-6 rounded-2xl border border-cream/12 bg-white/[0.03] p-8 sm:flex-row sm:items-center sm:p-10">
+        <Reveal variant="fade" className="mt-12 text-center">
+          <Link
+            href="/mountaineering"
+            className="group inline-flex items-center gap-3 rounded-full border border-cream/40 px-9 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-cream transition-colors hover:bg-cream hover:text-ink"
+          >
+            View all peaks
+            <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </Reveal>
+
+        <Reveal variant="fade" delay={0.1}>
+          <div className="mt-14 flex flex-col items-start justify-between gap-6 rounded-2xl border border-cream/12 bg-white/[0.03] p-8 sm:flex-row sm:items-center sm:p-10">
             <div>
               <p className="display text-2xl text-cream sm:text-3xl">Planning an expedition?</p>
               <p className="mt-2 max-w-md text-cream/60">

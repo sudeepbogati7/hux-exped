@@ -27,6 +27,11 @@ html {
   scroll-behavior: auto; /* Lenis owns scrolling */
 }
 
+/* keep anchored sections clear of the fixed navbar */
+[id] {
+  scroll-margin-top: 6rem;
+}
+
 body {
   background: var(--color-cream);
   color: var(--color-ink);
@@ -180,6 +185,26 @@ html.lenis body {
 }
 @media (prefers-reduced-motion: reduce) {
   .fog-track {
+    animation: none;
+  }
+}
+
+/* Testimonial focus-in (center card replays on each advance) */
+@keyframes t-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.t-in {
+  animation: t-in 0.55s var(--ease-out-expo) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .t-in {
     animation: none;
   }
 }

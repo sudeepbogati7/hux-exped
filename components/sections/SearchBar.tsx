@@ -1,18 +1,27 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Reveal from "@/components/ui/Reveal";
 import { SearchIcon, ChevronDown } from "@/components/ui/icons";
 
-const DESTINATIONS = ["Kanchenjunga", "Upper Dolpo", "Makalu Barun", "Nar Phu", "Manaslu"];
+const DESTINATIONS = ["Kanchenjunga", "Dolpo", "Makalu", "Nar & Phu", "Mustang", "Manaslu & Tsum", "Dhaulagiri", "Pikey Peak"];
 const MONTHS = ["March", "April", "May", "September", "October", "November"];
 
-/** Airbnb-style expedition search. Decorative for the demo. */
+/** Airbnb-style expedition search → routes to /treks with live filters. */
 export default function SearchBar() {
+  const router = useRouter();
   const [dest, setDest] = useState("Where to?");
   const [month, setMonth] = useState("Any month");
-  const [people, setPeople] = useState(2);
   const [open, setOpen] = useState<null | "dest" | "month">(null);
+
+  const search = () => {
+    const params = new URLSearchParams();
+    if (dest !== "Where to?") params.set("q", dest);
+    if (month !== "Any month") params.set("season", month);
+    const qs = params.toString();
+    router.push(qs ? `/treks?${qs}` : "/treks");
+  };
 
   return (
     <section className="paper relative z-30 flex min-h-[40vh] items-center py-16">
@@ -25,7 +34,7 @@ export default function SearchBar() {
         <Reveal variant="up">
           <div className="mx-auto flex w-full flex-col items-stretch gap-2 rounded-3xl border border-line bg-cream p-2 shadow-[0_30px_70px_-40px_rgba(20,20,20,0.45)] md:w-fit md:flex-row md:items-center md:rounded-full">
             {/* destination */}
-            <div className="relative md:w-[190px]">
+            <div className="relative md:w-[210px]">
               <button
                 onClick={() => setOpen(open === "dest" ? null : "dest")}
                 className="flex w-full flex-col items-start rounded-2xl px-6 py-3 text-left transition-colors hover:bg-cream-deep md:rounded-full"
@@ -36,7 +45,7 @@ export default function SearchBar() {
                 </span>
               </button>
               {open === "dest" && (
-                <div className="absolute left-2 right-2 top-full z-40 mt-2 overflow-hidden rounded-2xl border border-line bg-cream py-2 shadow-xl">
+                <div className="absolute left-2 right-2 top-full z-40 mt-2 max-h-72 overflow-auto rounded-2xl border border-line bg-cream py-2 shadow-xl">
                   {DESTINATIONS.map((d) => (
                     <button
                       key={d}
@@ -53,7 +62,7 @@ export default function SearchBar() {
             <span className="hidden h-8 w-px bg-line md:block" />
 
             {/* month */}
-            <div className="relative md:w-[170px]">
+            <div className="relative md:w-[190px]">
               <button
                 onClick={() => setOpen(open === "month" ? null : "month")}
                 className="flex w-full flex-col items-start rounded-2xl px-6 py-3 text-left transition-colors hover:bg-cream-deep md:rounded-full"
@@ -80,40 +89,14 @@ export default function SearchBar() {
 
             <span className="hidden h-8 w-px bg-line md:block" />
 
-            {/* trekkers */}
-            <div className="flex items-center justify-between gap-6 px-6 py-3 md:w-[190px]">
-              <div className="flex flex-col">
-                <span className="text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-muted">Trekkers</span>
-                <span className="mt-0.5 text-sm font-semibold text-ink">
-                  {people} {people === 1 ? "person" : "people"}
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => setPeople((p) => Math.max(1, p - 1))}
-                  className="grid h-8 w-8 place-items-center rounded-full border border-line text-ink transition-colors hover:border-ink"
-                  aria-label="Fewer"
-                >
-                  –
-                </button>
-                <button
-                  onClick={() => setPeople((p) => Math.min(10, p + 1))}
-                  className="grid h-8 w-8 place-items-center rounded-full border border-line text-ink transition-colors hover:border-ink"
-                  aria-label="More"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-
             {/* search */}
-            <a
-              href="#treks"
+            <button
+              onClick={search}
               className="flex items-center justify-center gap-2 rounded-full bg-coral px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-cream transition-colors hover:bg-coral-dark"
             >
               <SearchIcon className="h-4 w-4" />
               Search
-            </a>
+            </button>
           </div>
         </Reveal>
       </div>

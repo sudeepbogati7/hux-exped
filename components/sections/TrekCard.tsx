@@ -11,10 +11,12 @@ export default function TrekCard({
   trek,
   index,
   flip,
+  upcoming,
 }: {
   trek: Trek;
   index: number;
   flip?: boolean;
+  upcoming?: boolean;
 }) {
   const root = useRef<HTMLDivElement>(null);
   const href = `/treks/${trek.slug}`;
@@ -60,12 +62,22 @@ export default function TrekCard({
           <span className="absolute right-5 top-5 rounded-full bg-coral px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-cream">
             {trek.price}
           </span>
+          {upcoming && (
+            <span className="absolute bottom-5 left-5 inline-flex items-center gap-2 rounded-full bg-ink/85 px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-cream backdrop-blur">
+              <span className="h-1.5 w-1.5 rounded-full bg-coral motion-safe:animate-pulse" /> Next departure
+            </span>
+          )}
         </div>
       </Link>
 
       {/* text */}
       <div className={flip ? "lg:order-1" : ""}>
-        <span className="display text-6xl text-line sm:text-7xl">0{index + 1}</span>
+        {upcoming && (
+          <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-coral/10 px-3.5 py-1.5 text-[0.66rem] font-semibold uppercase tracking-[0.14em] text-coral">
+            <span className="h-1.5 w-1.5 rounded-full bg-coral motion-safe:animate-pulse" /> Departing soon
+          </p>
+        )}
+        <span className="display block text-6xl text-line sm:text-7xl">0{index + 1}</span>
         <p className="eyebrow mt-2">{trek.region}</p>
         <h3 className="display mt-3 text-5xl text-ink sm:text-6xl lg:text-7xl">{trek.name}</h3>
         <p className="mt-6 max-w-md leading-relaxed text-ink-soft">{trek.blurb}</p>

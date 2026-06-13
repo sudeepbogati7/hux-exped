@@ -3,10 +3,10 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ExpeditionDetail from "@/components/sections/ExpeditionDetail";
-import { getTrek, featuredTreks } from "@/lib/data";
+import { getPeak, peakExpeditions } from "@/lib/data";
 
 export function generateStaticParams() {
-  return featuredTreks.map((t) => ({ slug: t.slug }));
+  return peakExpeditions.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
@@ -15,24 +15,24 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const trek = getTrek(slug);
-  if (!trek) return { title: "Trek not found — HUX EXPED" };
-  return { title: `${trek.name} — HUX EXPED`, description: trek.blurb };
+  const peak = getPeak(slug);
+  if (!peak) return { title: "Peak not found — HUX EXPED" };
+  return { title: `${peak.name} (${peak.altitude}) — HUX EXPED`, description: peak.blurb };
 }
 
-export default async function TrekPage({
+export default async function PeakPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const trek = getTrek(slug);
-  if (!trek) notFound();
+  const peak = getPeak(slug);
+  if (!peak) notFound();
 
   return (
     <>
       <Navbar subpage />
-      <ExpeditionDetail data={trek} />
+      <ExpeditionDetail data={peak} />
       <Footer />
     </>
   );

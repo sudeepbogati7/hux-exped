@@ -2,9 +2,9 @@ import Reveal from "@/components/ui/Reveal";
 import { featureIcon } from "@/components/ui/icons";
 import { features } from "@/lib/data";
 
-export default function WhyChooseUs() {
+export default function WhyChooseUs({ id = "why" }: { id?: string } = {}) {
   return (
-    <section id="why" className="paper py-28 sm:py-36">
+    <section id={id} className="paper py-28 sm:py-36">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
         <div className="grid items-end gap-8 border-b border-line pb-12 lg:grid-cols-[1.3fr_1fr]">
           <Reveal variant="up">
@@ -30,10 +30,10 @@ export default function WhyChooseUs() {
             return (
               <Reveal key={f.title} variant="up" delay={(i % 3) * 0.08} className="bg-cream">
                 <div className="group h-full p-8 transition-colors hover:bg-cream-deep sm:p-10">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-ink text-cream transition-colors group-hover:bg-coral">
-                    {Icon ? <Icon className="h-5 w-5" /> : null}
+                  <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-ink text-cream transition-colors group-hover:bg-coral">
+                    {Icon ? <Icon className="h-10 w-10" /> : null}
                   </div>
-                  <h3 className="display mt-6 text-2xl text-ink">{f.title}</h3>
+                  <h3 className="display mt-7 text-2xl text-ink">{f.title}</h3>
                   <p className="mt-3 leading-relaxed text-ink-soft">{f.text}</p>
                 </div>
               </Reveal>

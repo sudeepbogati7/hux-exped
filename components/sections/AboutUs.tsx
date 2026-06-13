@@ -53,9 +53,9 @@ export default function AboutUs() {
               <div className="absolute left-5 top-5 flex items-center gap-3 rounded-full bg-cream/90 px-5 py-3 backdrop-blur">
                 <CameraIcon className="h-5 w-5 text-coral" />
                 <span className="text-[0.7rem] font-semibold uppercase leading-tight tracking-[0.14em] text-ink">
-                  Annual photo expedition
+                  Photography
                   <br />
-                  led by Shal
+                  expeditions
                 </span>
               </div>
               {/* mental health pledge */}

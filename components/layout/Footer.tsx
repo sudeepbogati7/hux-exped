@@ -1,11 +1,35 @@
 import Logo from "@/components/ui/Logo";
+import Newsletter from "@/components/layout/Newsletter";
 import { socialIcon } from "@/components/ui/icons";
-import { navLinks } from "@/lib/data";
+import { navLinks, certifications } from "@/lib/data";
 
 const social = ["Instagram", "YouTube", "Facebook", "Strava"];
 
 export default function Footer() {
   return (
+    <>
+    {/* newsletter */}
+    <Newsletter />
+
+    {/* travel associations & certifications */}
+    <section className="border-t border-line bg-cream py-14 sm:py-16">
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
+        <p className="eyebrow mb-10 text-center text-muted">Travel associations &amp; certifications</p>
+        <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-10 sm:gap-x-16">
+          {certifications.map((c) => (
+            <div key={c.short} className="flex w-28 flex-col items-center text-center">
+              <span className="display grid h-16 w-16 place-items-center rounded-full border-2 border-line text-sm text-ink">
+                {c.short}
+              </span>
+              <span className="mt-3 text-[0.66rem] font-semibold uppercase leading-tight tracking-[0.12em] text-muted">
+                {c.name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <footer className="bg-ink text-cream">
       <div className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8">
         {/* big wordmark */}
@@ -70,5 +94,6 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+    </>
   );
 }
