@@ -14,7 +14,16 @@ export default function CTA() {
         className="object-cover opacity-30 grayscale"
       />
       <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/60 to-ink/70" />
-      <div className="relative mx-auto max-w-[1100px] px-5 text-center sm:px-8">
+      {/* faint peak silhouette (transparent PNG) */}
+      <Image
+        src="/mountain1.png"
+        alt=""
+        width={2400}
+        height={1350}
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-auto w-full opacity-[0.10]"
+      />
+      <div className="relative z-10 mx-auto max-w-[1100px] px-5 text-center sm:px-8">
         <Reveal variant="up">
           <p className="eyebrow mb-6 text-cream/60">Active trips with unusual people</p>
           <h2 className="display text-5xl leading-[0.95] sm:text-7xl">

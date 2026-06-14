@@ -44,7 +44,8 @@ export default function Footer() {
           <div className="max-w-xs">
             <p className="text-sm leading-relaxed text-cream/70">
               Small-group expeditions into Nepal&apos;s offbeat Himalaya. A part
-              of every trek funds men&apos;s mental health.
+              of every trek funds village schools &amp; health posts in the
+              valleys we walk.
             </p>
           </div>
 

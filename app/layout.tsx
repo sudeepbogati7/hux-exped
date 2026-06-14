@@ -17,7 +17,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "HUX EXPED — Offbeat Himalaya. Kanchenjunga, Dolpo & beyond.",
   description:
-    "HUX EXPED leads small-group expeditions into Nepal's wildest, least-trodden mountains — Kanchenjunga, Dolpo and the 6,000–7,000 m peaks. A portion of every trek funds men's mental health.",
+    "HUX EXPED leads small-group expeditions into Nepal's wildest, least-trodden mountains — Kanchenjunga, Dolpo and the 6,000–7,000 m peaks. A portion of every trek funds village schools and health posts in the valleys we walk.",
 };
 
 export default function RootLayout({

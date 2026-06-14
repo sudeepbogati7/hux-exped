@@ -52,7 +52,7 @@ export default function Contact() {
                 <HeartIcon className="h-4 w-4" />
               </span>
               <span className="text-cream/75">
-                A portion of every booking funds mental-health charities.
+                A portion of every booking funds village schools &amp; health posts in Nepal.
               </span>
             </div>
           </dl>

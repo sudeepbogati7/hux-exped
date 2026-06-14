@@ -3,12 +3,13 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { gsap } from "@/lib/gsap";
-import { ArrowIcon } from "@/components/ui/icons";
+import Logo from "@/components/ui/Logo";
+import HeroSearch from "@/components/ui/HeroSearch";
 import { photos } from "@/lib/data";
 
 /**
- * Variation B hero — full-bleed cinematic video background (Mt Aspiring),
- * dark editorial overlay, content anchored bottom-left.
+ * Variation B hero — full-bleed Mt Aspiring video with a single centred-bottom
+ * card: logo, heading, search and the upcoming treks. Nothing else.
  */
 export default function HeroVideo() {
   const root = useRef<HTMLDivElement>(null);
@@ -16,19 +17,13 @@ export default function HeroVideo() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const ctx = gsap.context(() => {
-      gsap
-        .timeline({ defaults: { ease: "power4.out" } })
-        .from(".hv-eyebrow", { autoAlpha: 0, y: 20, duration: 0.7 }, 0.2)
-        .from(".hv-line", { yPercent: 115, duration: 1.0, stagger: 0.12 }, 0.3)
-        .from(".hv-sub", { autoAlpha: 0, y: 24, duration: 0.8 }, 0.7)
-        .from(".hv-cta", { autoAlpha: 0, y: 20, duration: 0.7, stagger: 0.1 }, 0.9)
-        .from(".hv-cue", { autoAlpha: 0, duration: 1 }, 1.1);
+      gsap.from(".hv-card", { autoAlpha: 0, y: 36, duration: 1, ease: "power3.out", delay: 0.2 });
     }, root);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section id="top" ref={root} className="relative isolate flex h-screen min-h-[640px] items-end overflow-hidden bg-ink text-cream">
+    <section id="top" ref={root} className="relative isolate flex h-screen min-h-[640px] items-end justify-center overflow-hidden bg-ink text-cream">
       {/* background video */}
       <video
         autoPlay
@@ -40,49 +35,37 @@ export default function HeroVideo() {
       >
         <source src="/mount-aspiring.mp4" type="video/mp4" />
       </video>
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-ink/80 via-ink/15 to-ink/35" />
 
-      {/* legibility overlays */}
-      <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-ink via-ink/30 to-ink/55" />
-      <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-ink/70 via-transparent to-transparent" />
+      {/* centred-bottom card */}
+      <div className="hv-card relative z-10 mb-[9vh] w-full max-w-3xl px-5 sm:px-6">
+        <div className="rounded-3xl bg-ink/45 p-6 ring-1 ring-white/10 backdrop-blur-md sm:p-8">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-6">
+            <Logo invert priority className="h-12 shrink-0 sm:h-14" />
+            <span className="hidden h-12 w-px bg-cream/20 sm:block" />
+            <div>
+              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-cream/70">The offbeat</p>
+              <h1 className="display text-3xl leading-[0.95] text-cream sm:text-4xl">
+                Walk the <span className="text-coral">wild side</span>
+              </h1>
+            </div>
+          </div>
 
-      {/* content */}
-      <div className="relative mx-auto w-full max-w-[1400px] px-5 pb-20 sm:px-8 sm:pb-24 lg:pb-28">
-        <p className="hv-eyebrow eyebrow mb-6 text-cream/70">Offbeat Nepal · Real Himalaya</p>
-        <h1 className="display text-cream">
-          <span className="block overflow-hidden">
-            <span className="hv-line block text-[15vw] leading-[0.86] sm:text-[11vw] lg:text-[8.5rem]">Walk the</span>
-          </span>
-          <span className="block overflow-hidden">
-            <span className="hv-line block text-[15vw] leading-[0.86] text-coral sm:text-[11vw] lg:text-[8.5rem]">wild side</span>
-          </span>
-        </h1>
-        <p className="hv-sub mt-7 max-w-xl text-base leading-relaxed text-cream/85 sm:text-lg">
-          Small-group expeditions into Nepal&apos;s restricted valleys and
-          roadless peaks — the mountains the guidebooks forgot, walked the long
-          way round.
-        </p>
+          <div className="mt-6">
+            <HeroSearch />
+          </div>
 
-        <div className="mt-9 flex flex-wrap items-center gap-4">
-          <Link
-            href="#treks"
-            className="hv-cta group inline-flex items-center gap-3 rounded-full bg-coral px-8 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-cream transition-colors hover:bg-coral-dark"
-          >
-            Explore expeditions
-            <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </Link>
-          <Link
-            href="#contact"
-            className="hv-cta rounded-full border border-cream/40 px-8 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-cream backdrop-blur-sm transition-colors hover:bg-cream hover:text-ink"
-          >
-            Plan your trip
-          </Link>
+          <p className="mt-4 text-sm text-cream/75">
+            Upcoming treks:{" "}
+            <Link href="/treks/dolpo" className="font-semibold text-cream underline-offset-4 hover:text-coral hover:underline">
+              Dolpo
+            </Link>{" "}
+            ·{" "}
+            <Link href="/treks/kanchenjunga" className="font-semibold text-cream underline-offset-4 hover:text-coral hover:underline">
+              Kanchenjunga
+            </Link>
+          </p>
         </div>
-      </div>
-
-      {/* scroll cue */}
-      <div className="hv-cue absolute inset-x-0 bottom-6 z-10 mx-auto flex max-w-[1400px] items-center justify-between px-5 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-cream/55 sm:px-8">
-        <span>Scroll to ascend</span>
-        <span className="hidden sm:inline">Filmed · Mt Aspiring</span>
       </div>
     </section>
   );

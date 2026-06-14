@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
+import HeroSearch from "@/components/ui/HeroSearch";
 import { art } from "@/lib/data";
 
 /**
@@ -47,6 +48,7 @@ export default function Hero() {
         .from(".hero-eyebrow", { autoAlpha: 0, y: 18, duration: 0.6 }, 0.35)
         .from(".hero-line", { yPercent: 115, duration: 1.0, stagger: 0.1 }, 0.45)
         .from(".hero-para", { autoAlpha: 0, y: 24, duration: 0.8 }, 0.75)
+        .from(".hero-search", { autoAlpha: 0, y: 24, duration: 0.8 }, 0.9)
         .from(".hero-mtn", { yPercent: 14, autoAlpha: 0, duration: 1.4, ease: "power3.out" }, 0.55)
         .from(".hero-clouds", { autoAlpha: 0, duration: 1.4 }, 0.9);
 
@@ -72,14 +74,16 @@ export default function Hero() {
       {/* header content — anchored high & fixed so the peaks never cover it at rest */}
       <div className="absolute inset-0 z-10">
         <div className="mx-auto flex h-full max-w-[1400px] flex-col px-5 pt-[19vh] sm:px-8 sm:pt-[17vh] lg:pt-[18vh]">
-          <p className="hero-eyebrow eyebrow mb-5 sm:mb-7">Restricted trails · Real Himalaya</p>
+          <p className="hero-eyebrow eyebrow mb-5 inline-flex items-center gap-2 sm:mb-7">
+            <span className="h-1.5 w-1.5 rounded-full bg-coral" /> Restricted trails · <span className="text-coral">Real Himalaya</span>
+          </p>
           <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
             <h1 className="display text-ink">
               <span className="block overflow-hidden">
                 <span className="hero-line block text-[19vw] leading-[0.82] sm:text-[13vw] lg:text-[8.5rem]">Beyond</span>
               </span>
               <span className="block overflow-hidden">
-                <span className="hero-line block text-[19vw] leading-[0.82] sm:text-[13vw] lg:text-[8.5rem]">the trail</span>
+                <span className="hero-line block text-[19vw] leading-[0.82] sm:text-[13vw] lg:text-[8.5rem]">the <span className="text-coral">trail</span></span>
               </span>
             </h1>
             <p className="hero-para max-w-sm text-[0.95rem] leading-relaxed text-ink-soft sm:text-[0.98rem] lg:pt-4">
@@ -88,6 +92,10 @@ export default function Hero() {
               <span className="ulink">Kanchenjunga</span> and{" "}
               <span className="ulink">Dolpo</span>, where the map runs out.
             </p>
+          </div>
+
+          <div className="hero-search mt-9 max-w-xl">
+            <HeroSearch />
           </div>
         </div>
       </div>

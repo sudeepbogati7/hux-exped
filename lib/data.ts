@@ -170,7 +170,7 @@ export const huxDifference = [
   "Nepal-based, fully licensed operator",
   "Small groups · max 10 trekkers",
   "Licensed local guides & fair-wage crew",
-  "5% of every booking funds mental health",
+  "5% funds village schools & health posts in Nepal",
 ];
 
 export const featuredTreks: Trek[] = [
@@ -212,7 +212,7 @@ export const featuredTreks: Trek[] = [
       "Teahouse / homestay accommodation",
       "All ground transport to the trailhead",
       "Domestic flights to Bhadrapur",
-      "5% donated to men's mental health",
+      "5% funds village schools & health posts",
     ],
     itinerary: [
       { day: "01–02", title: "Fly east → Taplejung", detail: "Fly east and drive to the trailhead through tea country." },
@@ -261,7 +261,7 @@ export const featuredTreks: Trek[] = [
       "Full camping & meals on trek",
       "All ground transport & domestic flights",
       "Pre-trip briefing & gear check",
-      "5% donated to men's mental health",
+      "5% funds village schools & health posts",
     ],
     itinerary: [
       { day: "01–03", title: "Fly west → Juphal", detail: "Fly via Nepalgunj into lower Dolpo and start walking." },
@@ -309,7 +309,7 @@ export const featuredTreks: Trek[] = [
       "Full camping & meals on trek",
       "All ground transport & domestic flights",
       "Pre-trip briefing & gear check",
-      "5% donated to men's mental health",
+      "5% funds village schools & health posts",
     ],
     itinerary: [
       { day: "01–03", title: "Fly east → Tumlingtar", detail: "Fly east and drive up to the trailhead at Num." },
@@ -356,7 +356,7 @@ export const featuredTreks: Trek[] = [
       "Teahouse accommodation",
       "All ground transport from the trailhead",
       "Pre-trip briefing & gear check",
-      "5% donated to men's mental health",
+      "5% funds village schools & health posts",
     ],
     itinerary: [
       { day: "01–02", title: "Drive → Koto", detail: "Drive to Besisahar and up to the gorge mouth at Koto." },
@@ -403,7 +403,7 @@ export const featuredTreks: Trek[] = [
       "Teahouse accommodation",
       "All ground transport & domestic flights",
       "Pre-trip briefing & gear check",
-      "5% donated to men's mental health",
+      "5% funds village schools & health posts",
     ],
     itinerary: [
       { day: "01–03", title: "Fly → Jomsom", detail: "Fly to Pokhara and on to windy Jomsom to start." },
@@ -450,7 +450,7 @@ export const featuredTreks: Trek[] = [
       "Teahouse accommodation",
       "All ground transport from the trailhead",
       "Pre-trip briefing & gear check",
-      "5% donated to men's mental health",
+      "5% funds village schools & health posts",
     ],
     itinerary: [
       { day: "01–02", title: "Drive → Machha Khola", detail: "Drive west into Gorkha and start up the Budhi Gandaki." },
@@ -487,7 +487,7 @@ export const featuredTreks: Trek[] = [
       "Teahouse / homestay accommodation",
       "All ground transport & domestic flights",
       "Pre-trip briefing & gear check",
-      "5% donated to men's mental health",
+      "5% funds village schools & health posts",
     ],
     itinerary: [
       { day: "01–03", title: "Fly east → trailhead", detail: "Fly east and drive up through tea country to start walking." },
@@ -524,7 +524,7 @@ export const featuredTreks: Trek[] = [
       "Full camping & meals on trek",
       "All ground transport & domestic flights",
       "Pre-trip briefing & gear check",
-      "5% donated to men's mental health",
+      "5% funds village schools & health posts",
     ],
     itinerary: [
       { day: "01–02", title: "Fly west → Juphal", detail: "Fly via Nepalgunj into Dolpo and start down the valley." },
@@ -561,7 +561,7 @@ export const featuredTreks: Trek[] = [
       "All camping gear & meals",
       "All ground transport from the trailhead",
       "Pre-trip briefing & gear check",
-      "5% donated to men's mental health",
+      "5% funds village schools & health posts",
     ],
     itinerary: [
       { day: "01–03", title: "Drive → Beni → Babichaur", detail: "Drive west to Beni and start up the Myagdi Khola." },
@@ -598,7 +598,7 @@ export const featuredTreks: Trek[] = [
       "Teahouse accommodation",
       "All ground transport",
       "Pre-trip briefing",
-      "5% donated to men's mental health",
+      "5% funds village schools & health posts",
     ],
     itinerary: [
       { day: "01", title: "Drive → Dhap", detail: "Scenic drive east from the city to the trailhead." },
@@ -629,38 +629,44 @@ export const flagshipTreks = featuredTreks.filter((t) => t.flagship);
 /* ----------------------------------------------------------------- */
 /*  Why choose us                                                     */
 /* ----------------------------------------------------------------- */
-export type Feature = { title: string; text: string; icon: string };
+export type Feature = { title: string; text: string; icon: string; img: string };
 
 export const features: Feature[] = [
   {
     icon: "compass",
+    img: "/why/offbeat-removebg-preview.png",
     title: "Genuinely offbeat",
     text: "No Everest Base Camp queues. We run the restricted, hard-to-reach corners of Nepal — Kanchenjunga, Dolpo, Makalu, Nar Phu.",
   },
   {
     icon: "users",
+    img: "/why/small_group-removebg-preview.png",
     title: "Small groups",
     text: "Maximum ten trekkers per departure, walked at a human pace with room to actually meet the place.",
   },
   {
     icon: "shield",
+    img: "/why/guide-removebg-preview.png",
     title: "Local expert guides",
     text: "Licensed Nepali guides and porters with decades on the trail — your safety, the language and the lore, all covered.",
   },
   {
     icon: "peak",
+    img: "/why/Peaks_in_Monochrome-removebg-preview.png",
     title: "6,000–7,000 m peaks",
     text: "Ready for crampons? Trekking peaks and expedition objectives from Island Peak to Dhaulagiri.",
   },
   {
     icon: "camera",
+    img: "/why/download__2_-removebg-preview.png",
     title: "Photography expeditions",
     text: "Once a year a dedicated professional photo team joins a select trek to shoot the whole journey — a service you can book onto.",
   },
   {
     icon: "heart",
+    img: "/why/Contribution_capital_icon-removebg-preview.png",
     title: "We give back",
-    text: "5% of every booking funds men's mental health and suicide-prevention work. Built into the price, no fine print.",
+    text: "5% of every booking funds village schools and health posts in the Nepal valleys we trek. Built into the price, no fine print.",
   },
 ];
 
@@ -715,7 +721,7 @@ function makePeak(p: PeakInput): Trek {
       "Base camp & high-camp tents and meals",
       "Group climbing hardware & fixed ropes",
       "All ground transport & domestic flights",
-      "5% donated to men's mental health",
+      "5% funds village schools & health posts",
     ],
     itinerary: [
       { day: "01–02", title: "Arrive & brief", detail: "Gear check, permits and final prep before flying out." },
@@ -879,7 +885,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Small group, brilliant guides, no corners cut on safety. The mental-health pledge is the kind of thing you don't see in this industry.",
+      "Small group, brilliant guides, no corners cut on safety. Knowing our booking helps fund schools in these valleys made it even better.",
     name: "Priya Sharma",
     trek: "Mera Peak",
     initials: "PS",
@@ -939,8 +945,8 @@ export const faqs: Faq[] = [
     img: photos.baseCamp,
   },
   {
-    q: "What's this about men's mental health?",
-    a: "Five percent of every booking goes directly to organisations working on men's mental health and suicide prevention. It's built into the price — no upsell, reported back each season.",
+    q: "What's this about giving back?",
+    a: "Five percent of every booking goes directly to community-run village schools and health posts in the Nepal valleys we trek through. It's built into the price — no upsell, reported back each season.",
     icon: "heart",
     img: photos.carries,
   },
@@ -1005,15 +1011,15 @@ export const about = {
   },
 };
 
-/** Shared "why we give back" copy (landing + about). */
+/** Shared "why we give back" copy (landing + about) — Nepal-first giving. */
 export const giveBack = {
   eyebrow: "Why we give back",
   title: "Why we give back.",
   body: [
-    "We run a charity called Surfing for Farmers, getting farmers out of isolation and into the sea. Same idea, different terrain. The mountains have done a lot for our own mental health, and we've seen them do the same for others.",
-    "A portion of every Hux Exped booking goes to mental health charities. Because getting outside and doing something hard with good people works. We've seen it.",
+    "We put a share of every booking straight back into the valleys we walk — funding community-run village schools and health posts in regions like Dolpo, Kanchenjunga and the Solu Khumbu.",
+    "Local first: we back Nepali, community-led causes in the places our treks actually pass through — not a charity on the other side of the world.",
   ],
-  charity: "Surfing for Farmers",
+  charity: "village schools & health posts",
 };
 
 export type NavChild = { label: string; href: string; note?: string; icon?: string };
@@ -1097,11 +1103,13 @@ export const navLinks = [
 /* ----------------------------------------------------------------- */
 /*  Our team + accreditation (About page)                            */
 /* ----------------------------------------------------------------- */
-export const team = [
-  { name: "Pemba Sherpa", role: "Founder & lead guide", note: "Two decades on Himalayan trails; happiest above 5,000 m.", img: photos.carries },
-  { name: "Mingma Dorje", role: "Senior mountain guide", note: "Restricted-area specialist — Dolpo, Mustang and the far east.", img: photos.prepping },
-  { name: "Anna Whitfield", role: "Expedition doctor", note: "Wilderness medic keeping the whole team moving and well.", img: photos.weather },
-  { name: "Tashi Lama", role: "Logistics & permits", note: "Handles every permit, flight and yak so you don't have to.", img: photos.walking },
+export type TeamMember = { name: string; role: string; tag: string; meta: string; note: string; img: string };
+
+export const team: TeamMember[] = [
+  { name: "Deepak Thapa", role: "Founder & senior guide", tag: "Co-founder", meta: "500+ treks led", note: "Grew up in these valleys; built Hux Exped to share them.", img: photos.carries },
+  { name: "Dominic Huxley", role: "Founder & mountain guide", tag: "Co-founder", meta: "IFMGA mountain guide", note: "The 'Hux' in Hux Exped — leads from the front on the high peaks.", img: photos.weather },
+  { name: "Bibek Basnet", role: "Ops, IT & (basically) CEO", tag: "The engine", meta: "Keeps it all running", note: "Makes every permit, flight, server and yak line up on time.", img: photos.prepping },
+  { name: "Shall", role: "Lead photographer", tag: "Photography", meta: "Shoots the whole journey", note: "Leads our once-a-year dedicated photography expedition.", img: photos.walking },
 ];
 
 export const certifications = [

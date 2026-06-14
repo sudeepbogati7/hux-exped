@@ -13,7 +13,7 @@ import { about, giveBack, stats, photos, team, certifications } from "@/lib/data
 export const metadata: Metadata = {
   title: "About — HUX EXPED",
   description:
-    "Hux Exped is a reason to go: ten people, a serious mountain, and a guide who genuinely loves this stuff. A portion of every trip funds mental-health charities.",
+    "Hux Exped is a reason to go: ten people, a serious mountain, and a guide who genuinely loves this stuff. A portion of every trip funds village schools and health posts in the Nepal valleys we walk.",
 };
 
 export default function AboutPage() {
@@ -194,14 +194,14 @@ export default function AboutPage() {
                 Founder of {giveBack.charity}
               </p>
             </Reveal>
-            <Reveal variant="fade" className="relative">
-              <div className="relative aspect-[3/2] w-full">
+            <Reveal variant="mask" className="relative">
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-cream">
                 <Image
-                  src="/charity.png"
-                  alt="Surfing for Farmers and the mountains both feeding into mental-health charity"
+                  src={photos.walking}
+                  alt="A share of every booking funds village schools and health posts in the Nepal valleys we trek"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-contain"
+                  className="object-cover"
                 />
               </div>
             </Reveal>

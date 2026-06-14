@@ -8,7 +8,7 @@ import { photos } from "@/lib/data";
 const stats = [
   { value: 10, suffix: " max", label: "Trekkers per group" },
   { value: 19, suffix: "+", label: "Years on the trail" },
-  { value: 5, suffix: "%", label: "To mental health" },
+  { value: 5, suffix: "%", label: "To Nepal schools" },
 ];
 
 /**

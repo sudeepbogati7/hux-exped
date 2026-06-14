@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/hero/Hero";
 import Statement from "@/components/sections/Statement";
-import SearchBar from "@/components/sections/SearchBar";
+import Stats from "@/components/sections/Stats";
+import AboutCompany from "@/components/sections/AboutCompany";
 import OffbeatTreks from "@/components/sections/OffbeatTreks";
 import Flagships from "@/components/sections/Flagships";
 import Mountaineering from "@/components/sections/Mountaineering";
 import Photography from "@/components/sections/Photography";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
-import AboutUs from "@/components/sections/AboutUs";
+import WhoWeAre from "@/components/sections/WhoWeAre";
 import GiveBack from "@/components/sections/GiveBack";
 import Gallery from "@/components/sections/Gallery";
 import Testimonials from "@/components/sections/Testimonials";
@@ -29,13 +30,14 @@ export default function PreviousDesign() {
       <main>
         <Hero />
         <Statement />
-        <SearchBar />
+        <Stats />
+        <AboutCompany />
         <OffbeatTreks />
         <Flagships />
         <Mountaineering />
         <Photography />
         <WhyChooseUs />
-        <AboutUs />
+        <WhoWeAre />
         <GiveBack />
         <Gallery />
         <Testimonials />
