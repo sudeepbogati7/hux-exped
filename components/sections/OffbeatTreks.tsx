@@ -8,25 +8,14 @@ export default function OffbeatTreks() {
   return (
     <section id="treks" className="bg-cream-deep py-24 sm:py-32 lg:py-36">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
-        <div className="grid items-end gap-8 border-b border-line pb-12 lg:grid-cols-[1.4fr_1fr]">
-          <Reveal variant="up">
-            <p className="eyebrow mb-5 inline-flex items-center gap-2">
-              <MountainIcon className="h-4 w-4 text-coral" /> Offbeat Nepal
-            </p>
-            <h2 className="display text-5xl text-ink sm:text-6xl lg:text-7xl">
-              Trails the crowds
-              <br />
-              never <span className="text-coral">find</span>
-            </h2>
-          </Reveal>
-          <Reveal variant="up" delay={0.1}>
-            <p className="max-w-sm leading-relaxed text-ink-soft lg:pb-2">
-              Restricted valleys, forbidden kingdoms and roadless wilderness —
-              expeditions into the Nepal most travellers never see, far from
-              Everest Base Camp and the Annapurna crowds.
-            </p>
-          </Reveal>
-        </div>
+        <Reveal variant="up">
+          <p className="eyebrow mb-4 inline-flex items-center gap-2">
+            <MountainIcon className="h-4 w-4 text-coral" /> Offbeat Nepal
+          </p>
+          <h2 className="display text-5xl text-ink sm:text-6xl lg:text-7xl">
+            Trails the crowds never <span className="text-coral">find</span>
+          </h2>
+        </Reveal>
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {featuredTreks.slice(0, 6).map((trek, i) => (

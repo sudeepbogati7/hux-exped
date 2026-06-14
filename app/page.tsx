@@ -5,6 +5,7 @@ import AboutCompany from "@/components/sections/AboutCompany";
 import OffbeatTreks from "@/components/sections/OffbeatTreks";
 import Flagships from "@/components/sections/Flagships";
 import Mountaineering from "@/components/sections/Mountaineering";
+import BlogSection from "@/components/sections/BlogSection";
 import Photography from "@/components/sections/Photography";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import WhoWeAre from "@/components/sections/WhoWeAre";
@@ -28,6 +29,7 @@ export default function Home() {
         <OffbeatTreks />
         <Flagships />
         <Mountaineering />
+        <BlogSection />
         <Photography />
         <WhyChooseUs />
         <WhoWeAre />

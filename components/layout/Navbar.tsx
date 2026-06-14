@@ -33,6 +33,28 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
         solid ? "border-b border-line bg-cream/85 backdrop-blur-md" : "bg-transparent"
       }`}
     >
+      {/* announcement bar — visible over the hero, collapses on scroll */}
+      <div
+        className={`overflow-hidden transition-[max-height,opacity] duration-500 ease-out ${
+          solid ? "max-h-0 opacity-0" : "max-h-12 opacity-100"
+        }`}
+      >
+        <div className="bg-coral text-cream">
+          <div className="mx-auto flex h-9 max-w-[1400px] items-center justify-center gap-2.5 px-5 text-[0.72rem] font-semibold uppercase tracking-[0.1em] sm:px-8">
+            <span className="hidden sm:inline">Latest news &amp; updates from the Himalaya</span>
+            <span className="sm:hidden">Latest news &amp; updates</span>
+            <span className="text-cream/50">·</span>
+            <Link
+              href="/blog"
+              className="group/ann inline-flex items-center gap-1 underline-offset-2 hover:underline"
+            >
+              Read the journal
+              <ArrowIcon className="h-3.5 w-3.5 transition-transform duration-300 group-hover/ann:translate-x-0.5" />
+            </Link>
+          </div>
+        </div>
+      </div>
+
       <nav className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-5 sm:px-8">
         {/* left: brand */}
         <Link href={subpage ? "/" : "#top"} className="flex items-center text-ink">

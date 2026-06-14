@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Logo from "@/components/ui/Logo";
 import Newsletter from "@/components/layout/Newsletter";
 import { socialIcon } from "@/components/ui/icons";
@@ -15,11 +16,17 @@ export default function Footer() {
     <section className="border-t border-line bg-cream py-14 sm:py-16">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
         <p className="eyebrow mb-10 text-center text-muted">Travel associations &amp; certifications</p>
-        <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-10 sm:gap-x-16">
+        <div className="flex flex-wrap items-start justify-center gap-x-10 gap-y-10 sm:gap-x-14">
           {certifications.map((c) => (
-            <div key={c.short} className="flex w-28 flex-col items-center text-center">
-              <span className="display grid h-16 w-16 place-items-center rounded-full border-2 border-line text-sm text-ink">
-                {c.short}
+            <div key={c.name} className="flex w-28 flex-col items-center text-center">
+              <span className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl bg-white p-2.5 ring-1 ring-line/60">
+                <Image
+                  src={c.logo}
+                  alt={c.name}
+                  width={120}
+                  height={120}
+                  className="h-full w-full object-contain"
+                />
               </span>
               <span className="mt-3 text-[0.66rem] font-semibold uppercase leading-tight tracking-[0.12em] text-muted">
                 {c.name}

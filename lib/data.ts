@@ -1061,8 +1061,6 @@ export const nav: NavItem[] = [
       { label: "6000m Peaks", href: "/#peaks-6000", icon: "peak", note: "Trekking peaks · first summits" },
     ],
   },
-  { label: "Photography", href: "/photography" },
-  { label: "Gallery", href: "/gallery" },
   {
     label: "About",
     href: "/about",
@@ -1076,18 +1074,15 @@ export const nav: NavItem[] = [
     ],
   },
   {
-    label: "Guidance",
-    href: "/guidance",
+    label: "Explore",
+    href: "/blog",
     columns: 2,
-    cta: { label: "All guidance", href: "/guidance" },
+    cta: { label: "Read the journal", href: "/blog" },
     children: [
-      { label: "Gear list", href: "/guidance#gear-list", icon: "shield" },
-      { label: "Altitude sickness", href: "/guidance#altitude-sickness", icon: "gauge" },
-      { label: "Mountaineering guide", href: "/guidance#mountaineering-guide", icon: "users" },
-      { label: "Nepal visa", href: "/guidance#nepal-visa", icon: "mappin" },
-      { label: "TIMS & other permits", href: "/guidance#permits", icon: "flag" },
-      { label: "Travel suggestions", href: "/guidance#travel-suggestions", icon: "compass" },
-      { label: "Travel insurance", href: "/guidance#travel-insurance", icon: "heart" },
+      { label: "Blog & stories", href: "/blog", icon: "compass", note: "Guides & field notes" },
+      { label: "Photo gallery", href: "/gallery", icon: "camera", note: "From our expeditions" },
+      { label: "Photography trips", href: "/photography", icon: "camera", note: "Pro photo expeditions" },
+      { label: "Trip guidance", href: "/guidance", icon: "shield", note: "Gear, permits & altitude" },
     ],
   },
   { label: "Contact", href: "/#contact" },
@@ -1099,10 +1094,18 @@ export const navLinks = [
   { label: "Mountaineering", href: "/mountaineering" },
   { label: "Photography", href: "/photography" },
   { label: "Gallery", href: "/gallery" },
+  { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
   { label: "Guidance", href: "/guidance" },
   { label: "Contact", href: "/#contact" },
 ];
+
+/** Site-wide contact / social config — swap these for the real ones. */
+export const site = {
+  // WhatsApp number in international format, digits only (no +, spaces or dashes).
+  whatsapp: "9779800000000",
+  email: "hello@huxexped.com",
+};
 
 /* ----------------------------------------------------------------- */
 /*  Our team + accreditation (About page)                            */
@@ -1112,17 +1115,19 @@ export type TeamMember = { name: string; role: string; tag: string; meta: string
 export const team: TeamMember[] = [
   { name: "Deepak Thapa", role: "Founder & senior guide", tag: "Co-founder", meta: "500+ treks led", note: "Grew up in these valleys; built Hux Exped to share them.", img: photos.carries },
   { name: "Dominic Huxley", role: "Founder & mountain guide", tag: "Co-founder", meta: "IFMGA mountain guide", note: "The 'Hux' in Hux Exped — leads from the front on the high peaks.", img: photos.weather },
-  { name: "Bibek Basnet", role: "Ops, IT & (basically) CEO", tag: "The engine", meta: "Keeps it all running", note: "Makes every permit, flight, server and yak line up on time.", img: photos.prepping },
+  { name: "Bibek Basnet", role: "IT & Operations", tag: "The engine", meta: "Keeps it all running", note: "Makes every permit, flight, server and yak line up on time.", img: photos.prepping },
   { name: "Shall", role: "Lead photographer", tag: "Photography", meta: "Shoots the whole journey", note: "Leads our once-a-year dedicated photography expedition.", img: photos.walking },
 ];
 
+/** Only certifications with a logo present in /public/certs are shown. */
 export const certifications = [
-  { name: "Nepal Mountaineering Association", short: "NMA" },
-  { name: "Trekking Agencies' Association of Nepal", short: "TAAN" },
-  { name: "Nepal Tourism Board licensed", short: "NTB" },
-  { name: "Wilderness First Responder certified", short: "WFR" },
-  { name: "IFMGA-affiliated mountain guides", short: "IFMGA" },
-  { name: "Adventure Travel Trade Association", short: "ATTA" },
+  { name: "Nepal Mountaineering Association", short: "NMA", logo: "/certs/nma.png" },
+  { name: "Trekking Agencies' Association of Nepal", short: "TAAN", logo: "/certs/taan.jpg" },
+  { name: "Nepal Tourism Board", short: "NTB", logo: "/certs/ntb.png" },
+  { name: "Wilderness First Responder", short: "WFR", logo: "/certs/wilderness-first.png" },
+  { name: "IFMGA mountain guides", short: "IFMGA", logo: "/certs/IFMGA.jpg.jpeg" },
+  { name: "Tripadvisor", short: "Tripadvisor", logo: "/certs/TRIP.png" },
+  { name: "Leave No Trace", short: "LNT", logo: "/certs/leave-no-trace.png" },
 ];
 
 /* ----------------------------------------------------------------- */
@@ -1225,3 +1230,187 @@ export const guidance: GuideTopic[] = [
     ],
   },
 ];
+
+/* ----------------------------------------------------------------- */
+/*  Blog / journal                                                   */
+/* ----------------------------------------------------------------- */
+export type BlogPost = {
+  slug: string;
+  title: string;
+  category: string;
+  date: string; // display date
+  readTime: string;
+  image: string;
+  excerpt: string;
+  content: { heading: string; paragraphs: string[] }[];
+};
+
+export const blogPosts: BlogPost[] = [
+  {
+    slug: "upper-dolpo-forbidden-kingdom",
+    title: "Upper Dolpo: Inside Nepal's Last Forbidden Kingdom",
+    category: "Destinations",
+    date: "12 Jun, 2026",
+    readTime: "7 min read",
+    image: photos.nepal,
+    excerpt:
+      "Beyond the Dhaulagiri massif lies a roadless Buddhist kingdom that stayed closed to outsiders until 1989. Here's what it's really like to walk it.",
+    content: [
+      {
+        heading: "A kingdom out of time",
+        paragraphs: [
+          "Tucked behind the Himalaya in Nepal's remote north-west, Upper Dolpo feels less like a trek and more like time travel. The landscape is high desert — ochre cliffs, turquoise lakes and whitewashed gompas that have looked the same for six centuries. This is the land made famous by Peter Matthiessen's The Snow Leopard, and it still rewards patience the way it did then.",
+          "Because the region sits in the rain shadow of the Dhaulagiri and Kanjiroba massifs, the culture here is Tibetan to the core. Villages like Saldang and Shimen keep the old Bon and Buddhist traditions alive, and the rhythm of yak caravans and barley harvests sets the pace of every day on the trail.",
+        ],
+      },
+      {
+        heading: "Permits and access",
+        paragraphs: [
+          "Upper Dolpo is a restricted area. You'll need a special permit (currently USD 500 for the first 10 days, plus the Shey Phoksundo National Park fee), and you must travel with a registered agency and a licensed guide — solo trekking isn't allowed. We handle the paperwork end to end.",
+          "Access is part of the adventure. Most itineraries fly Kathmandu–Nepalgunj–Juphal, then walk from there. There are no roads into the upper valleys, which is exactly why they remain so untouched.",
+        ],
+      },
+      {
+        heading: "When to go and what to expect",
+        paragraphs: [
+          "The rain shadow makes Dolpo one of the few Nepal regions trekkable through the monsoon (June–August), when the rest of the country is socked in. Spring and autumn are reliable too, though high passes like the Kang La and Saldang La can hold snow.",
+          "Expect long days, basic camping (there are few teahouses up high), and altitudes above 5,000 m. Come fit, come acclimatised, and come ready for one of the last genuinely wild treks left in the Himalaya.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "kanchenjunga-base-camp-guide",
+    title: "Kanchenjunga Base Camp: A Complete Trekking Guide",
+    category: "Trek guides",
+    date: "08 Jun, 2026",
+    readTime: "9 min read",
+    image: photos.himalayas,
+    excerpt:
+      "The world's third-highest peak guards Nepal's far east — remote, restricted and gloriously uncrowded. Everything you need to plan the trek.",
+    content: [
+      {
+        heading: "Why Kanchenjunga",
+        paragraphs: [
+          "At 8,586 m, Kanchenjunga is the third-highest mountain on Earth and the highest in India's and Nepal's eastern Himalaya. Yet a fraction of the trekkers who queue for Everest Base Camp ever make it here. The reward for the extra effort is solitude, raw scenery and a corridor of villages largely untouched by mass tourism.",
+          "The trek threads through subtropical forest, terraced Limbu and Rai farmland, and finally up into glacial moraine beneath a wall of 7,000- and 8,000-metre peaks.",
+        ],
+      },
+      {
+        heading: "The route — north and south",
+        paragraphs: [
+          "There are two base camps. Pangpema (North Base Camp, 5,143 m) sits beneath Kanchenjunga's vast north face; Oktang (South Base Camp) looks up at the Yalung Glacier. The classic circuit links both over the Sele La passes, making a full loop of roughly three weeks.",
+          "Most departures start from Taplejung after a flight to Bhadrapur. From there it's a steady, scenic build through Ghunsa and Khambachen before the final push to the moraine.",
+        ],
+      },
+      {
+        heading: "Fitness, altitude and timing",
+        paragraphs: [
+          "This is a committing trek — long days, real remoteness and limited evacuation options, so good fitness and proper acclimatisation matter. Kanchenjunga is a restricted area requiring a permit and a minimum of two trekkers with a registered guide.",
+          "Spring (March–May) brings rhododendron forests in bloom; autumn (October–November) delivers the clearest mountain views. We avoid the monsoon here — the eastern hills get the brunt of it.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "altitude-sickness-high-passes",
+    title: "Altitude Sickness on Nepal's High Passes: How to Stay Safe",
+    category: "Trek smart",
+    date: "02 Jun, 2026",
+    readTime: "6 min read",
+    image: photos.weather,
+    excerpt:
+      "Acute Mountain Sickness is the single biggest risk above 3,500 m — and it's almost entirely preventable. Here's how we manage it.",
+    content: [
+      {
+        heading: "What actually happens at altitude",
+        paragraphs: [
+          "As you climb, the air thins and every breath carries less oxygen. Your body adapts — breathing faster, making more red blood cells — but that adaptation takes time. Push up too quickly and you risk Acute Mountain Sickness (AMS): headache, nausea, poor sleep and fatigue.",
+          "Left unchecked, AMS can progress to the serious, life-threatening forms — HACE (brain) and HAPE (lungs). The single most important thing to understand is that altitude illness is about the rate of ascent, not your fitness. Strong, young trekkers get it too.",
+        ],
+      },
+      {
+        heading: "The golden rules of acclimatisation",
+        paragraphs: [
+          "Climb high, sleep low. Above 3,000 m, we limit the gain in sleeping altitude to roughly 300–500 m per night and build in rest days. Hydrate hard, walk at a conversational pace, and never ignore a headache that won't shift.",
+          "Our itineraries are deliberately unhurried for exactly this reason — extra nights above 3,500 m aren't padding, they're safety. Diamox can help, but it's a supplement to good pacing, not a substitute.",
+        ],
+      },
+      {
+        heading: "Knowing when to descend",
+        paragraphs: [
+          "The rule is simple and absolute: if symptoms are worsening, you go down. A few hundred metres of descent often resolves AMS completely. Our guides are trained to spot the warning signs early and carry the means to respond.",
+          "Every trip runs with comprehensive medical cover and a clear evacuation plan. Respect the mountain's timeline and the high passes will reward you.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "beyond-everest-base-camp",
+    title: "Why We Skip Everest Base Camp — and Where We Go Instead",
+    category: "Offbeat Nepal",
+    date: "28 May, 2026",
+    readTime: "5 min read",
+    image: photos.demali,
+    excerpt:
+      "Everest Base Camp sees thousands of trekkers a season. We walk the other way — into valleys that still feel like discovery.",
+    content: [
+      {
+        heading: "The cost of the crowds",
+        paragraphs: [
+          "There's nothing wrong with wanting to see Everest. But the classic Base Camp trail now carries enormous foot traffic in peak season — busy lodges, queues on the trail and a wilderness experience that can feel anything but wild.",
+          "We built Hux Exped around the opposite idea: the corners of Nepal most travellers never see, where the trail is yours and the welcome in each village is genuine.",
+        ],
+      },
+      {
+        heading: "Our five favourite alternatives",
+        paragraphs: [
+          "Kanchenjunga for raw 8,000 m drama in the far east. Upper and Lower Dolpo for high-desert Tibetan culture. Nar Phu for hidden medieval villages off the Annapurna Circuit. Makalu-Barun for pristine cloud forest and the Barun valley. And Tsum, a sacred hidden valley on the Manaslu side.",
+          "Every one of these delivers the scale of Everest without the scrum — and the permits that keep them restricted are exactly what keeps them special.",
+        ],
+      },
+      {
+        heading: "Going offbeat, responsibly",
+        paragraphs: [
+          "Remote travel carries responsibility. We run small groups, employ local guides and porters, and put 5% of every booking into village schools and health posts in the regions we trek.",
+          "Walking the other way isn't just better for you — done right, it's better for the places and people you're walking through.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "best-time-restricted-regions",
+    title: "Best Time to Trek Nepal's Restricted Regions",
+    category: "Planning",
+    date: "20 May, 2026",
+    readTime: "6 min read",
+    image: photos.khumbu,
+    excerpt:
+      "Dolpo, Mustang and Nar Phu each have their own weather windows. Time it right and you'll have the trail almost to yourself.",
+    content: [
+      {
+        heading: "Spring (March–May)",
+        paragraphs: [
+          "Spring is prime time across most of Nepal. Days lengthen, temperatures climb and the mid-hills erupt with rhododendron blossom. Higher passes are clearing of winter snow by late March, and the stable weather makes for reliable mountain views.",
+          "It's our favourite window for the eastern treks like Kanchenjunga and Makalu, where the forests are at their best.",
+        ],
+      },
+      {
+        heading: "Autumn (September–November)",
+        paragraphs: [
+          "After the monsoon washes the haze from the sky, autumn delivers the crispest, clearest mountain panoramas of the year. The trails are dry, the air is settled and the harvest is in across the villages.",
+          "It's the most popular season for good reason — though in the restricted regions, 'popular' still means quiet by Himalayan standards.",
+        ],
+      },
+      {
+        heading: "The rain-shadow secret: trekking in monsoon",
+        paragraphs: [
+          "Here's the trick few travellers know: Dolpo, Upper Mustang and parts of Nar Phu sit in the Himalaya's rain shadow. While the rest of Nepal is under monsoon cloud from June to August, these high-desert valleys stay relatively dry and trekkable.",
+          "If you want genuine solitude and a green-season escape, the rain-shadow regions are the answer. We run dedicated monsoon departures into Dolpo and Mustang for exactly this reason.",
+        ],
+      },
+    ],
+  },
+];
+
+export const getPost = (slug: string) => blogPosts.find((p) => p.slug === slug);

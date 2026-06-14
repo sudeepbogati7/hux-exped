@@ -155,10 +155,16 @@ export default function AboutPage() {
             </div>
             <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
               {certifications.map((crt) => (
-                <Reveal key={crt.short} variant="fade" className="bg-cream">
+                <Reveal key={crt.name} variant="fade" className="bg-cream">
                   <div className="flex h-full items-center gap-5 p-7 sm:p-8">
-                    <span className="display grid h-16 w-16 shrink-0 place-items-center rounded-full border border-line text-sm text-coral">
-                      {crt.short}
+                    <span className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white p-2 ring-1 ring-line">
+                      <Image
+                        src={crt.logo}
+                        alt={crt.name}
+                        width={80}
+                        height={80}
+                        className="h-full w-full object-contain"
+                      />
                     </span>
                     <span className="text-ink">{crt.name}</span>
                   </div>
