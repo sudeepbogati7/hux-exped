@@ -47,24 +47,14 @@ export default function Mountaineering() {
       <div className="absolute inset-0 bg-linear-to-b from-ink via-ink/85 to-ink" />
 
       <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8">
-        <div className="grid items-end gap-8 border-b border-cream/12 pb-12 lg:grid-cols-[1.4fr_1fr]">
-          <Reveal variant="up">
-            <p className="eyebrow mb-5 inline-flex items-center gap-2 text-cream/50">
-              <MountainIcon className="h-4 w-4 text-coral" /> Mountaineering
-            </p>
-            <h2 className="display text-5xl sm:text-6xl lg:text-7xl">
-              When the trail runs
-              <br />
-              out, <span className="text-coral">rope up</span>
-            </h2>
-          </Reveal>
-          <Reveal variant="up" delay={0.1}>
-            <p className="max-w-sm leading-relaxed text-cream/70 lg:pb-2">
-              From a first 6,000 m summit to full expedition objectives — guided
-              climbs with the permits, crew and acclimatisation dialled in.
-            </p>
-          </Reveal>
-        </div>
+        <Reveal variant="up">
+          <p className="eyebrow mb-4 inline-flex items-center gap-2 text-cream/50">
+            <MountainIcon className="h-4 w-4 text-coral" /> Mountaineering
+          </p>
+          <h2 className="display text-5xl sm:text-6xl lg:text-7xl">
+            When the trail runs out, <span className="text-coral">rope up</span>
+          </h2>
+        </Reveal>
 
         <div className="mt-14 space-y-16">
           <Band id="peaks-7000" icon={MountainIcon} title="7000m Peaks" label="Expedition objectives" peaks={peaks7000} />

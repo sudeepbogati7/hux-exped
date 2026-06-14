@@ -12,13 +12,13 @@ export default function Footer() {
     {/* newsletter */}
     <Newsletter />
 
-    {/* travel associations & certifications */}
+    {/* travel associations & certifications — seamless marquee */}
     <section className="border-t border-line bg-cream py-14 sm:py-16">
-      <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
-        <p className="eyebrow mb-10 text-center text-muted">Travel associations &amp; certifications</p>
-        <div className="flex flex-wrap items-start justify-center gap-x-10 gap-y-10 sm:gap-x-14">
-          {certifications.map((c) => (
-            <div key={c.name} className="flex w-28 flex-col items-center text-center">
+      <p className="eyebrow mb-10 text-center text-muted">Travel associations &amp; certifications</p>
+      <div className="group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_6%,#000_94%,transparent)]">
+        <div className="marquee-track flex w-max items-start gap-x-12 sm:gap-x-16">
+          {[...certifications, ...certifications].map((c, i) => (
+            <div key={`${c.name}-${i}`} className="flex w-28 shrink-0 flex-col items-center text-center">
               <span className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl bg-white p-2.5 ring-1 ring-line/60">
                 <Image
                   src={c.logo}

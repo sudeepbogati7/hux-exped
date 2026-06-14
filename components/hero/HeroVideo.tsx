@@ -23,7 +23,7 @@ export default function HeroVideo() {
   }, []);
 
   return (
-    <section id="top" ref={root} className="relative isolate flex h-screen min-h-[640px] items-end justify-center overflow-hidden bg-ink text-cream">
+    <section id="top" ref={root} className="relative isolate z-20 flex h-screen min-h-[640px] items-end justify-center bg-ink text-cream">
       {/* background video */}
       <video
         autoPlay
@@ -38,7 +38,7 @@ export default function HeroVideo() {
       <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-ink/80 via-ink/15 to-ink/35" />
 
       {/* centred-bottom card */}
-      <div className="hv-card relative z-10 mb-[9vh] w-full max-w-3xl px-5 sm:px-6">
+      <div className="hv-card relative z-10 mb-[14vh] w-full max-w-3xl px-5 sm:px-6">
         <div className="rounded-3xl bg-ink/45 p-6 ring-1 ring-white/10 backdrop-blur-md sm:p-8">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-6">
             <Logo invert priority className="h-12 shrink-0 sm:h-14" />
