@@ -1,6 +1,10 @@
-public/** filter=lfs diff=lfs merge=lfs -text
-*.mp4 filter=lfs diff=lfs merge=lfs -text
-public/mount-aspiring.mp4 filter=lfs diff=lfs merge=lfs -text
-1 filter=lfs diff=lfs merge=lfs -text
-public/mount-aspiring.mp4 filter=lfs diff=lfs merge=lfs -text
-public/** filter=lfs diff=lfs merge=lfs -text
+# Git LFS removed — all assets are committed as normal Git objects so they
+# deploy reliably on Vercel (no LFS bandwidth/pointer issues).
+# Keep binary assets out of line-ending normalization.
+*.png  -text
+*.jpg  -text
+*.jpeg -text
+*.JPG  -text
+*.webp -text
+*.mp4  -text
+*.ico  -text
