@@ -47,7 +47,7 @@ export default function AboutPage() {
 
         {/* mission */}
         <section id="our-story" className="paper py-24 sm:py-32">
-          <div className="mx-auto grid max-w-[1400px] items-center gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
+          <div className="mx-auto grid max-w-[1400px] items-start gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
             <Reveal variant="mask" className="relative order-2 lg:order-1">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-cream-deep">
                 <Image
@@ -182,7 +182,7 @@ export default function AboutPage() {
 
         {/* why we give back */}
         <section id="give-back" className="bg-cream-deep py-24 sm:py-32">
-          <div className="mx-auto grid max-w-[1400px] items-center gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
+          <div className="mx-auto grid max-w-[1400px] items-start gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
             <Reveal variant="up">
               <p className="eyebrow mb-5 inline-flex items-center gap-2">
                 <HeartIcon className="h-4 w-4 text-coral" /> {giveBack.eyebrow}

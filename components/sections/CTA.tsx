@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import { ArrowIcon } from "@/components/ui/icons";
-import { photos } from "@/lib/data";
+import { photos, site } from "@/lib/data";
 
 export default function CTA() {
   return (
@@ -11,9 +11,9 @@ export default function CTA() {
         alt=""
         fill
         sizes="100vw"
-        className="object-cover opacity-30 grayscale"
+        className="object-cover opacity-70"
       />
-      <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/60 to-ink/70" />
+      <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/55 to-ink/45" />
       {/* faint peak silhouette (transparent PNG) */}
       <Image
         src="/mountain1.png"
@@ -45,10 +45,12 @@ export default function CTA() {
               <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
             <a
-              href="#"
+              href={`https://wa.me/${site.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full border border-cream/40 px-9 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-cream transition-colors hover:bg-cream hover:text-ink"
             >
-              Text us
+              Talk to expert
             </a>
           </div>
         </Reveal>

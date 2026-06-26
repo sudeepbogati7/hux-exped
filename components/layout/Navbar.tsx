@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Logo from "@/components/ui/Logo";
 import { ChevronDown, ArrowIcon, FacebookIcon, InstagramIcon, XIcon, YoutubeIcon } from "@/components/ui/icons";
+import PersonalizeTrip from "@/components/ui/PersonalizeTrip";
 import { nav } from "@/lib/data";
 
 const socials = [
@@ -80,13 +81,7 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
                 </Link>
               ))}
               <span className="hidden h-3 w-px bg-cream/20 sm:inline-block" />
-              <Link
-                href="/#contact"
-                className="border-b-2 border-coral pb-0.5 text-coral transition-colors hover:text-cream"
-              >
-                <span className="hidden sm:inline">Personalize your trip</span>
-                <span className="sm:hidden">Plan a trip</span>
-              </Link>
+              <PersonalizeTrip />
             </div>
           </div>
         </div>

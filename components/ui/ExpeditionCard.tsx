@@ -18,7 +18,7 @@ export default function ExpeditionCard({ item }: { item: Trek }) {
       {/* image */}
       <div className="relative aspect-[16/11] w-full overflow-hidden">
         <Image
-          src={item.image}
+          src={item.hero || item.image}
           alt={`${item.name}, Nepal`}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -46,16 +46,14 @@ export default function ExpeditionCard({ item }: { item: Trek }) {
           </span>
         </div>
 
-        <div className="mt-auto flex items-end justify-between border-t border-dashed border-line pt-4 sm:pt-5">
-          <div>
+        <div className="mt-auto border-t border-dashed border-line pt-4 sm:pt-5">
+          <div className="flex items-end justify-between">
             <span className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-muted">from</span>
             <div className="display text-2xl text-ink">USD {priceUSD.toLocaleString("en-US")}</div>
           </div>
-          <span className="inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-ink">
+          <span className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-coral px-5 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-cream transition-all duration-300 group-hover:bg-coral-dark group-hover:gap-3">
             View trip
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-coral text-cream transition-transform duration-300 group-hover:translate-x-1">
-              <ArrowIcon className="h-3.5 w-3.5" />
-            </span>
+            <ArrowIcon className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
           </span>
         </div>
       </div>

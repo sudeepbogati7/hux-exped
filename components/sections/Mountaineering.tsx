@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/ui/Reveal";
-import ExpeditionCard from "@/components/ui/ExpeditionCard";
+import ExpeditionMarquee from "@/components/ui/ExpeditionMarquee";
 import { MountainIcon, PeakIcon, ArrowIcon } from "@/components/ui/icons";
 import { peaks7000, peaks6000, photos } from "@/lib/data";
 
@@ -29,13 +29,7 @@ function Band({
           <p className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-cream/50">{label}</p>
         </div>
       </div>
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {peaks.map((p, i) => (
-          <Reveal key={p.slug} variant="up" delay={(i % 3) * 0.08}>
-            <ExpeditionCard item={p} />
-          </Reveal>
-        ))}
-      </div>
+      <ExpeditionMarquee items={peaks} />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Reveal from "@/components/ui/Reveal";
-import ExpeditionCard from "@/components/ui/ExpeditionCard";
+import ExpeditionMarquee from "@/components/ui/ExpeditionMarquee";
 import { MountainIcon, ArrowIcon } from "@/components/ui/icons";
 import { featuredTreks } from "@/lib/data";
 
@@ -16,15 +16,14 @@ export default function OffbeatTreks() {
             Trails the crowds never <span className="text-coral">find</span>
           </h2>
         </Reveal>
+      </div>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {featuredTreks.slice(0, 6).map((trek, i) => (
-            <Reveal key={trek.slug} variant="up" delay={(i % 3) * 0.08}>
-              <ExpeditionCard item={trek} />
-            </Reveal>
-          ))}
-        </div>
+      {/* full-bleed carousel */}
+      <div className="mt-12">
+        <ExpeditionMarquee items={featuredTreks} />
+      </div>
 
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
         <Reveal variant="fade" className="mt-12 text-center">
           <Link
             href="/treks"

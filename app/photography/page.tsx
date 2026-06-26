@@ -5,8 +5,19 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Reveal from "@/components/ui/Reveal";
 import GalleryMasonry from "@/components/sections/GalleryMasonry";
+import { CircularGallery } from "@/components/modern/Circular-Gallery";
 import { CameraIcon, CheckIcon, ArrowIcon } from "@/components/ui/icons";
 import { shall, shallPhotos } from "@/lib/data";
+
+// Keep the 3D ring selective (8 frames spread across the set) so they don't overlap.
+const circularItems = [0, 2, 4, 6, 8, 10, 12, 14]
+  .map((i) => shallPhotos[i])
+  .filter(Boolean)
+  .map((p) => ({
+    common: p.alt,
+    binomial: "Nepal · Himalaya",
+    photo: { url: p.src, text: p.alt, by: shall.name },
+  }));
 
 export const metadata: Metadata = {
   title: "Photography — HUX EXPED",
@@ -77,7 +88,7 @@ export default function PhotographyPage() {
 
         {/* meet Shall */}
         <section className="bg-cream-deep py-24 sm:py-32">
-          <div className="mx-auto grid max-w-[1400px] items-center gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
+          <div className="mx-auto grid max-w-[1400px] items-start gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
             <Reveal variant="mask" className="relative">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-cream">
                 <Image src={shall.portrait} alt="Shall, expedition photographer" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
@@ -98,10 +109,10 @@ export default function PhotographyPage() {
           </div>
         </section>
 
-        {/* the work */}
-        <section className="paper py-24 sm:py-32">
+        {/* the work — 3D showcase */}
+        <section className="paper pt-24 sm:pt-32">
           <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
-            <Reveal variant="up" className="mb-12 flex flex-col items-start justify-between gap-6 border-b border-line pb-10 md:flex-row md:items-end">
+            <Reveal variant="up" className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
               <div>
                 <p className="eyebrow mb-5 inline-flex items-center gap-2">
                   <CameraIcon className="h-4 w-4 text-coral" /> The work
@@ -109,8 +120,24 @@ export default function PhotographyPage() {
                 <h2 className="display text-5xl text-ink sm:text-6xl">Frames by {shall.name}</h2>
               </div>
               <p className="max-w-sm leading-relaxed text-ink-soft">
-                A selection from the field — Nepal, the Khumbu and the Southern
-                Alps. Tap any frame to view it large.
+                A handful of favourites from the field — Nepal, the Khumbu and
+                the Southern Alps. Scroll to spin the showcase.
+              </p>
+            </Reveal>
+          </div>
+          {/* 3D circular gallery — selective frames */}
+          <div className="relative mt-6 h-[440px] overflow-hidden sm:h-[540px] lg:h-[600px]">
+            <CircularGallery items={circularItems} radius={500} />
+          </div>
+        </section>
+
+        {/* full collection grid */}
+        <section className="paper pb-24 sm:pb-32">
+          <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
+            <Reveal variant="up" className="mb-10 border-t border-line pt-12">
+              <h3 className="display text-3xl text-ink sm:text-4xl">The full collection</h3>
+              <p className="mt-2 max-w-md leading-relaxed text-ink-soft">
+                Tap any frame to view it large.
               </p>
             </Reveal>
             <GalleryMasonry items={shallPhotos} />

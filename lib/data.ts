@@ -1414,3 +1414,117 @@ export const blogPosts: BlogPost[] = [
 ];
 
 export const getPost = (slug: string) => blogPosts.find((p) => p.slug === slug);
+
+/* ----------------------------------------------------------------- */
+/*  Detail-page shared data (tabs: includes, gear, dates, reviews)    */
+/* ----------------------------------------------------------------- */
+/** Standard "not included" list, shown alongside each trek's `included`. */
+export const notIncluded = [
+  "International flights to/from Nepal",
+  "Travel & high-altitude insurance",
+  "Personal trekking & climbing gear",
+  "Nepal entry visa fees",
+  "Tips for guides and porters",
+  "Personal expenses (drinks, wifi, laundry)",
+];
+
+export type GearTier = "Must Have" | "Recommended" | "Optional";
+export type GearItem = { name: string; note: string; tier: GearTier };
+export type GearCategory = { key: string; title: string; icon: string; items: GearItem[] };
+
+/** A practical Himalaya packing checklist, shared across treks/peaks. */
+export const gearList: GearCategory[] = [
+  {
+    key: "clothing",
+    title: "Clothing & Layers",
+    icon: "shield",
+    items: [
+      { name: "Moisture-wicking base layer (top & bottom)", note: "Synthetic or merino wool — avoid cotton", tier: "Must Have" },
+      { name: "Fleece jacket or mid-layer", note: "For warmth at high altitude", tier: "Must Have" },
+      { name: "Waterproof & windproof outer jacket", note: "Gore-Tex or similar recommended", tier: "Must Have" },
+      { name: "Down jacket or insulated vest", note: "Lightweight packable down recommended", tier: "Must Have" },
+      { name: "Trekking trousers (2–3 pairs)", note: "Quick-dry fabric preferred", tier: "Must Have" },
+      { name: "Warm hat, sun hat & buff", note: "Cover ears above 3,000 m", tier: "Must Have" },
+      { name: "Gloves — liner + insulated", note: "Two pairs for the high passes", tier: "Recommended" },
+    ],
+  },
+  {
+    key: "footwear",
+    title: "Footwear",
+    icon: "route",
+    items: [
+      { name: "Broken-in waterproof trekking boots", note: "Ankle support is essential", tier: "Must Have" },
+      { name: "Camp shoes / sandals", note: "To rest your feet at teahouses", tier: "Recommended" },
+      { name: "Trekking socks (4–5 pairs)", note: "Wool or synthetic — avoid cotton", tier: "Must Have" },
+      { name: "Gaiters", note: "For snow and scree sections", tier: "Optional" },
+    ],
+  },
+  {
+    key: "camping",
+    title: "Camping & Sleeping",
+    icon: "tent",
+    items: [
+      { name: "Sleeping bag (rated −10 °C or lower)", note: "Teahouse blankets are thin", tier: "Must Have" },
+      { name: "Sleeping bag liner", note: "Adds warmth and keeps it clean", tier: "Recommended" },
+      { name: "Trekking backpack (50–60 L)", note: "Waterproof cover or pack liner", tier: "Must Have" },
+      { name: "Daypack (20–30 L)", note: "For essentials while porter carries the main bag", tier: "Recommended" },
+      { name: "Dry bags / waterproof stuff sacks", note: "Keep electronics and clothes dry", tier: "Must Have" },
+    ],
+  },
+  {
+    key: "documents",
+    title: "Documents & Money",
+    icon: "flag",
+    items: [
+      { name: "Valid passport (6+ months validity)", note: "Required for all permits and check-ins", tier: "Must Have" },
+      { name: "Nepal visa", note: "On arrival at Kathmandu airport or online", tier: "Must Have" },
+      { name: "Travel insurance documents", note: "Must cover altitude & helicopter evacuation", tier: "Must Have" },
+      { name: "Passport photos & permit copies", note: "Several spare passport photos", tier: "Recommended" },
+      { name: "Nepali Rupees (cash)", note: "ATMs are unavailable on most trails", tier: "Must Have" },
+    ],
+  },
+  {
+    key: "health",
+    title: "Health & Safety",
+    icon: "heart",
+    items: [
+      { name: "Personal first-aid kit", note: "Plus any prescription medication", tier: "Must Have" },
+      { name: "Sun protection (SPF 50, lip balm)", note: "UV is intense at altitude", tier: "Must Have" },
+      { name: "Glacier glasses / UV sunglasses", note: "Category 3–4 for snow", tier: "Must Have" },
+      { name: "Water purification (tablets/filter)", note: "Refill safely on the trail", tier: "Must Have" },
+      { name: "Diamox (consult your doctor)", note: "For acclimatisation, if advised", tier: "Optional" },
+    ],
+  },
+  {
+    key: "electronics",
+    title: "Electronics & Extras",
+    icon: "gauge",
+    items: [
+      { name: "Headtorch + spare batteries", note: "For early starts and teahouses", tier: "Must Have" },
+      { name: "Power bank (20000 mAh+)", note: "Charging is costly and unreliable on trail", tier: "Must Have" },
+      { name: "Universal travel adapter", note: "Nepal uses Type C, D and M sockets", tier: "Recommended" },
+      { name: "Camera or smartphone", note: "The scenery deserves documenting", tier: "Optional" },
+      { name: "Trekking poles", note: "Save your knees on the descents", tier: "Recommended" },
+    ],
+  },
+];
+
+export type Review = { name: string; country: string; rating: number; date: string; text: string };
+
+/** Sample traveller reviews, shared across detail pages. */
+export const reviews: Review[] = [
+  { name: "Felicite Black", country: "Australia", rating: 5, date: "Nov 2025", text: "I was terrified it would be too hard — but the pacing was perfect. Standing at the pass with tears in my eyes, I understood why people keep coming back to Nepal." },
+  { name: "Marcus Lindqvist", country: "Sweden", rating: 5, date: "Oct 2025", text: "Genuinely offbeat. We barely saw another group for days. The guides were superb — calm, funny and rock-solid on safety." },
+  { name: "Priya Nair", country: "United Kingdom", rating: 5, date: "May 2025", text: "Small group, huge mountains. Every logistic was handled so I could just walk and take it all in. Already planning the next one." },
+  { name: "Daniel Okafor", country: "Canada", rating: 4, date: "Apr 2025", text: "Tough but unforgettable. The acclimatisation days made all the difference. Teahouses were basic in the best way." },
+];
+
+/** Deterministic sample departures for a trek/peak (no live dates → SSG-safe). */
+export function departures(slug: string) {
+  const dates = ["15 Mar 2026", "02 Apr 2026", "21 Apr 2026", "12 May 2026", "18 Sep 2026", "06 Oct 2026"];
+  const n = slug.length;
+  return dates.map((date, i) => {
+    const spots = 2 + ((n * (i + 3)) % 8);
+    return { date, spots, status: spots <= 3 ? "Almost full" : "Available" as const };
+  });
+}
