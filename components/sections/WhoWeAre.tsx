@@ -12,7 +12,7 @@ const stats = [
 export default function WhoWeAre() {
   return (
     <section id="about" className="overflow-hidden bg-ink py-24 text-cream sm:py-32 lg:py-36">
-      <div className="mx-auto grid max-w-[1400px] items-center gap-16 px-5 sm:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
+      <div className="mx-auto grid max-w-[1400px] items-start gap-16 px-5 sm:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
         {/* left: story + stats + quote */}
         <Reveal variant="up">
           <p className="eyebrow mb-5 inline-flex items-center gap-3 text-cream/50">

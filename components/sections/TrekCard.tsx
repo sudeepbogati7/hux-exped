@@ -40,13 +40,13 @@ export default function TrekCard({
   return (
     <div
       ref={root}
-      className={`group grid items-center gap-8 lg:grid-cols-2 lg:gap-16 ${
+      className={`group grid items-stretch gap-8 lg:grid-cols-2 lg:gap-16 ${
         flip ? "lg:[&>*:first-child]:order-2" : ""
       }`}
     >
       {/* image frame */}
-      <Link href={href} className="relative block overflow-hidden rounded-sm">
-        <div className="relative aspect-[4/5] w-full overflow-hidden bg-cream-deep sm:aspect-[3/2] lg:aspect-[4/5]">
+      <Link href={href} className="relative block overflow-hidden rounded-sm lg:h-full">
+        <div className="relative aspect-[4/5] w-full overflow-hidden bg-cream-deep sm:aspect-[3/2] lg:aspect-auto lg:h-full lg:min-h-[34rem]">
           <div className="tc-img absolute inset-x-0 -inset-y-[14%]">
             <Image
               src={trek.image}

@@ -24,13 +24,13 @@ export default function Home() {
       <Navbar overDark />
       <main>
         <HeroVideo />
-        <Stats />
-        <AboutCompany />
         <OffbeatTreks />
         <Flagships />
         <Mountaineering />
         <BlogSection />
         <Photography />
+        <Stats />
+        <AboutCompany />
         <WhyChooseUs />
         <WhoWeAre />
         <GiveBack />

@@ -8,7 +8,7 @@ export default function Photography() {
   return (
     <section id="photography" className="paper py-28 sm:py-36">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
           {/* images */}
           <Reveal variant="mask" className="relative order-1">
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-cream-deep">

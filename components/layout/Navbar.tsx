@@ -3,14 +3,19 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Logo from "@/components/ui/Logo";
-import { ChevronDown, ArrowIcon, FacebookIcon, InstagramIcon, WhatsappIcon, MailIcon } from "@/components/ui/icons";
-import { nav, site } from "@/lib/data";
+import { ChevronDown, ArrowIcon, FacebookIcon, InstagramIcon, XIcon, YoutubeIcon } from "@/components/ui/icons";
+import { nav } from "@/lib/data";
 
 const socials = [
   { label: "Facebook", href: "https://facebook.com", Icon: FacebookIcon },
+  { label: "X", href: "https://x.com", Icon: XIcon },
   { label: "Instagram", href: "https://instagram.com", Icon: InstagramIcon },
-  { label: "WhatsApp", href: `https://wa.me/${site.whatsapp}`, Icon: WhatsappIcon },
-  { label: "Email", href: `mailto:${site.email}`, Icon: MailIcon },
+  { label: "YouTube", href: "https://youtube.com", Icon: YoutubeIcon },
+];
+
+const topLinks = [
+  { label: "News & Events", href: "/blog" },
+  { label: "FAQs", href: "/#faq" },
 ];
 
 export default function Navbar({ subpage = false, overDark = false }: { subpage?: boolean; overDark?: boolean }) {
@@ -46,29 +51,10 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
           solid ? "max-h-0 opacity-0" : "max-h-24 opacity-100"
         }`}
       >
-        <div className="bg-coral text-white shadow-[inset_0_-1px_0_rgba(0,0,0,0.1)]">
-          <div className="mx-auto flex h-14 max-w-[1400px] items-center justify-between gap-3 px-4 sm:h-16 sm:px-8">
-            {/* news */}
-            <Link
-              href="/blog"
-              className="group/ann inline-flex min-w-0 items-center gap-2.5 sm:gap-3.5"
-            >
-              <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-white/25">
-                <span className="h-2 w-2 animate-pulse rounded-full bg-white" />
-              </span>
-              <span className="hidden truncate text-sm font-bold uppercase tracking-[0.08em] sm:inline">
-                Latest news &amp; updates from the Himalaya
-              </span>
-              <span className="truncate text-[0.8rem] font-bold uppercase tracking-[0.06em] sm:hidden">
-                Latest updates
-              </span>
-              <span className="hidden shrink-0 items-center gap-1.5 rounded-full bg-white px-4 py-1.5 text-[0.72rem] font-bold uppercase tracking-[0.12em] text-coral shadow-sm transition-transform duration-300 group-hover/ann:scale-105 md:inline-flex">
-                Read the journal
-                <ArrowIcon className="h-3.5 w-3.5" />
-              </span>
-            </Link>
-            {/* socials */}
-            <div className="flex shrink-0 items-center gap-2 sm:gap-2.5">
+        <div className="bg-ink text-cream">
+          <div className="mx-auto flex h-11 max-w-[1400px] items-center justify-between gap-3 px-4 sm:h-12 sm:px-8">
+            {/* socials — left */}
+            <div className="flex shrink-0 items-center gap-1">
               {socials.map((s) => (
                 <a
                   key={s.label}
@@ -76,11 +62,31 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="grid h-9 w-9 place-items-center rounded-full bg-white text-coral shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-ink hover:text-white sm:h-10 sm:w-10"
+                  className="grid h-8 w-8 place-items-center rounded-full text-cream/80 transition-colors hover:bg-white/10 hover:text-coral"
                 >
-                  <s.Icon className="h-[18px] w-[18px]" />
+                  <s.Icon className="h-[17px] w-[17px]" />
                 </a>
               ))}
+            </div>
+            {/* utility links — right */}
+            <div className="flex shrink-0 items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.12em] sm:gap-4">
+              {topLinks.map((l) => (
+                <Link
+                  key={l.label}
+                  href={l.href}
+                  className="hidden text-cream/75 transition-colors hover:text-cream sm:inline"
+                >
+                  {l.label}
+                </Link>
+              ))}
+              <span className="hidden h-3 w-px bg-cream/20 sm:inline-block" />
+              <Link
+                href="/#contact"
+                className="border-b-2 border-coral pb-0.5 text-coral transition-colors hover:text-cream"
+              >
+                <span className="hidden sm:inline">Personalize your trip</span>
+                <span className="sm:hidden">Plan a trip</span>
+              </Link>
             </div>
           </div>
         </div>

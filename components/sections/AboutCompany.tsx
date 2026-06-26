@@ -7,7 +7,7 @@ import { photos } from "@/lib/data";
 export default function AboutCompany() {
   return (
     <section className="paper py-24 sm:py-32">
-      <div className="mx-auto grid max-w-[1400px] items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
+      <div className="mx-auto grid max-w-[1400px] items-start gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
         {/* image */}
         <Reveal variant="mask" className="relative">
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-[0_40px_80px_-40px_rgba(20,20,20,0.5)]">
