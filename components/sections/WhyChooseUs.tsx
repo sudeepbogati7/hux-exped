@@ -9,7 +9,7 @@ export default function WhyChooseUs({ id = "why" }: { id?: string } = {}) {
         <Reveal variant="up" className="mx-auto max-w-2xl text-center">
           <p className="eyebrow mb-5">Why HUX EXPED</p>
           <h2 className="display text-5xl text-ink sm:text-6xl lg:text-7xl">
-            Built for the ones who go <span className="text-coral">further</span>
+            Built for the ones who go <span className="text-[#6b8e1f]">further</span>
           </h2>
           <p className="mx-auto mt-6 max-w-xl leading-relaxed text-ink-soft">
             We&apos;re a small outfit run by people who&apos;d rather walk the

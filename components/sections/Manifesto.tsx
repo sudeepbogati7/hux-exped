@@ -22,12 +22,12 @@ export default function Manifesto() {
         {/* copy */}
         <Reveal variant="up">
           <p className="eyebrow mb-5 inline-flex items-center gap-2">
-            <MountainIcon className="h-4 w-4 text-coral" /> The HUX difference
+            <MountainIcon className="h-4 w-4 text-[#6b8e1f]" /> The HUX difference
           </p>
           <h2 className="display text-5xl text-ink sm:text-6xl lg:text-7xl">
             Skip the queues.
             <br />
-            Find the <span className="text-coral">silence.</span>
+            Find the <span className="text-[#6b8e1f]">silence.</span>
           </h2>
           <p className="mt-8 max-w-md text-lg leading-relaxed text-ink">
             While everyone files toward Everest Base Camp, we head the other way

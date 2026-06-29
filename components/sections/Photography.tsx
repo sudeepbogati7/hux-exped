@@ -20,7 +20,7 @@ export default function Photography() {
                 className="object-cover"
               />
               <span className="absolute left-5 top-5 flex items-center gap-2 rounded-full bg-cream/90 px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-ink backdrop-blur">
-                <CameraIcon className="h-4 w-4 text-coral" /> Once a year · select treks
+                <CameraIcon className="h-4 w-4 text-[#6b8e1f]" /> Once a year · select treks
               </span>
             </div>
             {/* thumbnail strip */}
@@ -48,7 +48,7 @@ export default function Photography() {
             <ul className="mt-8 grid max-w-md gap-3 sm:grid-cols-2">
               {shall.offers.map((o) => (
                 <li key={o} className="flex items-start gap-3 text-ink">
-                  <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-coral text-cream">
+                  <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-coral text-ink">
                     <CheckIcon className="h-3 w-3" />
                   </span>
                   <span className="leading-snug">{o}</span>
@@ -59,7 +59,7 @@ export default function Photography() {
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
                 href="/photography"
-                className="group inline-flex items-center gap-3 rounded-full bg-ink px-8 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-cream transition-colors hover:bg-coral"
+                className="group inline-flex items-center gap-3 rounded-full bg-ink px-8 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-cream transition-colors hover:bg-coral hover:text-ink"
               >
                 See the work &amp; the team
                 <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

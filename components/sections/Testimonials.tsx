@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import { ChevronLeft, ChevronRight } from "@/components/ui/icons";
-import { testimonials } from "@/lib/data";
+import { testimonials, photos } from "@/lib/data";
 
 export default function Testimonials({ id = "testimonials" }: { id?: string } = {}) {
   const base = testimonials;
@@ -64,12 +65,14 @@ export default function Testimonials({ id = "testimonials" }: { id?: string } = 
   const activeDot = (((i - START) % n) + n) % n;
 
   return (
-    <section id={id} className="overflow-hidden bg-ink py-24 text-cream sm:py-32 lg:py-36">
-      <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
+    <section id={id} className="relative overflow-hidden bg-ink py-24 text-cream sm:py-32 lg:py-36">
+      <Image src={photos.nightSky} alt="" fill sizes="100vw" className="object-cover opacity-[0.1] grayscale" />
+      <div className="absolute inset-0 bg-linear-to-b from-ink via-ink/90 to-ink" />
+      <div className="relative z-10 mx-auto max-w-[1400px] px-5 sm:px-8">
         <Reveal variant="up" className="mx-auto max-w-2xl text-center">
           <p className="eyebrow mb-5 text-cream/50">Trekkers</p>
           <h2 className="display text-4xl sm:text-6xl">
-            What the rope team <span className="text-coral">says</span>
+            What the rope team <span className="text-[#6b8e1f]">says</span>
           </h2>
         </Reveal>
       </div>
@@ -98,7 +101,7 @@ export default function Testimonials({ id = "testimonials" }: { id?: string } = 
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
                 <figcaption className="mt-7 flex items-center gap-4 border-t border-white/10 pt-5">
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-coral text-sm font-semibold text-cream">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-coral text-sm font-semibold text-ink">
                     {t.initials}
                   </span>
                   <span>
@@ -119,7 +122,7 @@ export default function Testimonials({ id = "testimonials" }: { id?: string } = 
         <button
           onClick={() => go(-1)}
           aria-label="Previous"
-          className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-cream transition-colors hover:border-coral hover:bg-coral"
+          className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-cream transition-colors hover:border-coral hover:bg-coral hover:text-ink"
         >
           <ChevronLeft className="h-5 w-5" />
         </button>
@@ -138,7 +141,7 @@ export default function Testimonials({ id = "testimonials" }: { id?: string } = 
         <button
           onClick={() => go(1)}
           aria-label="Next"
-          className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-cream transition-colors hover:border-coral hover:bg-coral"
+          className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-cream transition-colors hover:border-coral hover:bg-coral hover:text-ink"
         >
           <ChevronRight className="h-5 w-5" />
         </button>

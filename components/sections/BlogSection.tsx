@@ -17,7 +17,7 @@ export default function BlogSection() {
           <Reveal variant="up">
             <p className="eyebrow mb-4">From the journal</p>
             <h2 className="display text-5xl text-ink sm:text-6xl lg:text-7xl">
-              Stories from <span className="text-coral">the trail</span>
+              Stories from <span className="text-[#6b8e1f]">the trail</span>
             </h2>
           </Reveal>
           <Reveal variant="fade" className="hidden shrink-0 sm:block">
@@ -47,7 +47,7 @@ export default function BlogSection() {
               />
               <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/30 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-7 sm:p-9">
-                <span className="inline-flex rounded-full bg-coral px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-cream">
+                <span className="inline-flex rounded-full bg-coral px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-ink">
                   {featured.category}
                 </span>
                 <p className="mt-4 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-cream/70">
@@ -84,10 +84,10 @@ export default function BlogSection() {
                     <p className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-muted">
                       {post.date}
                     </p>
-                    <h4 className="display mt-1.5 text-lg leading-tight text-ink transition-colors group-hover:text-coral sm:text-xl">
+                    <h4 className="display mt-1.5 text-lg leading-tight text-ink transition-colors group-hover:text-[#6b8e1f] sm:text-xl">
                       {post.title}
                     </h4>
-                    <span className="mt-2 inline-block text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-coral">
+                    <span className="mt-2 inline-block text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-[#6b8e1f]">
                       {post.category}
                     </span>
                   </div>

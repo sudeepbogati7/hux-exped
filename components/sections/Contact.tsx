@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import { ArrowIcon, ChevronDown, HeartIcon } from "@/components/ui/icons";
-import { featuredTreks, about } from "@/lib/data";
+import { featuredTreks, about, photos } from "@/lib/data";
 
 const MONTHS = ["Flexible", "March", "April", "May", "September", "October", "November"];
 
@@ -24,15 +25,17 @@ export default function Contact() {
   const field = "w-full rounded-xl border border-line bg-cream px-4 py-3 text-sm text-ink outline-none transition-colors placeholder:text-muted focus:border-ink";
 
   return (
-    <section id="contact" className="bg-ink py-24 text-cream sm:py-32 lg:py-36">
-      <div className="mx-auto grid max-w-[1400px] gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+    <section id="contact" className="relative overflow-hidden bg-ink py-24 text-cream sm:py-32 lg:py-36">
+      <Image src={photos.demali} alt="" fill sizes="100vw" className="object-cover opacity-[0.14] grayscale" />
+      <div className="absolute inset-0 bg-linear-to-b from-ink via-ink/85 to-ink" />
+      <div className="relative z-10 mx-auto grid max-w-[1400px] gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
         {/* left: pitch */}
         <Reveal variant="up">
           <p className="eyebrow mb-5 text-cream/50">{about.bespoke.eyebrow}</p>
           <h2 className="display text-4xl leading-[0.95] sm:text-5xl lg:text-6xl">
             Book a trip, or just
             <br />
-            <span className="text-coral">start a conversation</span>
+            <span className="text-[#6b8e1f]">start a conversation</span>
           </h2>
           <p className="mt-7 max-w-md text-lg leading-relaxed text-cream/80">
             {about.bespoke.body}
@@ -63,7 +66,7 @@ export default function Contact() {
           <div className="rounded-3xl border border-cream/12 bg-white/[0.03] p-6 sm:p-9">
             {sent ? (
               <div className="flex min-h-[420px] flex-col items-center justify-center text-center">
-                <span className="grid h-16 w-16 place-items-center rounded-full bg-coral text-cream">
+                <span className="grid h-16 w-16 place-items-center rounded-full bg-coral text-ink">
                   <ArrowIcon className="h-7 w-7" />
                 </span>
                 <h3 className="display mt-6 text-3xl text-cream">Message sent.</h3>
@@ -73,7 +76,7 @@ export default function Contact() {
                 </p>
                 <button
                   onClick={() => setSent(false)}
-                  className="mt-8 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-coral"
+                  className="mt-8 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[#6b8e1f]"
                 >
                   Send another
                 </button>
@@ -134,7 +137,7 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="group mt-2 inline-flex w-full items-center justify-center gap-3 rounded-full bg-coral px-8 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-cream transition-colors hover:bg-coral-dark"
+                  className="group mt-2 inline-flex w-full items-center justify-center gap-3 rounded-full bg-coral px-8 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-ink transition-colors hover:bg-coral-dark"
                 >
                   Send enquiry
                   <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

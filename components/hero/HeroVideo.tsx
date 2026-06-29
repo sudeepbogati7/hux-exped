@@ -46,7 +46,7 @@ export default function HeroVideo() {
             <div>
               <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-cream/70">The offbeat</p>
               <h1 className="display text-3xl leading-[0.95] text-cream sm:text-4xl">
-                Walk the <span className="text-coral">wild side</span>
+                Walk the <span className="text-[#6b8e1f]">wild side</span>
               </h1>
             </div>
           </div>
@@ -57,11 +57,11 @@ export default function HeroVideo() {
 
           <p className="mt-4 text-sm text-cream/75">
             Upcoming treks:{" "}
-            <Link href="/treks/dolpo" className="font-semibold text-cream underline-offset-4 hover:text-coral hover:underline">
+            <Link href="/treks/dolpo" className="font-semibold text-cream underline-offset-4 hover:text-[#6b8e1f] hover:underline">
               Dolpo
             </Link>{" "}
             ·{" "}
-            <Link href="/treks/kanchenjunga" className="font-semibold text-cream underline-offset-4 hover:text-coral hover:underline">
+            <Link href="/treks/kanchenjunga" className="font-semibold text-cream underline-offset-4 hover:text-[#6b8e1f] hover:underline">
               Kanchenjunga
             </Link>
           </p>

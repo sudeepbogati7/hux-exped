@@ -10,7 +10,7 @@ export default function Newsletter() {
     <section className="bg-cream-deep">
       <div className="mx-auto grid max-w-[1400px] items-center gap-8 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[1fr_1fr] lg:gap-16">
         <div>
-          <p className="eyebrow mb-4 text-coral">The dispatch</p>
+          <p className="eyebrow mb-4 text-[#6b8e1f]">The dispatch</p>
           <h2 className="display text-3xl text-ink sm:text-4xl lg:text-5xl">
             Trail notes, new departures &amp; the odd photo
           </h2>
@@ -22,7 +22,7 @@ export default function Newsletter() {
 
         {sent ? (
           <div className="flex items-center gap-4 rounded-2xl border border-line bg-cream p-6">
-            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-coral text-cream">
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-coral text-ink">
               <CheckIcon className="h-5 w-5" />
             </span>
             <p className="text-ink">
@@ -42,7 +42,7 @@ export default function Newsletter() {
             />
             <button
               type="submit"
-              className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-ink px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-cream transition-colors hover:bg-coral"
+              className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-ink px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-cream transition-colors hover:bg-coral hover:text-ink"
             >
               Subscribe
               <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

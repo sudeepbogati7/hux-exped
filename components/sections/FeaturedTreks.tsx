@@ -28,7 +28,7 @@ export default function FeaturedTreks() {
 
         <div className="mt-20 flex flex-col gap-28">
           {featuredTreks.map((trek, i) => (
-            <TrekCard key={trek.slug} trek={trek} index={i} flip={i % 2 === 1} />
+            <TrekCard key={trek.slug} trek={trek} flip={i % 2 === 1} />
           ))}
         </div>
       </div>

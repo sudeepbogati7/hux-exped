@@ -2,37 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/ui/Reveal";
 import ExpeditionMarquee from "@/components/ui/ExpeditionMarquee";
-import { MountainIcon, PeakIcon, ArrowIcon } from "@/components/ui/icons";
+import { MountainIcon, ArrowIcon } from "@/components/ui/icons";
 import { peaks7000, peaks6000, photos } from "@/lib/data";
 
-function Band({
-  id,
-  icon: Icon,
-  title,
-  label,
-  peaks,
-}: {
-  id: string;
-  icon: typeof PeakIcon;
-  title: string;
-  label: string;
-  peaks: typeof peaks6000;
-}) {
-  return (
-    <div id={id} className="scroll-mt-28">
-      <div className="mb-6 flex items-center gap-4">
-        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-coral text-cream">
-          <Icon className="h-6 w-6" />
-        </span>
-        <div>
-          <h3 className="display text-2xl text-cream sm:text-3xl">{title}</h3>
-          <p className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-cream/50">{label}</p>
-        </div>
-      </div>
-      <ExpeditionMarquee items={peaks} />
-    </div>
-  );
-}
+const allPeaks = [...peaks7000, ...peaks6000];
 
 export default function Mountaineering() {
   return (
@@ -43,16 +16,16 @@ export default function Mountaineering() {
       <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8">
         <Reveal variant="up">
           <p className="eyebrow mb-4 inline-flex items-center gap-2 text-cream/50">
-            <MountainIcon className="h-4 w-4 text-coral" /> Mountaineering
+            <MountainIcon className="h-4 w-4 text-[#6b8e1f]" /> Mountaineering · 6,000–7,000 m
           </p>
           <h2 className="display text-5xl sm:text-6xl lg:text-7xl">
-            When the trail runs out, <span className="text-coral">rope up</span>
+            When the trail runs out, <span className="text-[#6b8e1f]">rope up</span>
           </h2>
         </Reveal>
 
-        <div className="mt-14 space-y-16">
-          <Band id="peaks-7000" icon={MountainIcon} title="7000m Peaks" label="Expedition objectives" peaks={peaks7000} />
-          <Band id="peaks-6000" icon={PeakIcon} title="6000m Peaks" label="Trekking peaks · first summits" peaks={peaks6000} />
+        {/* one combined carousel of every peak */}
+        <div className="mt-12">
+          <ExpeditionMarquee items={allPeaks} />
         </div>
 
         <Reveal variant="fade" className="mt-12 text-center">
@@ -76,7 +49,7 @@ export default function Mountaineering() {
             </div>
             <a
               href="#contact"
-              className="group inline-flex shrink-0 items-center gap-3 rounded-full bg-coral px-8 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-cream transition-colors hover:bg-coral-dark"
+              className="group inline-flex shrink-0 items-center gap-3 rounded-full bg-coral px-8 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-ink transition-colors hover:bg-coral-dark"
             >
               Talk to us
               <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

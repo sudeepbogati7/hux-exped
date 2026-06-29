@@ -37,14 +37,14 @@ const gearIcon: Record<string, (p: { className?: string }) => React.ReactElement
 };
 
 const tierStyle: Record<string, string> = {
-  "Must Have": "border-coral/30 bg-coral/10 text-coral",
+  "Must Have": "border-coral/30 bg-coral/10 text-[#6b8e1f]",
   Recommended: "border-[#cf9b1d]/40 bg-[#f5c451]/15 text-[#a9781a]",
   Optional: "border-line bg-cream-deep text-muted",
 };
 
 function Stars({ className = "h-4 w-4" }: { className?: string }) {
   return (
-    <span className="flex text-coral">
+    <span className="flex text-[#6b8e1f]">
       {Array.from({ length: 5 }).map((_, i) => (
         <StarIcon key={i} className={className} />
       ))}
@@ -111,7 +111,7 @@ export default function ExpeditionDetail({ data }: { data: Trek }) {
         <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/75 to-ink/45" />
         <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8">
           <div className="flex items-center justify-between">
-            <Link href={backHref} className="inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-cream/70 transition-colors hover:text-coral">
+            <Link href={backHref} className="inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-cream/70 transition-colors hover:text-[#6b8e1f]">
               <ArrowIcon className="h-4 w-4 rotate-180" /> {isPeak ? "All peaks" : "All treks"}
             </Link>
             <span className="inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-cream/55">
@@ -123,7 +123,7 @@ export default function ExpeditionDetail({ data }: { data: Trek }) {
           <p className="mt-4 max-w-2xl text-base text-cream/85 sm:text-lg">{data.tagline}.</p>
           <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
             <span className="flex items-center gap-2"><Stars /> <span className="text-cream/70">4.8 · {reviewCount} reviews</span></span>
-            <span className="flex items-center gap-2 text-cream/70"><BadgeCheckIcon className="h-5 w-5 text-coral" /> {data.days} · {data.grade}</span>
+            <span className="flex items-center gap-2 text-cream/70"><BadgeCheckIcon className="h-5 w-5 text-[#6b8e1f]" /> {data.days} · {data.grade}</span>
           </div>
         </div>
       </section>
@@ -168,7 +168,7 @@ export default function ExpeditionDetail({ data }: { data: Trek }) {
                   <div className="mt-6 grid gap-4 sm:grid-cols-2">
                     {data.highlights.map((h) => (
                       <div key={h} className="flex items-start gap-3 rounded-2xl border border-line bg-cream-deep p-4">
-                        <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-coral text-cream">
+                        <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-coral text-ink">
                           <CheckIcon className="h-3.5 w-3.5" />
                         </span>
                         <span className="leading-snug text-ink">{h}</span>
@@ -183,7 +183,7 @@ export default function ExpeditionDetail({ data }: { data: Trek }) {
                   <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
                     {glance.map((g) => (
                       <div key={g.label} className="rounded-2xl border border-line bg-cream-deep p-5 text-center">
-                        <g.icon className="mx-auto h-6 w-6 text-coral" />
+                        <g.icon className="mx-auto h-6 w-6 text-[#6b8e1f]" />
                         <div className="display mt-3 text-xl text-ink">{g.value}</div>
                         <div className="mt-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-muted">{g.label}</div>
                       </div>
@@ -191,7 +191,7 @@ export default function ExpeditionDetail({ data }: { data: Trek }) {
                   </div>
                   <button
                     onClick={() => setTab("Itinerary")}
-                    className="mt-8 flex w-full items-center justify-center gap-3 rounded-full bg-ink px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-cream transition-colors hover:bg-coral"
+                    className="mt-8 flex w-full items-center justify-center gap-3 rounded-full bg-ink px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-cream transition-colors hover:bg-coral hover:text-ink"
                   >
                     View the full day-by-day itinerary
                     <ArrowIcon className="h-4 w-4" />
@@ -212,14 +212,14 @@ export default function ExpeditionDetail({ data }: { data: Trek }) {
                     <Image src="/map.jpg" alt={`${data.name} route map`} fill sizes="(max-width: 1024px) 100vw, 60vw" className="object-cover" />
                   </div>
                   <figcaption className="flex items-center gap-2 px-5 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-muted">
-                    <MapPinIcon className="h-4 w-4 text-coral" /> Route map · {data.region}
+                    <MapPinIcon className="h-4 w-4 text-[#6b8e1f]" /> Route map · {data.region}
                   </figcaption>
                 </figure>
 
                 <div className="mt-8 border-t border-line">
                   {data.itinerary.map((d) => (
                     <div key={d.day} className="grid gap-2 border-b border-line py-6 sm:grid-cols-[110px_1fr_2fr] sm:gap-6">
-                      <span className="display text-xl text-coral">{d.day}</span>
+                      <span className="display text-xl text-[#6b8e1f]">{d.day}</span>
                       <span className="display text-lg text-ink">{d.title}</span>
                       <span className="leading-relaxed text-ink-soft">{d.detail}</span>
                     </div>
@@ -244,10 +244,10 @@ export default function ExpeditionDetail({ data }: { data: Trek }) {
                         </div>
                       </div>
                       <div className="flex items-center gap-5">
-                        <span className={`rounded-full px-3 py-1 text-[0.66rem] font-semibold uppercase tracking-[0.12em] ${d.status === "Almost full" ? "bg-coral/10 text-coral" : "bg-ink/5 text-ink-soft"}`}>
+                        <span className={`rounded-full px-3 py-1 text-[0.66rem] font-semibold uppercase tracking-[0.12em] ${d.status === "Almost full" ? "bg-coral/10 text-[#6b8e1f]" : "bg-ink/5 text-ink-soft"}`}>
                           {d.status === "Almost full" ? `${d.spots} spots left` : `${d.spots} spots`}
                         </span>
-                        <Link href={`/book/${data.slug}`} className="rounded-full bg-coral px-6 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-cream transition-colors hover:bg-coral-dark">
+                        <Link href={`/book/${data.slug}`} className="rounded-full bg-coral px-6 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-coral-dark">
                           Book
                         </Link>
                       </div>
@@ -281,7 +281,7 @@ export default function ExpeditionDetail({ data }: { data: Trek }) {
                   <ul className="mt-6 space-y-3">
                     {notIncluded.map((it) => (
                       <li key={it} className="flex items-start gap-3 rounded-xl border border-coral/20 bg-coral/5 p-4 text-ink">
-                        <Cross className="mt-1 h-3.5 w-3.5 shrink-0 text-coral" /> {it}
+                        <Cross className="mt-1 h-3.5 w-3.5 shrink-0 text-[#6b8e1f]" /> {it}
                       </li>
                     ))}
                   </ul>
@@ -308,7 +308,7 @@ export default function ExpeditionDetail({ data }: { data: Trek }) {
 
                 <div className="mt-6 flex flex-wrap gap-2">
                   {(["All", "Must Have", "Recommended", "Optional"] as const).map((f) => (
-                    <button key={f} onClick={() => setFilter(f)} className={`rounded-full border px-4 py-1.5 text-[0.72rem] font-semibold transition-colors ${filter === f ? "border-coral bg-coral text-cream" : "border-line text-ink-soft hover:border-coral"}`}>{f}</button>
+                    <button key={f} onClick={() => setFilter(f)} className={`rounded-full border px-4 py-1.5 text-[0.72rem] font-semibold transition-colors ${filter === f ? "border-coral bg-coral text-ink" : "border-line text-ink-soft hover:border-coral"}`}>{f}</button>
                   ))}
                 </div>
 
@@ -332,7 +332,7 @@ export default function ExpeditionDetail({ data }: { data: Trek }) {
                             return (
                               <li key={key}>
                                 <button onClick={() => toggle(key)} className="flex w-full items-start gap-3 px-5 py-3.5 text-left transition-colors hover:bg-cream-deep">
-                                  <span className={`mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-md border-2 transition-colors ${on ? "border-coral bg-coral text-cream" : "border-line"}`}>
+                                  <span className={`mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-md border-2 transition-colors ${on ? "border-coral bg-coral text-ink" : "border-line"}`}>
                                     {on && <CheckIcon className="h-3 w-3" />}
                                   </span>
                                   <span className="min-w-0 flex-1">
@@ -385,13 +385,13 @@ export default function ExpeditionDetail({ data }: { data: Trek }) {
                     <div key={r.name} className="rounded-2xl border border-line bg-cream p-6">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <span className="grid h-10 w-10 place-items-center rounded-full bg-coral text-sm font-semibold text-cream">{r.name.split(" ").map((p) => p[0]).join("")}</span>
+                          <span className="grid h-10 w-10 place-items-center rounded-full bg-coral text-sm font-semibold text-ink">{r.name.split(" ").map((p) => p[0]).join("")}</span>
                           <div>
                             <div className="text-sm font-semibold text-ink">{r.name}</div>
                             <div className="text-[0.72rem] text-muted">{r.country} · {r.date}</div>
                           </div>
                         </div>
-                        <span className="flex text-coral">{Array.from({ length: r.rating }).map((_, i) => <StarIcon key={i} className="h-3.5 w-3.5" />)}</span>
+                        <span className="flex text-[#6b8e1f]">{Array.from({ length: r.rating }).map((_, i) => <StarIcon key={i} className="h-3.5 w-3.5" />)}</span>
                       </div>
                       <p className="mt-4 leading-relaxed text-ink-soft">&ldquo;{r.text}&rdquo;</p>
                     </div>
@@ -411,7 +411,7 @@ export default function ExpeditionDetail({ data }: { data: Trek }) {
                       <span className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-muted">From</span>
                       <div className="display text-4xl text-ink">${priceUSD.toLocaleString("en-US")}<span className="text-base font-normal text-muted"> / person</span></div>
                     </div>
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-coral/10 px-3 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-coral"><ClockIcon className="h-3.5 w-3.5" /> {data.days}</span>
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-coral/10 px-3 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-[#6b8e1f]"><ClockIcon className="h-3.5 w-3.5" /> {data.days}</span>
                   </div>
                   <div className="mt-3 flex items-center gap-2 text-sm">
                     <Stars className="h-3.5 w-3.5" /> <span className="font-semibold text-ink">4.8</span> <span className="text-muted">({reviewCount} reviews)</span>
@@ -435,16 +435,16 @@ export default function ExpeditionDetail({ data }: { data: Trek }) {
                     <span className="display text-lg text-ink">${(priceUSD * persons).toLocaleString("en-US")}</span>
                   </div>
 
-                  <Link href={`/book/${data.slug}`} className="mt-5 block rounded-full bg-coral px-6 py-4 text-center text-sm font-semibold uppercase tracking-[0.14em] text-cream transition-colors hover:bg-coral-dark">
+                  <Link href={`/book/${data.slug}`} className="mt-5 block rounded-full bg-coral px-6 py-4 text-center text-sm font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-coral-dark">
                     Book now
                   </Link>
-                  <button onClick={() => setWished((w) => !w)} className="mt-3 flex w-full items-center justify-center gap-2 text-sm font-medium text-ink-soft transition-colors hover:text-coral">
-                    <HeartIcon className={`h-4 w-4 ${wished ? "text-coral" : ""}`} /> {wished ? "Saved to wishlist" : "Add to wishlist"}
+                  <button onClick={() => setWished((w) => !w)} className="mt-3 flex w-full items-center justify-center gap-2 text-sm font-medium text-ink-soft transition-colors hover:text-[#6b8e1f]">
+                    <HeartIcon className={`h-4 w-4 ${wished ? "text-[#6b8e1f]" : ""}`} /> {wished ? "Saved to wishlist" : "Add to wishlist"}
                   </button>
 
                   <ul className="mt-5 space-y-2.5 border-t border-line pt-5 text-[0.85rem] text-ink-soft">
                     {["Free cancellation up to 30 days", "24/7 support during trek", "Expert local guides"].map((t) => (
-                      <li key={t} className="flex items-center gap-2.5"><CheckIcon className="h-4 w-4 shrink-0 text-coral" /> {t}</li>
+                      <li key={t} className="flex items-center gap-2.5"><CheckIcon className="h-4 w-4 shrink-0 text-[#6b8e1f]" /> {t}</li>
                     ))}
                   </ul>
 
@@ -474,7 +474,7 @@ export default function ExpeditionDetail({ data }: { data: Trek }) {
               </div>
               <Link
                 href={isPeak ? "/mountaineering" : "/treks"}
-                className="hidden shrink-0 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:text-coral sm:inline"
+                className="hidden shrink-0 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:text-[#6b8e1f] sm:inline"
               >
                 View all →
               </Link>

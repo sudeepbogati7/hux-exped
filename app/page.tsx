@@ -27,11 +27,11 @@ export default function Home() {
         <OffbeatTreks />
         <Flagships />
         <Mountaineering />
+        <WhyChooseUs />
         <BlogSection />
         <Photography />
         <Stats />
         <AboutCompany />
-        <WhyChooseUs />
         <WhoWeAre />
         <GiveBack />
         <Gallery />

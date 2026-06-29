@@ -27,7 +27,7 @@ function Band({
   return (
     <div id={id} className="scroll-mt-28">
       <div className="mb-6 flex items-center gap-4">
-        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-coral text-cream">
+        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-coral text-ink">
           <Icon className="h-6 w-6" />
         </span>
         <div>
@@ -55,7 +55,7 @@ export default function MountaineeringIndexPage() {
           <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
             <Reveal variant="up">
               <p className="eyebrow mb-5 inline-flex items-center gap-2">
-                <MountainIcon className="h-4 w-4 text-coral" /> Mountaineering
+                <MountainIcon className="h-4 w-4 text-[#6b8e1f]" /> Mountaineering
               </p>
               <h1 className="display text-5xl text-ink sm:text-7xl lg:text-8xl">
                 Rope up

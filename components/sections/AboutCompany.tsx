@@ -25,7 +25,7 @@ export default function AboutCompany() {
         <Reveal variant="up">
           <div className="flex flex-wrap items-end gap-x-4">
             <span className="display text-6xl leading-none text-ink sm:text-7xl lg:text-8xl">HUX</span>
-            <span className="display text-4xl leading-none text-coral sm:text-5xl lg:text-6xl">EXPED</span>
+            <span className="display text-4xl leading-none text-[#6b8e1f] sm:text-5xl lg:text-6xl">EXPED</span>
           </div>
           <p className="mt-3 text-sm font-semibold uppercase tracking-[0.2em] text-ink-soft">
             The offbeat specialists
@@ -40,7 +40,7 @@ export default function AboutCompany() {
 
           <Link
             href="/about"
-            className="group mt-9 inline-flex items-center gap-3 rounded-full bg-coral px-9 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-cream transition-colors hover:bg-coral-dark"
+            className="group mt-9 inline-flex items-center gap-3 rounded-full bg-coral px-9 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-ink transition-colors hover:bg-coral-dark"
           >
             About company
             <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

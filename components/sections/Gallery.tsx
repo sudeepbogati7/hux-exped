@@ -36,7 +36,7 @@ export default function Gallery() {
         <div className="flex flex-col items-start justify-between gap-8 border-b border-line pb-12 md:flex-row md:items-end">
           <Reveal variant="up">
             <p className="eyebrow mb-5 inline-flex items-center gap-2">
-              <CameraIcon className="h-4 w-4 text-coral" /> The gallery
+              <CameraIcon className="h-4 w-4 text-[#6b8e1f]" /> The gallery
             </p>
             <h2 className="display text-5xl text-ink sm:text-6xl lg:text-7xl">From the field</h2>
           </Reveal>
@@ -44,7 +44,7 @@ export default function Gallery() {
             <div className="flex flex-wrap items-center gap-3">
               <Link
                 href="/gallery"
-                className="group inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-cream transition-colors hover:bg-coral"
+                className="group inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-cream transition-colors hover:bg-coral hover:text-ink"
               >
                 <CameraIcon className="h-4 w-4" /> View full gallery
                 <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

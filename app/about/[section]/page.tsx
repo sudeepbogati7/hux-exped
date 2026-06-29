@@ -56,7 +56,7 @@ export default async function AboutSectionPage({
             <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
               <Reveal variant="up">
                 <p className="eyebrow mb-5 inline-flex items-center gap-2">
-                  <MountainIcon className="h-4 w-4 text-coral" /> {meta.eyebrow}
+                  <MountainIcon className="h-4 w-4 text-[#6b8e1f]" /> {meta.eyebrow}
                 </p>
                 <h1 className="display max-w-3xl text-4xl text-ink sm:text-6xl lg:text-7xl">
                   {meta.title}
@@ -99,7 +99,7 @@ export default async function AboutSectionPage({
                         <Image src={m.img} alt={m.name} fill sizes="(max-width: 640px) 100vw, 25vw" className="object-cover grayscale transition-all duration-700 group-hover:scale-[1.04] group-hover:grayscale-0" />
                       </div>
                       <h3 className="display mt-4 text-2xl text-ink">{m.name}</h3>
-                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-coral">{m.role}</p>
+                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-[#6b8e1f]">{m.role}</p>
                       <p className="mt-2 text-sm leading-relaxed text-ink-soft">{m.note}</p>
                     </div>
                   </Reveal>
@@ -134,7 +134,7 @@ export default async function AboutSectionPage({
           <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
             <Link
               href="/about"
-              className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:text-coral"
+              className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:text-[#6b8e1f]"
             >
               <ArrowIcon className="h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1" />
               All about Hux Exped

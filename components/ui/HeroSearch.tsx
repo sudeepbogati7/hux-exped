@@ -133,7 +133,7 @@ export default function HeroSearch() {
         />
         <button
           type="submit"
-          className="shrink-0 rounded-full bg-coral px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-cream transition-colors hover:bg-coral-dark sm:px-8"
+          className="shrink-0 rounded-full bg-coral px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-coral-dark sm:px-8"
         >
           Search
         </button>
@@ -165,7 +165,7 @@ export default function HeroSearch() {
           <Link
             href={`/treks?q=${encodeURIComponent(q.trim())}`}
             onClick={() => setOpen(false)}
-            className="block border-t border-line px-4 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-coral hover:bg-cream-deep"
+            className="block border-t border-line px-4 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-[#6b8e1f] hover:bg-cream-deep"
           >
             See all results for “{q.trim()}” →
           </Link>

@@ -92,7 +92,7 @@ export default function SearchBar() {
             {/* search */}
             <button
               onClick={search}
-              className="flex items-center justify-center gap-2 rounded-full bg-coral px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-cream transition-colors hover:bg-coral-dark"
+              className="flex items-center justify-center gap-2 rounded-full bg-coral px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-coral-dark"
             >
               <SearchIcon className="h-4 w-4" />
               Search

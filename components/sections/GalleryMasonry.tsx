@@ -82,21 +82,21 @@ export default function GalleryMasonry({ items = galleryPhotos }: { items?: Gall
           <button
             onClick={() => setOpen(null)}
             aria-label="Close"
-            className="absolute right-5 top-5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-cream/70 hover:text-coral"
+            className="absolute right-5 top-5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-cream/70 hover:text-[#6b8e1f]"
           >
             Close ✕
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); setOpen((i) => (i! - 1 + items.length) % items.length); }}
             aria-label="Previous"
-            className="absolute left-3 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-cream/25 text-cream transition-colors hover:bg-coral hover:border-coral sm:left-6"
+            className="absolute left-3 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-cream/25 text-cream transition-colors hover:bg-coral hover:border-coral hover:text-ink sm:left-6"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); setOpen((i) => (i! + 1) % items.length); }}
             aria-label="Next"
-            className="absolute right-3 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-cream/25 text-cream transition-colors hover:bg-coral hover:border-coral sm:right-6"
+            className="absolute right-3 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-cream/25 text-cream transition-colors hover:bg-coral hover:border-coral hover:text-ink sm:right-6"
           >
             <ChevronRight className="h-5 w-5" />
           </button>

@@ -23,7 +23,7 @@ export default function ExpeditionMarquee({ items }: { items: Trek[] }) {
         {loop.map((item, i) => (
           <div
             key={`${item.slug}-${i}`}
-            className="w-[78vw] max-w-[20rem] shrink-0 sm:w-[20rem]"
+            className="w-[84vw] max-w-[23rem] shrink-0 sm:w-[23rem]"
             aria-hidden={i >= base.length}
           >
             <ExpeditionCard item={item} />

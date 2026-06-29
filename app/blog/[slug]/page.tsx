@@ -51,7 +51,7 @@ export default async function BlogPostPage({
           <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/45 to-ink/20" />
           <div className="absolute inset-x-0 bottom-0">
             <div className="mx-auto max-w-[820px] px-5 pb-10 sm:px-8 sm:pb-14">
-              <span className="inline-flex rounded-full bg-coral px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-cream">
+              <span className="inline-flex rounded-full bg-coral px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-ink">
                 {post.category}
               </span>
               <h1 className="display mt-4 text-3xl leading-tight text-cream sm:text-5xl">
@@ -82,7 +82,7 @@ export default async function BlogPostPage({
             <div className="mt-14 border-t border-line pt-8">
               <Link
                 href="/blog"
-                className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:text-coral"
+                className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:text-[#6b8e1f]"
               >
                 <ArrowIcon className="h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1" />
                 All stories

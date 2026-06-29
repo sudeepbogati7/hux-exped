@@ -24,7 +24,7 @@ export default function PaymentForm({ total, slug }: { total: number; slug: stri
   if (paid) {
     return (
       <div className="flex min-h-[440px] flex-col items-center justify-center rounded-2xl border border-line bg-cream p-8 text-center">
-        <span className="grid h-16 w-16 place-items-center rounded-full bg-coral text-cream">
+        <span className="grid h-16 w-16 place-items-center rounded-full bg-coral text-ink">
           <CheckIcon className="h-8 w-8" />
         </span>
         <h2 className="display mt-6 text-3xl text-ink">Payment successful</h2>
@@ -32,7 +32,7 @@ export default function PaymentForm({ total, slug }: { total: number; slug: stri
           This is a frontend demo — no card was charged. Stripe will be wired in
           for live bookings.
         </p>
-        <Link href={`/treks/${slug}`} className="mt-7 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-coral">
+        <Link href={`/treks/${slug}`} className="mt-7 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[#6b8e1f]">
           Back to the trip
         </Link>
       </div>
@@ -107,7 +107,7 @@ export default function PaymentForm({ total, slug }: { total: number; slug: stri
 
       <button
         type="submit"
-        className="group mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-coral px-8 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-cream transition-colors hover:bg-coral-dark"
+        className="group mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-coral px-8 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-ink transition-colors hover:bg-coral-dark"
       >
         Pay USD {total.toLocaleString("en-US")}
         <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

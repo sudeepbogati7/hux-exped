@@ -25,11 +25,11 @@ export default function BlogCard({ post }: { post: BlogPost }) {
         <p className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-muted">
           {post.date} · {post.readTime}
         </p>
-        <h3 className="display mt-2 text-xl leading-tight text-ink transition-colors group-hover:text-coral">
+        <h3 className="display mt-2 text-xl leading-tight text-ink transition-colors group-hover:text-[#6b8e1f]">
           {post.title}
         </h3>
         <p className="mt-3 text-sm leading-relaxed text-ink-soft line-clamp-3">{post.excerpt}</p>
-        <span className="mt-5 inline-flex items-center text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-coral">
+        <span className="mt-5 inline-flex items-center text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-[#6b8e1f]">
           Read more →
         </span>
       </div>

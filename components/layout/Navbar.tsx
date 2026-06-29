@@ -63,7 +63,7 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="grid h-8 w-8 place-items-center rounded-full text-cream/80 transition-colors hover:bg-white/10 hover:text-coral"
+                  className="grid h-8 w-8 place-items-center rounded-full text-cream/80 transition-colors hover:bg-white/10 hover:text-[#6b8e1f]"
                 >
                   <s.Icon className="h-[17px] w-[17px]" />
                 </a>
@@ -105,7 +105,7 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
               >
                 <Link
                   href={resolve(item.href)}
-                  className={`flex items-center gap-1.5 border-b-2 pb-0.5 transition-colors hover:text-coral ${
+                  className={`flex items-center gap-1.5 border-b-2 pb-0.5 transition-colors hover:text-[#6b8e1f] ${
                     mega === item.label ? `border-coral ${linkColor}` : `border-transparent ${linkColor}`
                   }`}
                 >
@@ -131,7 +131,7 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
                           href={resolve(c.href)}
                           className="group/mi block rounded-xl px-4 py-2.5 transition-all hover:translate-x-0.5 hover:bg-white/[0.07]"
                         >
-                          <span className="block text-[0.9rem] font-semibold normal-case leading-tight tracking-normal text-cream transition-colors group-hover/mi:text-coral">
+                          <span className="block text-[0.9rem] font-semibold normal-case leading-tight tracking-normal text-cream transition-colors group-hover/mi:text-[#6b8e1f]">
                             {c.label}
                           </span>
                           {c.note && (
@@ -147,7 +147,7 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
                       <div className="mt-1.5 border-t border-white/10 px-1.5 pt-2.5">
                         <Link
                           href={item.cta.href}
-                          className="group/cta inline-flex w-fit items-center gap-2 rounded-full bg-coral px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-cream transition-colors hover:bg-coral-dark"
+                          className="group/cta inline-flex w-fit items-center gap-2 rounded-full bg-coral px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-coral-dark"
                         >
                           {item.cta.label}
                           <ArrowIcon className="h-3.5 w-3.5 transition-transform duration-300 group-hover/cta:translate-x-1" />
@@ -161,7 +161,7 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
               <Link
                 key={item.label}
                 href={resolve(item.href)}
-                className={`border-b-2 border-transparent pb-0.5 transition-colors hover:border-coral hover:text-coral ${linkColor}`}
+                className={`border-b-2 border-transparent pb-0.5 transition-colors hover:border-coral hover:text-[#6b8e1f] ${linkColor}`}
               >
                 {item.label}
               </Link>
@@ -174,7 +174,7 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
           <Link
             href="/login"
             className={`rounded-full px-5 py-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.14em] transition-colors ${
-              onDark ? "bg-cream text-ink hover:bg-coral hover:text-cream" : "bg-ink text-cream hover:bg-coral"
+              onDark ? "bg-cream text-ink hover:bg-coral hover:text-ink" : "bg-ink text-cream hover:bg-coral hover:text-ink"
             }`}
           >
             Login
@@ -199,7 +199,7 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
               <Link
                 href={resolve(item.href)}
                 onClick={() => setOpen(false)}
-                className="display block py-2 text-2xl text-ink transition-colors hover:text-coral"
+                className="display block py-2 text-2xl text-ink transition-colors hover:text-[#6b8e1f]"
               >
                 {item.label}
               </Link>
@@ -210,7 +210,7 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
                       key={c.label}
                       href={resolve(c.href)}
                       onClick={() => setOpen(false)}
-                      className="py-1 text-sm font-semibold text-ink-soft transition-colors hover:text-coral"
+                      className="py-1 text-sm font-semibold text-ink-soft transition-colors hover:text-[#6b8e1f]"
                     >
                       {c.label}
                     </Link>
@@ -219,7 +219,7 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
                     <Link
                       href={item.cta.href}
                       onClick={() => setOpen(false)}
-                      className="mt-1 inline-flex w-fit items-center gap-2 py-1 text-sm font-semibold text-coral"
+                      className="mt-1 inline-flex w-fit items-center gap-2 py-1 text-sm font-semibold text-[#6b8e1f]"
                     >
                       {item.cta.label} <ArrowIcon className="h-3.5 w-3.5" />
                     </Link>

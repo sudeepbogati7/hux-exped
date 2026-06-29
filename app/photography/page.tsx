@@ -37,12 +37,12 @@ export default function PhotographyPage() {
           <div className="relative mx-auto w-full max-w-[1400px] px-5 pb-14 sm:px-8 sm:pb-20">
             <Reveal variant="up">
               <p className="eyebrow mb-5 inline-flex items-center gap-2 text-cream/70">
-                <CameraIcon className="h-4 w-4 text-coral" /> Photography expeditions · once a year
+                <CameraIcon className="h-4 w-4 text-[#6b8e1f]" /> Photography expeditions · once a year
               </p>
               <h1 className="display max-w-4xl text-5xl leading-[0.95] text-cream sm:text-7xl lg:text-8xl">
                 Come home with
                 <br />
-                the <span className="text-coral">whole trek</span>
+                the <span className="text-[#6b8e1f]">whole trek</span>
               </h1>
               <p className="mt-7 max-w-xl text-base leading-relaxed text-cream/85 sm:text-lg">
                 {shall.intro}
@@ -73,7 +73,7 @@ export default function PhotographyPage() {
                   <ul className="space-y-4">
                     {shall.offers.map((o) => (
                       <li key={o} className="flex items-start gap-3 text-ink">
-                        <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-coral text-cream">
+                        <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-coral text-ink">
                           <CheckIcon className="h-3.5 w-3.5" />
                         </span>
                         <span className="leading-snug">{o}</span>
@@ -115,7 +115,7 @@ export default function PhotographyPage() {
             <Reveal variant="up" className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
               <div>
                 <p className="eyebrow mb-5 inline-flex items-center gap-2">
-                  <CameraIcon className="h-4 w-4 text-coral" /> The work
+                  <CameraIcon className="h-4 w-4 text-[#6b8e1f]" /> The work
                 </p>
                 <h2 className="display text-5xl text-ink sm:text-6xl">Frames by {shall.name}</h2>
               </div>
@@ -150,14 +150,14 @@ export default function PhotographyPage() {
           <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/70 to-ink/70" />
           <div className="relative mx-auto max-w-[900px] px-5 text-center sm:px-8">
             <h2 className="display text-4xl leading-[0.95] sm:text-5xl lg:text-6xl">
-              Walk it. We&apos;ll <span className="text-coral">shoot it.</span>
+              Walk it. We&apos;ll <span className="text-[#6b8e1f]">shoot it.</span>
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-cream/80">
               The photography expedition runs once a year on a select trek — ask
               us which departure is next and we&apos;ll save you a spot.
             </p>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-              <Link href="/treks" className="group inline-flex items-center gap-3 rounded-full bg-coral px-9 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-cream transition-colors hover:bg-coral-dark">
+              <Link href="/treks" className="group inline-flex items-center gap-3 rounded-full bg-coral px-9 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-ink transition-colors hover:bg-coral-dark">
                 Browse the treks
                 <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>

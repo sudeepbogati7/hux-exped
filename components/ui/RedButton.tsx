@@ -34,7 +34,7 @@ export default function RedButton({
     >
       <span
         ref={circle}
-        className="grid h-14 w-14 place-items-center rounded-full bg-coral text-cream shadow-[0_10px_30px_-8px_rgba(249,73,47,0.6)] will-change-transform"
+        className="grid h-14 w-14 place-items-center rounded-full bg-coral text-ink shadow-[0_10px_30px_-8px_rgba(249,73,47,0.6)] will-change-transform"
       >
         {icon}
       </span>

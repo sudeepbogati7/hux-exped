@@ -72,7 +72,7 @@ export default function AuthView({ mode }: { mode: Mode }) {
 
           <Link
             href="/"
-            className="mb-8 inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-muted transition-colors hover:text-coral"
+            className="mb-8 inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-muted transition-colors hover:text-[#6b8e1f]"
           >
             <ArrowIcon className="h-3.5 w-3.5 rotate-180" /> Back home
           </Link>
@@ -82,7 +82,7 @@ export default function AuthView({ mode }: { mode: Mode }) {
 
           {sent ? (
             <div className="mt-10 rounded-2xl border border-line bg-cream-deep p-8 text-center">
-              <span className="grid mx-auto h-14 w-14 place-items-center rounded-full bg-coral text-cream">
+              <span className="grid mx-auto h-14 w-14 place-items-center rounded-full bg-coral text-ink">
                 <ArrowIcon className="h-6 w-6" />
               </span>
               <p className="display mt-5 text-2xl text-ink">
@@ -91,7 +91,7 @@ export default function AuthView({ mode }: { mode: Mode }) {
               <p className="mt-2 text-sm text-ink-soft">
                 This is a frontend demo — no account is actually {mode === "login" ? "signed in" : "created"} yet.
               </p>
-              <Link href="/" className="mt-6 inline-block text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-coral">
+              <Link href="/" className="mt-6 inline-block text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[#6b8e1f]">
                 Continue to site
               </Link>
             </div>
@@ -149,7 +149,7 @@ export default function AuthView({ mode }: { mode: Mode }) {
                   {mode === "login" ? "Remember me" : "I agree to the terms"}
                 </label>
                 {mode === "login" && (
-                  <a href="#" className="text-[0.78rem] font-semibold text-coral hover:underline">
+                  <a href="#" className="text-[0.78rem] font-semibold text-[#6b8e1f] hover:underline">
                     Forgot password?
                   </a>
                 )}
@@ -157,7 +157,7 @@ export default function AuthView({ mode }: { mode: Mode }) {
 
               <button
                 type="submit"
-                className="group mt-2 inline-flex w-full items-center justify-center gap-3 rounded-full bg-ink px-8 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-cream transition-colors hover:bg-coral"
+                className="group mt-2 inline-flex w-full items-center justify-center gap-3 rounded-full bg-ink px-8 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-cream transition-colors hover:bg-coral hover:text-ink"
               >
                 {c.cta}
                 <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -180,7 +180,7 @@ export default function AuthView({ mode }: { mode: Mode }) {
 
           <p className="mt-8 text-center text-sm text-ink-soft">
             {c.switchText}{" "}
-            <Link href={c.switchLink} className="font-semibold text-coral hover:underline">
+            <Link href={c.switchLink} className="font-semibold text-[#6b8e1f] hover:underline">
               {c.switchLabel}
             </Link>
           </p>

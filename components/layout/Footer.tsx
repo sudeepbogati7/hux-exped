@@ -42,7 +42,7 @@ export default function Footer() {
         {/* big wordmark */}
         <div className="flex items-center justify-between gap-6 border-b border-cream/15 pb-12">
           <Logo invert className="h-20 sm:h-28" />
-          <a href="#top" className="hidden shrink-0 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-cream/60 transition-colors hover:text-coral sm:inline">
+          <a href="#top" className="hidden shrink-0 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-cream/60 transition-colors hover:text-[#6b8e1f] sm:inline">
             Back to top ↑
           </a>
         </div>
@@ -61,7 +61,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               {navLinks.map((l) => (
                 <li key={l.href}>
-                  <a href={l.href.startsWith("#") ? `/${l.href}` : l.href} className="text-cream/80 hover:text-coral">{l.label}</a>
+                  <a href={l.href.startsWith("#") ? `/${l.href}` : l.href} className="text-cream/80 hover:text-[#6b8e1f]">{l.label}</a>
                 </li>
               ))}
             </ul>
@@ -74,7 +74,7 @@ export default function Footer() {
                 const Icon = socialIcon[s];
                 return (
                   <li key={s}>
-                    <a href="#" className="group inline-flex items-center gap-3 text-cream/80 hover:text-coral">
+                    <a href="#" className="group inline-flex items-center gap-3 text-cream/80 hover:text-[#6b8e1f]">
                       <span className="grid h-9 w-9 place-items-center rounded-full border border-cream/20 transition-colors group-hover:border-coral">
                         {Icon ? <Icon className="h-4 w-4" /> : null}
                       </span>
@@ -90,7 +90,7 @@ export default function Footer() {
             <h4 className="eyebrow mb-5 text-cream/50">Get in touch</h4>
             <p className="text-sm text-cream/80">Offbeat Himalaya · Nepal</p>
             <p className="mt-2 text-sm text-cream/80">hello@huxexped.com</p>
-            <a href="#" className="mt-6 inline-block rounded-full bg-coral px-6 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-cream transition-colors hover:bg-coral-dark">
+            <a href="#" className="mt-6 inline-block rounded-full bg-coral px-6 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-ink transition-colors hover:bg-coral-dark">
               Plan a trip
             </a>
           </div>

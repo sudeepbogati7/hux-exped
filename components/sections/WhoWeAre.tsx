@@ -12,14 +12,14 @@ const stats = [
 export default function WhoWeAre() {
   return (
     <section id="about" className="overflow-hidden bg-ink py-24 text-cream sm:py-32 lg:py-36">
-      <div className="mx-auto grid max-w-[1400px] items-start gap-16 px-5 sm:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
+      <div className="mx-auto grid max-w-[1400px] items-start gap-10 px-5 sm:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
         {/* left: story + stats + quote */}
         <Reveal variant="up">
           <p className="eyebrow mb-5 inline-flex items-center gap-3 text-cream/50">
             <span className="h-px w-8 bg-coral" /> Who we are
           </p>
           <h2 className="display text-5xl leading-[0.95] sm:text-6xl lg:text-7xl">
-            Born in the <span className="text-coral">mountains</span>,
+            Born in the <span className="text-[#6b8e1f]">mountains</span>,
             <br />
             built for adventurers.
           </h2>
@@ -37,7 +37,7 @@ export default function WhoWeAre() {
           <div className="mt-10 grid max-w-md grid-cols-3 gap-6 border-t border-cream/15 pt-8">
             {stats.map((s) => (
               <div key={s.label}>
-                <div className="display text-4xl text-coral sm:text-5xl">{s.value}</div>
+                <div className="display text-4xl text-[#6b8e1f] sm:text-5xl">{s.value}</div>
                 <div className="mt-1 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-cream/50">
                   {s.label}
                 </div>
@@ -52,7 +52,7 @@ export default function WhoWeAre() {
               why people keep coming back to Nepal.&rdquo;
             </blockquote>
             <figcaption className="mt-5 flex items-center gap-3">
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-coral text-xs font-semibold text-cream">FB</span>
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-coral text-xs font-semibold text-ink">FB</span>
               <span>
                 <span className="block text-sm font-semibold text-cream">Felicite Black</span>
                 <span className="block text-[0.7rem] uppercase tracking-[0.14em] text-cream/45">Australia · Kanchenjunga, 2023</span>
@@ -81,9 +81,9 @@ export default function WhoWeAre() {
                 </div>
                 <div className="p-6">
                   <h3 className="display text-xl leading-tight text-cream">{m.name}</h3>
-                  <p className="mt-0.5 text-[0.76rem] font-semibold uppercase tracking-[0.12em] text-coral">{m.role}</p>
+                  <p className="mt-0.5 text-[0.76rem] font-semibold uppercase tracking-[0.12em] text-[#6b8e1f]">{m.role}</p>
                   <p className="mt-4 inline-flex items-center gap-2 border-t border-cream/10 pt-4 text-[0.8rem] text-cream/65">
-                    <CheckIcon className="h-3.5 w-3.5 shrink-0 text-coral" /> {m.meta}
+                    <CheckIcon className="h-3.5 w-3.5 shrink-0 text-[#6b8e1f]" /> {m.meta}
                   </p>
                 </div>
               </article>

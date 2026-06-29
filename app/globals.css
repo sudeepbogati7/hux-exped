@@ -10,8 +10,8 @@
   --color-ink-soft: #2b2b2b;
   --color-muted: #8d887e;
   --color-line: #d8d2c6;
-  --color-coral: #f9492f;
-  --color-coral-dark: #e23a22;
+  --color-coral: #bcd93e;
+  --color-coral-dark: #a7c52f;
 
   --font-display: var(--font-archivo), "Arial Black", sans-serif;
   --font-body: var(--font-inter), system-ui, sans-serif;
@@ -76,7 +76,7 @@ html.lenis body {
 /* Coral text-highlight box (matches reference "what we do") */
 .mark {
   background: var(--color-coral);
-  color: var(--color-cream);
+  color: var(--color-ink);
   padding: 0 0.12em;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
@@ -211,7 +211,7 @@ html.lenis body {
 
 ::selection {
   background: var(--color-coral);
-  color: var(--color-cream);
+  color: var(--color-ink);
 }
 
 /* Thin custom scrollbar */

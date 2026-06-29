@@ -22,7 +22,7 @@ export default function BlogPage() {
           <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
             <Reveal variant="up">
               <p className="eyebrow mb-5 inline-flex items-center gap-2">
-                <CompassIcon className="h-4 w-4 text-coral" /> Journal
+                <CompassIcon className="h-4 w-4 text-[#6b8e1f]" /> Journal
               </p>
               <h1 className="display text-5xl text-ink sm:text-7xl lg:text-8xl">
                 Stories from the trail

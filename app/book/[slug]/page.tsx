@@ -41,7 +41,7 @@ export default async function BookPage({
       <main className="paper pt-20">
         <section className="py-12 sm:py-16">
           <div className="mx-auto max-w-[1200px] px-5 sm:px-8">
-            <Link href={detailHref} className="inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-muted transition-colors hover:text-coral">
+            <Link href={detailHref} className="inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-muted transition-colors hover:text-[#6b8e1f]">
               <ArrowIcon className="h-4 w-4 rotate-180" /> Back to trip
             </Link>
             <h1 className="display mt-5 text-4xl text-ink sm:text-5xl">Secure your spot</h1>
@@ -70,8 +70,8 @@ export default async function BookPage({
                       <p className="eyebrow">{trip.region}</p>
                       <h2 className="display mt-1 text-2xl text-ink">{trip.name}</h2>
                       <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-[0.78rem] font-semibold uppercase tracking-[0.1em] text-ink-soft">
-                        <span className="inline-flex items-center gap-1.5"><ClockIcon className="h-4 w-4 text-coral" /> {trip.days}</span>
-                        <span className="inline-flex items-center gap-1.5"><MountainIcon className="h-4 w-4 text-coral" /> {trip.altitude}</span>
+                        <span className="inline-flex items-center gap-1.5"><ClockIcon className="h-4 w-4 text-[#6b8e1f]" /> {trip.days}</span>
+                        <span className="inline-flex items-center gap-1.5"><MountainIcon className="h-4 w-4 text-[#6b8e1f]" /> {trip.altitude}</span>
                       </div>
 
                       <dl className="mt-6 space-y-3 border-t border-line pt-5 text-sm">
@@ -92,7 +92,7 @@ export default async function BookPage({
                           <dd className="display text-2xl text-ink">USD {price.toLocaleString("en-US")}</dd>
                         </div>
                         <p className="flex items-center gap-2 text-[0.78rem] text-muted">
-                          <CheckIcon className="h-3.5 w-3.5 text-coral" /> Or reserve with a USD {deposit.toLocaleString("en-US")} deposit
+                          <CheckIcon className="h-3.5 w-3.5 text-[#6b8e1f]" /> Or reserve with a USD {deposit.toLocaleString("en-US")} deposit
                         </p>
                       </dl>
                     </div>

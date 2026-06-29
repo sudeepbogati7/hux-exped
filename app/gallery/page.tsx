@@ -31,7 +31,7 @@ export default function GalleryPage() {
 
           <div className="relative mx-auto w-full max-w-[1400px] px-5 pb-14 sm:px-8 sm:pb-20">
             <p className="eyebrow mb-5 inline-flex items-center gap-2 text-cream/70">
-              <CameraIcon className="h-4 w-4 text-coral" /> The gallery
+              <CameraIcon className="h-4 w-4 text-[#6b8e1f]" /> The gallery
             </p>
             <h1 className="display text-6xl text-cream sm:text-7xl lg:text-8xl">From the field</h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-cream/85">

@@ -124,8 +124,8 @@ export const shall = {
 
 /** Per-trek photography (overrides the placeholder ids below). */
 const trekArt: Record<string, { image: string; gallery: string[] }> = {
-  kanchenjunga: { image: photos.himalayas, gallery: [photos.baseCamp, photos.walking, photos.demali, photos.nightSky] },
-  dolpo: { image: photos.nepal, gallery: [photos.accommodation, photos.snowedIn, photos.weather, photos.khumbu] },
+  kanchenjunga: { image: "/moutains/kanchenjunga.png", gallery: [photos.baseCamp, photos.walking, photos.demali, photos.nightSky] },
+  dolpo: { image: "/moutains/dolpo.png", gallery: [photos.accommodation, photos.snowedIn, photos.weather, photos.khumbu] },
   "makalu-barun": { image: photos.khumbu, gallery: [photos.amaBaseCamp, photos.c2Ama, photos.carries, photos.prepping] },
   "nar-phu": { image: photos.walking, gallery: [photos.demali, photos.cook, photos.aspiring1, photos.accommodation] },
   "upper-mustang": { image: photos.demali, gallery: [photos.nepal, photos.himalayas, photos.snowedIn, photos.weather] },
@@ -934,7 +934,7 @@ export const faqs: Faq[] = [
     q: "Do I need previous trekking experience?",
     a: "For the flagship treks (Kanchenjunga, Dolpo) you should be a fit, regular hiker comfortable with multi-day walks and altitude. We grade every trip and are happy to suggest a build-up route if you're newer to it.",
     icon: "gauge",
-    img: photos.walking,
+    img: "/faq/previous-trek.png",
   },
   {
     q: "How do the restricted-area permits work?",
@@ -946,25 +946,25 @@ export const faqs: Faq[] = [
     q: "How big are the groups?",
     a: "Ten trekkers maximum, often fewer. Smaller groups move at a human pace, tread lighter and mean you actually get to know your guides and each other.",
     icon: "users",
-    img: photos.baseCamp,
+    img: "/faq/group.png",
   },
   {
     q: "What's this about giving back?",
     a: "Five percent of every booking goes directly to community-run village schools and health posts in the Nepal valleys we trek through. It's built into the price — no upsell, reported back each season.",
     icon: "heart",
-    img: photos.carries,
+    img: "/faq/donation.png",
   },
   {
     q: "When is the best time to go?",
     a: "Spring (Mar–May) and autumn (Sep–Nov) are prime for most Himalayan treks. Dolpo, in the rain shadow, is best in summer (May–Sep) when the rest of Nepal is wet.",
     icon: "calendar",
-    img: photos.nightSky,
+    img: photos.weather,
   },
   {
     q: "Is travel insurance required?",
     a: "Yes — comprehensive insurance covering high-altitude trekking and helicopter evacuation is mandatory on all our trips. We'll point you to providers we trust.",
     icon: "shield",
-    img: photos.snowedIn,
+    img: "/faq/helicopter-revive-insurance.png",
   },
 ];
 
@@ -1057,8 +1057,8 @@ export const nav: NavItem[] = [
     href: "/mountaineering",
     cta: { label: "View all peaks", href: "/mountaineering" },
     children: [
-      { label: "7000m Peaks", href: "/#peaks-7000", icon: "mountain", note: "Expedition objectives" },
-      { label: "6000m Peaks", href: "/#peaks-6000", icon: "peak", note: "Trekking peaks · first summits" },
+      { label: "7000m Peaks", href: "/#mountaineering", icon: "mountain", note: "Expedition objectives" },
+      { label: "6000m Peaks", href: "/#mountaineering", icon: "peak", note: "Trekking peaks · first summits" },
       { label: "Mountaineering guide", href: "/mountaineering/guide", icon: "users", note: "Skills, training & how it works" },
     ],
   },
@@ -1113,9 +1113,9 @@ export const site = {
 export type TeamMember = { name: string; role: string; tag: string; meta: string; note: string; img: string };
 
 export const team: TeamMember[] = [
-  { name: "Deepak Thapa", role: "Founder & senior guide", tag: "Co-founder", meta: "500+ treks led", note: "Grew up in these valleys; built Hux Exped to share them.", img: photos.carries },
-  { name: "Dominic Huxley", role: "Founder & mountain guide", tag: "Co-founder", meta: "IFMGA mountain guide", note: "The 'Hux' in Hux Exped — leads from the front on the high peaks.", img: photos.weather },
-  { name: "Bibek Basnet", role: "IT & Operations", tag: "The engine", meta: "Keeps it all running", note: "Makes every permit, flight, server and yak line up on time.", img: photos.prepping },
+  { name: "Deepak Thapa", role: "Founder & senior guide", tag: "Co-founder", meta: "500+ treks led", note: "Grew up in these valleys; built Hux Exped to share them.", img: "/deepak-thapa.jpg" },
+  { name: "Dominic Huxley", role: "Founder & mountain guide", tag: "Co-founder", meta: "IFMGA mountain guide", note: "The 'Hux' in Hux Exped — leads from the front on the high peaks.", img: photos.aspiring3 },
+  { name: "Bibek Basnet", role: "IT & Operations", tag: "The engine", meta: "Keeps it all running", note: "Makes every permit, flight, server and yak line up on time.", img: "/Bibek-Basnet.jpg" },
   { name: "Shall", role: "Lead photographer", tag: "Photography", meta: "Shoots the whole journey", note: "Leads our once-a-year dedicated photography expedition.", img: photos.walking },
 ];
 

@@ -51,7 +51,7 @@ export default function PersonalizeTrip() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="border-b-2 border-coral pb-0.5 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-coral transition-colors hover:text-cream"
+        className="border-b-2 border-coral pb-0.5 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-[#6b8e1f] transition-colors hover:text-cream"
       >
         <span className="hidden sm:inline">Personalize your trip</span>
         <span className="sm:hidden">Plan a trip</span>
@@ -72,7 +72,7 @@ export default function PersonalizeTrip() {
 
             {sent ? (
               <div className="py-8 text-center">
-                <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-coral text-cream">
+                <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-coral text-ink">
                   <CheckIcon className="h-7 w-7" />
                 </span>
                 <h2 className="display mt-5 text-3xl text-ink">We&apos;re on it.</h2>
@@ -83,14 +83,14 @@ export default function PersonalizeTrip() {
                 <button
                   type="button"
                   onClick={close}
-                  className="mt-7 rounded-full bg-ink px-7 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-cream transition-colors hover:bg-coral"
+                  className="mt-7 rounded-full bg-ink px-7 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-cream transition-colors hover:bg-coral hover:text-ink"
                 >
                   Done
                 </button>
               </div>
             ) : (
               <>
-                <p className="eyebrow mb-2 text-coral">Tailor-made</p>
+                <p className="eyebrow mb-2 text-[#6b8e1f]">Tailor-made</p>
                 <h2 className="display text-3xl text-ink sm:text-4xl">Personalize your trip</h2>
                 <p className="mt-2 text-sm leading-relaxed text-ink-soft">
                   Tell us a little about your dream trip and we&apos;ll shape an
@@ -145,7 +145,7 @@ export default function PersonalizeTrip() {
                           onClick={() => set("accommodation")(a)}
                           className={`rounded-full border px-4 py-2 text-[0.78rem] font-medium transition-colors ${
                             form.accommodation === a
-                              ? "border-coral bg-coral text-cream"
+                              ? "border-coral bg-coral text-ink"
                               : "border-line bg-cream-deep text-ink-soft hover:border-coral"
                           }`}
                         >
@@ -157,7 +157,7 @@ export default function PersonalizeTrip() {
 
                   <button
                     type="submit"
-                    className="group mt-2 flex w-full items-center justify-center gap-3 rounded-full bg-coral px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-cream transition-colors hover:bg-coral-dark"
+                    className="group mt-2 flex w-full items-center justify-center gap-3 rounded-full bg-coral px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-coral-dark"
                   >
                     Send my request
                     <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

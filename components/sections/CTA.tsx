@@ -7,7 +7,7 @@ export default function CTA() {
   return (
     <section className="relative overflow-hidden bg-ink py-32 text-cream sm:py-44">
       <Image
-        src={photos.nightSky}
+        src={photos.himalayas}
         alt=""
         fill
         sizes="100vw"
@@ -29,7 +29,7 @@ export default function CTA() {
           <h2 className="display text-5xl leading-[0.95] sm:text-7xl">
             The map runs out.
             <br />
-            That&apos;s where we <span className="text-coral">begin.</span>
+            That&apos;s where we <span className="text-[#6b8e1f]">begin.</span>
           </h2>
           <p className="mx-auto mt-7 max-w-xl leading-relaxed text-cream/80">
             Tell us where you want to go — or how far out of your comfort zone
@@ -39,7 +39,7 @@ export default function CTA() {
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <a
               href="#treks"
-              className="group inline-flex items-center gap-3 rounded-full bg-coral px-9 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-cream transition-colors hover:bg-coral-dark"
+              className="group inline-flex items-center gap-3 rounded-full bg-coral px-9 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-ink transition-colors hover:bg-coral-dark"
             >
               Find your trek
               <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

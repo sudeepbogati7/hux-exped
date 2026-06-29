@@ -42,7 +42,7 @@ export default function ExpeditionCard({ item }: { item: Trek }) {
             <GaugeIcon className="h-4 w-4 text-muted" /> {item.grade}
           </span>
           <span className="inline-flex items-center gap-1.5">
-            <StarIcon className="h-4 w-4 text-coral" /> 5.0
+            <StarIcon className="h-4 w-4 text-[#6b8e1f]" /> 5.0
           </span>
         </div>
 
@@ -51,7 +51,7 @@ export default function ExpeditionCard({ item }: { item: Trek }) {
             <span className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-muted">from</span>
             <div className="display text-2xl text-ink">USD {priceUSD.toLocaleString("en-US")}</div>
           </div>
-          <span className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-coral px-5 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-cream transition-all duration-300 group-hover:bg-coral-dark group-hover:gap-3">
+          <span className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-coral px-5 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-ink transition-all duration-300 group-hover:bg-coral-dark group-hover:gap-3">
             View trip
             <ArrowIcon className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
           </span>
