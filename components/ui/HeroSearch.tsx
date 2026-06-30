@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { SearchIcon } from "@/components/ui/icons";
-import { allExpeditions } from "@/lib/data";
+import { useExpeditions } from "@/lib/useExpeditions";
 
 const SUGGESTIONS = [
   "Manaslu & Tsum Valley",
@@ -24,15 +24,16 @@ export default function HeroSearch() {
   const [active, setActive] = useState(-1);
   const [typed, setTyped] = useState("");
   const boxRef = useRef<HTMLDivElement>(null);
+  const expeditions = useExpeditions();
 
   const index = useMemo<Hit[]>(
     () =>
-      allExpeditions.map((e) => ({
+      expeditions.map((e) => ({
         name: e.name,
         sub: `${e.region} · ${e.kind === "peak" ? "Mountaineering" : "Trek"}`,
         href: `/${e.kind === "peak" ? "mountaineering" : "treks"}/${e.slug}`,
       })),
-    [],
+    [expeditions],
   );
 
   const results = useMemo<Hit[]>(() => {

@@ -2,9 +2,23 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import Logo from "@/components/ui/Logo";
-import { ChevronDown, ArrowIcon, FacebookIcon, InstagramIcon, WhatsappIcon, MailIcon, TripadvisorIcon } from "@/components/ui/icons";
+import { ArrowIcon, FacebookIcon, InstagramIcon, WhatsappIcon, MailIcon, TripadvisorIcon } from "@/components/ui/icons";
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import { childIcon, topIcon } from "@/components/layout/navIcons";
 import PersonalizeTrip from "@/components/ui/PersonalizeTrip";
+import AccountMenu from "@/components/layout/AccountMenu";
+import MobileAuth from "@/components/layout/MobileAuth";
+import { cn } from "@/lib/utils";
 import { nav, site } from "@/lib/data";
 
 const socials = [
@@ -23,7 +37,6 @@ const topLinks = [
 export default function Navbar({ subpage = false, overDark = false }: { subpage?: boolean; overDark?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false); // mobile drawer
-  const [mega, setMega] = useState<string | null>(null); // open desktop mega-menu
 
   const pre = subpage ? "/" : "";
   const resolve = (href: string) => (href.startsWith("#") ? `${pre}${href}` : href);
@@ -94,92 +107,74 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
           <Logo className="text-2xl sm:text-[1.7rem]" priority invert={onDark} />
         </Link>
 
-        {/* center/right: desktop nav */}
-        <div className="hidden items-center gap-5 text-[0.76rem] font-semibold uppercase tracking-[0.1em] lg:flex xl:gap-6 xl:text-[0.78rem] xl:tracking-[0.12em]">
-          {nav.map((item, idx) =>
-            item.children ? (
-              <div
-                key={item.label}
-                className="relative"
-                onMouseEnter={() => setMega(item.label)}
-                onMouseLeave={() => setMega(null)}
-              >
-                <Link
-                  href={resolve(item.href)}
-                  className={`flex items-center gap-1.5 border-b-2 pb-0.5 transition-colors hover:text-[#6b8e1f] ${
-                    mega === item.label ? `border-coral ${linkColor}` : `border-transparent ${linkColor}`
-                  }`}
-                >
-                  {item.label}
-                  <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-300 ${mega === item.label ? "rotate-180" : ""}`} />
-                </Link>
-
-                {/* floating mega-menu */}
-                <div
-                  className={`absolute top-full pt-4 transition-all duration-300 ease-out ${
-                    idx >= 3 ? "right-0" : "left-1/2 -translate-x-1/2"
-                  } ${mega === item.label ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"}`}
-                >
-                  <div
-                    className={`rounded-2xl border border-white/10 bg-ink p-2.5 shadow-[0_40px_80px_-30px_rgba(0,0,0,0.8)] ${
-                      item.columns === 2 ? "w-[34rem]" : "w-64"
-                    }`}
-                  >
-                    <div className={item.columns === 2 ? "grid grid-cols-2 gap-0.5" : "grid gap-0.5"}>
-                      {item.children.map((c) => (
-                        <Link
-                          key={c.label}
-                          href={resolve(c.href)}
-                          className="group/mi block rounded-xl px-4 py-2.5 transition-all hover:translate-x-0.5 hover:bg-white/[0.07]"
-                        >
-                          <span className="block text-[0.9rem] font-semibold normal-case leading-tight tracking-normal text-cream transition-colors group-hover/mi:text-[#6b8e1f]">
-                            {c.label}
-                          </span>
-                          {c.note && (
-                            <span className="mt-0.5 block text-[0.74rem] font-normal normal-case tracking-normal text-cream/45">
-                              {c.note}
-                            </span>
-                          )}
+        {/* center/right: desktop nav (shadcn NavigationMenu) */}
+        <div className="hidden h-full items-center lg:flex">
+          <NavigationMenu className="h-full">
+            <NavigationMenuList>
+              {nav.map((item) => {
+                const TopIcon = topIcon[item.label];
+                return (
+                  <NavigationMenuItem key={item.label}>
+                    {item.children ? (
+                      <>
+                        <NavigationMenuTrigger className={linkColor}>
+                          {TopIcon && <TopIcon className="size-4" aria-hidden />}
+                          {item.label}
+                        </NavigationMenuTrigger>
+                        <NavigationMenuContent>
+                          <ul className={cn("grid gap-1", item.columns === 2 ? "w-[36rem] grid-cols-2" : "w-72")}>
+                            {item.children.map((c) => {
+                              const CIcon = c.icon ? childIcon[c.icon] : undefined;
+                              return (
+                                <li key={c.label}>
+                                  <NavigationMenuLink asChild className="hover:bg-white/[0.07] focus:bg-white/[0.07]">
+                                    <Link href={resolve(c.href)}>
+                                      {CIcon && <CIcon className="size-5 shrink-0 text-cream/60 transition-colors group-hover/mi:text-[#bcd93e]" aria-hidden />}
+                                      <span className="flex min-w-0 flex-col gap-0.5">
+                                        <span className="text-[0.9rem] font-semibold leading-tight text-cream transition-colors group-hover/mi:text-[#bcd93e]">
+                                          {c.label}
+                                        </span>
+                                        {c.note && (
+                                          <span className="text-[0.74rem] font-normal leading-snug text-cream/45">{c.note}</span>
+                                        )}
+                                      </span>
+                                    </Link>
+                                  </NavigationMenuLink>
+                                </li>
+                              );
+                            })}
+                            {item.cta && (
+                              <li className={cn("mt-1.5 border-t border-white/10 px-1 pt-2.5", item.columns === 2 && "col-span-2")}>
+                                <Link
+                                  href={item.cta.href}
+                                  className="group/cta inline-flex w-fit items-center gap-2 rounded-full bg-coral px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-coral-dark"
+                                >
+                                  {item.cta.label}
+                                  <ArrowRight className="size-3.5 transition-transform duration-300 group-hover/cta:translate-x-1" />
+                                </Link>
+                              </li>
+                            )}
+                          </ul>
+                        </NavigationMenuContent>
+                      </>
+                    ) : (
+                      <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), linkColor, "items-center gap-1.5 hover:bg-transparent")}>
+                        <Link href={resolve(item.href)}>
+                          {TopIcon && <TopIcon className="size-4 shrink-0" aria-hidden />}
+                          {item.label}
                         </Link>
-                      ))}
-                    </div>
-
-                    {item.cta && (
-                      <div className="mt-1.5 border-t border-white/10 px-1.5 pt-2.5">
-                        <Link
-                          href={item.cta.href}
-                          className="group/cta inline-flex w-fit items-center gap-2 rounded-full bg-coral px-5 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-coral-dark"
-                        >
-                          {item.cta.label}
-                          <ArrowIcon className="h-3.5 w-3.5 transition-transform duration-300 group-hover/cta:translate-x-1" />
-                        </Link>
-                      </div>
+                      </NavigationMenuLink>
                     )}
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <Link
-                key={item.label}
-                href={resolve(item.href)}
-                className={`border-b-2 border-transparent pb-0.5 transition-colors hover:border-coral hover:text-[#6b8e1f] ${linkColor}`}
-              >
-                {item.label}
-              </Link>
-            ),
-          )}
+                  </NavigationMenuItem>
+                );
+              })}
+            </NavigationMenuList>
+          </NavigationMenu>
         </div>
 
-        {/* right: login + mobile toggle */}
+        {/* right: account + mobile toggle */}
         <div className="flex items-center gap-3 sm:gap-4">
-          <Link
-            href="/login"
-            className={`rounded-full px-5 py-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.14em] transition-colors ${
-              onDark ? "bg-cream text-ink hover:bg-coral hover:text-ink" : "bg-ink text-cream hover:bg-coral hover:text-ink"
-            }`}
-          >
-            Login
-          </Link>
+          <AccountMenu onDark={onDark} />
           <button
             onClick={() => setOpen((v) => !v)}
             aria-label="Menu"
@@ -195,47 +190,49 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
       {/* mobile slide-down panel */}
       <div className={`overflow-y-auto border-line bg-cream/95 backdrop-blur-md transition-[max-height] duration-500 lg:hidden ${open ? "max-h-[80vh] border-b" : "max-h-0"}`}>
         <div className="mx-auto flex max-w-[1400px] flex-col gap-1 px-5 py-6 sm:px-8">
-          {nav.map((item) => (
-            <div key={item.label}>
-              <Link
-                href={resolve(item.href)}
-                onClick={() => setOpen(false)}
-                className="display block py-2 text-2xl text-ink transition-colors hover:text-[#6b8e1f]"
-              >
-                {item.label}
-              </Link>
-              {item.children && (
-                <div className="mb-2 ml-1 flex flex-col gap-1 border-l border-line pl-4">
-                  {item.children.map((c) => (
-                    <Link
-                      key={c.label}
-                      href={resolve(c.href)}
-                      onClick={() => setOpen(false)}
-                      className="py-1 text-sm font-semibold text-ink-soft transition-colors hover:text-[#6b8e1f]"
-                    >
-                      {c.label}
-                    </Link>
-                  ))}
-                  {item.cta && (
-                    <Link
-                      href={item.cta.href}
-                      onClick={() => setOpen(false)}
-                      className="mt-1 inline-flex w-fit items-center gap-2 py-1 text-sm font-semibold text-[#6b8e1f]"
-                    >
-                      {item.cta.label} <ArrowIcon className="h-3.5 w-3.5" />
-                    </Link>
-                  )}
-                </div>
-              )}
-            </div>
-          ))}
-          <Link
-            href="/login"
-            onClick={() => setOpen(false)}
-            className="mt-4 w-fit rounded-full bg-ink px-6 py-3 text-[0.8rem] font-semibold uppercase tracking-[0.14em] text-cream"
-          >
-            Login
-          </Link>
+          {nav.map((item) => {
+            const TopIcon = topIcon[item.label];
+            return (
+              <div key={item.label}>
+                <Link
+                  href={resolve(item.href)}
+                  onClick={() => setOpen(false)}
+                  className="display flex items-center gap-3 py-2 text-2xl text-ink transition-colors hover:text-[#6b8e1f]"
+                >
+                  {TopIcon && <TopIcon className="size-5 text-[#6b8e1f]" aria-hidden />}
+                  {item.label}
+                </Link>
+                {item.children && (
+                  <div className="mb-2 ml-1 flex flex-col gap-1 border-l border-line pl-4">
+                    {item.children.map((c) => {
+                      const CIcon = c.icon ? childIcon[c.icon] : undefined;
+                      return (
+                        <Link
+                          key={c.label}
+                          href={resolve(c.href)}
+                          onClick={() => setOpen(false)}
+                          className="flex items-center gap-2.5 py-1 text-sm font-semibold text-ink-soft transition-colors hover:text-[#6b8e1f]"
+                        >
+                          {CIcon && <CIcon className="size-4 text-muted" aria-hidden />}
+                          {c.label}
+                        </Link>
+                      );
+                    })}
+                    {item.cta && (
+                      <Link
+                        href={item.cta.href}
+                        onClick={() => setOpen(false)}
+                        className="mt-1 inline-flex w-fit items-center gap-2 py-1 text-sm font-semibold text-[#6b8e1f]"
+                      >
+                        {item.cta.label} <ArrowIcon className="h-3.5 w-3.5" />
+                      </Link>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+          <MobileAuth onNavigate={() => setOpen(false)} />
         </div>
       </div>
     </header>

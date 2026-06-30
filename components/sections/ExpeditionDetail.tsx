@@ -22,7 +22,7 @@ import {
   FlagIcon,
 } from "@/components/ui/icons";
 import ExpeditionCard from "@/components/ui/ExpeditionCard";
-import { huxDifference, notIncluded, gearList, reviews, departures, allExpeditions, type Trek } from "@/lib/data";
+import { huxDifference, notIncluded, gearList, reviews, departures, type Trek } from "@/lib/data";
 
 const TABS = ["Overview", "Itinerary", "Available Dates", "Includes", "Gear List", "Gallery", "Reviews"] as const;
 type Tab = (typeof TABS)[number];
@@ -60,17 +60,17 @@ function Cross({ className = "h-3 w-3" }: { className?: string }) {
   );
 }
 
-export default function ExpeditionDetail({ data }: { data: Trek }) {
+export default function ExpeditionDetail({ data, similar: similarInput = [] }: { data: Trek; similar?: Trek[] }) {
   const isPeak = data.kind === "peak";
   const priceUSD = parseInt(data.price.replace(/[^\d]/g, ""), 10) || 0;
   const reviewCount = 120 + ((data.slug.length * 37) % 220);
   const backHref = isPeak ? "/#mountaineering" : "/#treks";
   const dates = useMemo(() => departures(data.slug), [data.slug]);
   const similar = useMemo(() => {
-    const pool = allExpeditions.filter((e) => e.slug !== data.slug);
+    const pool = similarInput.filter((e) => e.slug !== data.slug);
     const sameKind = pool.filter((e) => e.kind === data.kind);
     return [...sameKind, ...pool.filter((e) => e.kind !== data.kind)].slice(0, 3);
-  }, [data.slug, data.kind]);
+  }, [similarInput, data.slug, data.kind]);
 
   const [tab, setTab] = useState<Tab>("Overview");
   const [persons, setPersons] = useState(1);

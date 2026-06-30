@@ -1,0 +1,154 @@
+// HUX EXPED — database schema.
+// Auth.js (NextAuth v5) Prisma-adapter models + domain models
+// (Expedition / ItineraryDay / Booking). See lib/data.ts for the seeded content.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/* ----------------------------------------------------------------- */
+/*  Auth                                                              */
+/* ----------------------------------------------------------------- */
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  passwordHash  String? // null for OAuth-only accounts
+  role          Role      @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts Account[]
+  sessions Session[]
+  bookings Booking[]
+}
+
+// Standard Auth.js Prisma adapter model — links OAuth providers (Google) to a User.
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+/* ----------------------------------------------------------------- */
+/*  Domain — treks & mountaineering peaks                             */
+/* ----------------------------------------------------------------- */
+
+enum Kind {
+  TREK
+  PEAK
+}
+
+model Expedition {
+  id         String   @id @default(cuid())
+  slug       String   @unique
+  kind       Kind     @default(TREK)
+  band       String? // peaks only: "6000m" | "7000m"
+  name       String
+  region     String
+  meta       String
+  days       String
+  altitude   String
+  grade      String
+  priceUSD   Int
+  season     String
+  tagline    String
+  blurb      String
+  overview   String[]
+  image      String
+  hero       String
+  gallery    String[]
+  highlights String[]
+  included   String[]
+  flagship   Boolean  @default(false)
+  published  Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  itinerary ItineraryDay[]
+  bookings  Booking[]
+}
+
+model ItineraryDay {
+  id           String     @id @default(cuid())
+  expeditionId String
+  order        Int
+  day          String
+  title        String
+  detail       String
+  expedition   Expedition @relation(fields: [expeditionId], references: [id], onDelete: Cascade)
+
+  @@index([expeditionId])
+}
+
+/* ----------------------------------------------------------------- */
+/*  Bookings                                                          */
+/* ----------------------------------------------------------------- */
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+model Booking {
+  id            String        @id @default(cuid())
+  userId        String
+  expeditionId  String
+  travellers    Int           @default(1)
+  departureDate String
+  totalUSD      Int
+  status        BookingStatus @default(PENDING)
+  note          String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expedition Expedition @relation(fields: [expeditionId], references: [id], onDelete: Restrict)
+
+  @@index([userId])
+  @@index([expeditionId])
+}

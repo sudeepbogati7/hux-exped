@@ -3,10 +3,11 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ExpeditionDetail from "@/components/sections/ExpeditionDetail";
-import { getPeak, peakExpeditions } from "@/lib/data";
+import { getPeakBySlug, getPeaks, getAllExpeditions } from "@/lib/expeditions";
 
-export function generateStaticParams() {
-  return peakExpeditions.map((p) => ({ slug: p.slug }));
+export async function generateStaticParams() {
+  const peaks = await getPeaks();
+  return peaks.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
@@ -15,7 +16,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const peak = getPeak(slug);
+  const peak = await getPeakBySlug(slug);
   if (!peak) return { title: "Peak not found — HUX EXPED" };
   return { title: `${peak.name} (${peak.altitude}) — HUX EXPED`, description: peak.blurb };
 }
@@ -26,13 +27,14 @@ export default async function PeakPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const peak = getPeak(slug);
+  const peak = await getPeakBySlug(slug);
   if (!peak) notFound();
+  const similar = await getAllExpeditions();
 
   return (
     <>
       <Navbar subpage />
-      <ExpeditionDetail data={peak} />
+      <ExpeditionDetail data={peak} similar={similar} />
       <Footer />
     </>
   );

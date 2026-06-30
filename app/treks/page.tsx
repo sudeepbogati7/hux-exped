@@ -5,14 +5,15 @@ import Footer from "@/components/layout/Footer";
 import Reveal from "@/components/ui/Reveal";
 import TreksExplorer from "@/components/sections/TreksExplorer";
 import { MountainIcon } from "@/components/ui/icons";
-import { featuredTreks } from "@/lib/data";
+import { getAllTreks } from "@/lib/expeditions";
 
 export const metadata: Metadata = {
   title: "All treks — HUX EXPED",
   description: "Every HUX EXPED trek — the offbeat, restricted and roadless corners of the Nepal Himalaya.",
 };
 
-export default function TreksIndexPage() {
+export default async function TreksIndexPage() {
+  const featuredTreks = await getAllTreks();
   return (
     <>
       <Navbar subpage />
@@ -33,7 +34,7 @@ export default function TreksIndexPage() {
             </Reveal>
 
             <Suspense fallback={null}>
-              <TreksExplorer />
+              <TreksExplorer treks={featuredTreks} />
             </Suspense>
           </div>
         </section>

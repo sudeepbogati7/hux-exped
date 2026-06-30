@@ -2,9 +2,10 @@ import Link from "next/link";
 import Reveal from "@/components/ui/Reveal";
 import ExpeditionMarquee from "@/components/ui/ExpeditionMarquee";
 import { MountainIcon, ArrowIcon } from "@/components/ui/icons";
-import { featuredTreks } from "@/lib/data";
+import { getAllTreks } from "@/lib/expeditions";
 
-export default function OffbeatTreks() {
+export default async function OffbeatTreks() {
+  const featuredTreks = await getAllTreks();
   return (
     <section id="treks" className="bg-cream-deep py-24 sm:py-32 lg:py-36">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8">

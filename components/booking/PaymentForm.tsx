@@ -1,14 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import Link from "next/link";
 import { LockIcon, CreditCardIcon, CheckIcon, ArrowIcon } from "@/components/ui/icons";
+import { confirmBooking } from "@/app/actions/booking";
 
-export default function PaymentForm({ total, slug }: { total: number; slug: string }) {
+export default function PaymentForm({ total, slug, bookingId }: { total: number; slug: string; bookingId: string }) {
   const [paid, setPaid] = useState(false);
   const [card, setCard] = useState("");
   const [exp, setExp] = useState("");
   const [cvc, setCvc] = useState("");
+  const [pending, startTransition] = useTransition();
 
   const field =
     "w-full rounded-xl border border-line bg-cream px-4 py-3 text-sm text-ink outline-none transition-colors placeholder:text-muted focus:border-ink";
@@ -27,14 +29,19 @@ export default function PaymentForm({ total, slug }: { total: number; slug: stri
         <span className="grid h-16 w-16 place-items-center rounded-full bg-coral text-ink">
           <CheckIcon className="h-8 w-8" />
         </span>
-        <h2 className="display mt-6 text-3xl text-ink">Payment successful</h2>
+        <h2 className="display mt-6 text-3xl text-ink">Booking confirmed</h2>
         <p className="mt-3 max-w-xs text-sm text-ink-soft">
-          This is a frontend demo — no card was charged. Stripe will be wired in
-          for live bookings.
+          This is a frontend demo — no card was charged — but your booking is
+          saved. You&apos;ll find it in your account.
         </p>
-        <Link href={`/treks/${slug}`} className="mt-7 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[#6b8e1f]">
-          Back to the trip
-        </Link>
+        <div className="mt-7 flex items-center gap-5">
+          <Link href="/account/bookings" className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[#6b8e1f]">
+            View my bookings
+          </Link>
+          <Link href={`/treks/${slug}`} className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-muted hover:text-ink">
+            Back to the trip
+          </Link>
+        </div>
       </div>
     );
   }
@@ -43,7 +50,10 @@ export default function PaymentForm({ total, slug }: { total: number; slug: stri
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        setPaid(true);
+        startTransition(async () => {
+          await confirmBooking(bookingId);
+          setPaid(true);
+        });
       }}
       className="rounded-2xl border border-line bg-cream p-6 sm:p-8"
     >
@@ -107,10 +117,11 @@ export default function PaymentForm({ total, slug }: { total: number; slug: stri
 
       <button
         type="submit"
-        className="group mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-coral px-8 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-ink transition-colors hover:bg-coral-dark"
+        disabled={pending}
+        className="group mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-coral px-8 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-ink transition-colors hover:bg-coral-dark disabled:cursor-not-allowed disabled:opacity-60"
       >
-        Pay USD {total.toLocaleString("en-US")}
-        <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+        {pending ? "Processing…" : `Pay USD ${total.toLocaleString("en-US")}`}
+        {!pending && <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />}
       </button>
 
       <p className="mt-4 flex items-center justify-center gap-2 text-[0.72rem] text-muted">

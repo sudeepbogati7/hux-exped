@@ -2,11 +2,14 @@
 
 import { useState } from "react";
 import { ArrowIcon, CheckIcon } from "@/components/ui/icons";
-import { featuredTreks, site } from "@/lib/data";
+import { site } from "@/lib/data";
+import { useExpeditions } from "@/lib/useExpeditions";
 
 const ACCOMMODATION = ["Basic teahouse", "Comfort lodges", "Luxury", "Tents / camping", "I'll self-book"];
 
 export default function PersonalizeTrip() {
+  const expeditions = useExpeditions();
+  const treks = expeditions.filter((e) => e.kind !== "peak");
   const [open, setOpen] = useState(false);
   const [sent, setSent] = useState(false);
   const [form, setForm] = useState({
@@ -128,7 +131,7 @@ export default function PersonalizeTrip() {
                     <label className={label}>Where do you want to go?</label>
                     <select className={field} value={form.destination} onChange={(e) => set("destination")(e.target.value)}>
                       <option value="">Not sure yet — surprise me</option>
-                      {featuredTreks.map((t) => (
+                      {treks.map((t) => (
                         <option key={t.slug} value={t.name}>{t.name}</option>
                       ))}
                       <option value="Somewhere else in Nepal">Somewhere else in Nepal</option>

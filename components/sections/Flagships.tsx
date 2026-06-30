@@ -2,9 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import { CalendarIcon, ArrowIcon } from "@/components/ui/icons";
-import { flagshipTreks } from "@/lib/data";
+import { getFlagshipTreks } from "@/lib/expeditions";
 
-export default function Flagships() {
+export default async function Flagships() {
+  const flagshipTreks = await getFlagshipTreks();
   return (
     <section id="flagships" className="paper py-24 sm:py-32 lg:py-36">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8">

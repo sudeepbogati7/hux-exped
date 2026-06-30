@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo, Inter } from "next/font/google";
 import "./globals.css";
+import AuthProvider from "@/components/providers/AuthProvider";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import FloatingWhatsApp from "@/components/ui/FloatingWhatsApp";
 
@@ -32,8 +33,10 @@ export default function RootLayout({
       className={`${archivo.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-cream text-ink">
-        <SmoothScroll>{children}</SmoothScroll>
-        <FloatingWhatsApp />
+        <AuthProvider>
+          <SmoothScroll>{children}</SmoothScroll>
+          <FloatingWhatsApp />
+        </AuthProvider>
       </body>
     </html>
   );

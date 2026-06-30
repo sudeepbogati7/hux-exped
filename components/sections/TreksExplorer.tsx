@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import ExpeditionCard from "@/components/ui/ExpeditionCard";
 import { SearchIcon, ChevronDown } from "@/components/ui/icons";
-import { featuredTreks } from "@/lib/data";
+import type { Trek } from "@/lib/data";
 
 const MONTH_ABBR: Record<string, string> = {
   March: "mar",
@@ -16,7 +16,7 @@ const MONTH_ABBR: Record<string, string> = {
 };
 const SEASONS = ["Any season", ...Object.keys(MONTH_ABBR)];
 
-export default function TreksExplorer() {
+export default function TreksExplorer({ treks }: { treks: Trek[] }) {
   const sp = useSearchParams();
   const [query, setQuery] = useState(sp.get("q") ?? "");
   const [season, setSeason] = useState(sp.get("season") ?? "Any season");
@@ -24,7 +24,7 @@ export default function TreksExplorer() {
   const q = query.trim().toLowerCase();
   const abbr = MONTH_ABBR[season];
 
-  const filtered = featuredTreks.filter((t) => {
+  const filtered = treks.filter((t) => {
     const hay = `${t.name} ${t.region} ${t.tagline} ${t.meta}`.toLowerCase();
     const okQ =
       !q || hay.includes(q) || q.split(/\s+/).some((w) => w.length > 2 && hay.includes(w));

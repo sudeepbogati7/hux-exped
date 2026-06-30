@@ -4,7 +4,7 @@ import Footer from "@/components/layout/Footer";
 import Reveal from "@/components/ui/Reveal";
 import ExpeditionCard from "@/components/ui/ExpeditionCard";
 import { MountainIcon, PeakIcon } from "@/components/ui/icons";
-import { peaks7000, peaks6000 } from "@/lib/data";
+import { getPeaks, type ExpeditionRecord } from "@/lib/expeditions";
 
 export const metadata: Metadata = {
   title: "All peaks — HUX EXPED",
@@ -22,7 +22,7 @@ function Band({
   icon: typeof PeakIcon;
   title: string;
   label: string;
-  peaks: typeof peaks6000;
+  peaks: ExpeditionRecord[];
 }) {
   return (
     <div id={id} className="scroll-mt-28">
@@ -46,7 +46,8 @@ function Band({
   );
 }
 
-export default function MountaineeringIndexPage() {
+export default async function MountaineeringIndexPage() {
+  const [peaks7000, peaks6000] = await Promise.all([getPeaks("7000m"), getPeaks("6000m")]);
   return (
     <>
       <Navbar subpage />

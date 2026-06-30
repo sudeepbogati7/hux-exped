@@ -4,11 +4,13 @@ import { useState } from "react";
 import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import { ArrowIcon, ChevronDown, HeartIcon } from "@/components/ui/icons";
-import { featuredTreks, about, photos } from "@/lib/data";
+import { about, photos } from "@/lib/data";
+import { useExpeditions } from "@/lib/useExpeditions";
 
 const MONTHS = ["Flexible", "March", "April", "May", "September", "October", "November"];
 
 export default function Contact() {
+  const featuredTreks = useExpeditions().filter((e) => e.kind !== "peak");
   const [sent, setSent] = useState(false);
   const [form, setForm] = useState({
     name: "",

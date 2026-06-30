@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   description: "Log in to manage your HUX EXPED expeditions and bookings.",
 };
 
-export default function LoginPage() {
-  return <AuthView mode="login" />;
+export default async function LoginPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ callbackUrl?: string }>;
+}) {
+  const { callbackUrl } = await searchParams;
+  return <AuthView mode="login" callbackUrl={callbackUrl} />;
 }

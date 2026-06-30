@@ -3,11 +3,11 @@ import Link from "next/link";
 import Reveal from "@/components/ui/Reveal";
 import ExpeditionMarquee from "@/components/ui/ExpeditionMarquee";
 import { MountainIcon, ArrowIcon } from "@/components/ui/icons";
-import { peaks7000, peaks6000, photos } from "@/lib/data";
+import { photos } from "@/lib/data";
+import { getPeaks } from "@/lib/expeditions";
 
-const allPeaks = [...peaks7000, ...peaks6000];
-
-export default function Mountaineering() {
+export default async function Mountaineering() {
+  const allPeaks = [...(await getPeaks("7000m")), ...(await getPeaks("6000m"))];
   return (
     <section id="mountaineering" className="relative overflow-hidden bg-ink py-24 text-cream sm:py-32 lg:py-36">
       <Image src={photos.nightSky} alt="" fill sizes="100vw" className="object-cover opacity-[0.12] grayscale" />
