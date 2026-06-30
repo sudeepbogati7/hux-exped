@@ -1,24 +1,26 @@
-import Image from "next/image";
-
-/** HUX EXPED brand lockup (public/logo.png). `invert` for dark backgrounds. */
+/**
+ * HUX-PED text wordmark. `invert` switches to light text for dark backgrounds.
+ * Pass a Tailwind text-size class via `className` (e.g. `text-2xl`) to size it.
+ */
 export default function Logo({
-  className = "",
+  className = "text-2xl",
   invert = false,
-  priority = false,
+  priority: _priority = false,
 }: {
   className?: string;
   invert?: boolean;
   priority?: boolean;
 }) {
   return (
-    <Image
-      src="/logo.png"
-      alt="HUX EXPED"
-      width={975}
-      height={293}
-      priority={priority}
-      sizes="240px"
-      className={`${invert ? "invert" : ""} w-auto ${className}`}
-    />
+    <span
+      className={`display inline-flex select-none items-center whitespace-nowrap font-extrabold uppercase leading-none tracking-[-0.02em] ${
+        invert ? "text-cream" : "text-ink"
+      } ${className}`}
+    >
+      HU
+      <span className={invert ? "text-coral" : "text-[#6b8e1f]"}>X</span>
+      <span className={`mx-[0.04em] ${invert ? "text-coral" : "text-[#6b8e1f]"}`}>-</span>
+      <span className={invert ? "text-coral" : "text-[#6b8e1f]"}>PED</span>
+    </span>
   );
 }

@@ -139,6 +139,11 @@ export const MailIcon = ({ className = "h-5 w-5" }: P) => (
     <path d="M4 7.5l8 5.5 8-5.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
+export const TripadvisorIcon = ({ className = "h-5 w-5" }: P) => (
+  <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+    <path d="M12 7.5c-2.43 0-4.7.63-6.55 1.72H1.5l1.36 1.48a4.04 4.04 0 1 0 5.5 5.9L12 20l1.64-3.4a4.04 4.04 0 1 0 5.5-5.9L20.5 9.22h-3.95A12.9 12.9 0 0 0 12 7.5zm-5.04 9.2a2.66 2.66 0 1 1 0-5.32 2.66 2.66 0 0 1 0 5.32zm0-4.18a1.52 1.52 0 1 0 0 3.04 1.52 1.52 0 0 0 0-3.04zm10.08 4.18a2.66 2.66 0 1 1 0-5.32 2.66 2.66 0 0 1 0 5.32zm0-4.18a1.52 1.52 0 1 0 0 3.04 1.52 1.52 0 0 0 0-3.04z" />
+  </svg>
+);
 
 export const socialIcon: Record<string, (p: P) => ReactElement> = {
   Instagram: InstagramIcon,

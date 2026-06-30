@@ -49,7 +49,7 @@ export default function AuthView({ mode }: { mode: Mode }) {
         <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/40 to-ink/30" />
         <div className="relative flex h-full flex-col justify-between p-12">
           <Link href="/" className="w-fit">
-            <Logo invert className="h-10" />
+            <Logo invert className="text-2xl" />
           </Link>
           <div>
             <p className="display max-w-md text-3xl leading-tight text-cream xl:text-4xl">
@@ -67,7 +67,7 @@ export default function AuthView({ mode }: { mode: Mode }) {
         <div className="w-full max-w-md">
           {/* mobile logo */}
           <Link href="/" className="mb-10 inline-flex lg:hidden">
-            <Logo className="h-10" />
+            <Logo className="text-2xl" />
           </Link>
 
           <Link

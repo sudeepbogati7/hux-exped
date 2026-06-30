@@ -38,24 +38,24 @@ export default function HeroVideo() {
       <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-ink/80 via-ink/15 to-ink/35" />
 
       {/* centred-bottom card */}
-      <div className="hv-card relative z-10 mb-[14vh] w-full max-w-3xl px-5 sm:px-6">
-        <div className="rounded-3xl bg-ink/45 p-6 ring-1 ring-white/10 backdrop-blur-md sm:p-8">
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-6">
-            <Logo invert priority className="h-12 shrink-0 sm:h-14" />
-            <span className="hidden h-12 w-px bg-cream/20 sm:block" />
+      <div className="hv-card relative z-10 mb-[14vh] w-full max-w-2xl px-5 sm:px-6">
+        <div className="rounded-3xl bg-ink/45 p-5 ring-1 ring-white/10 backdrop-blur-md sm:p-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-5">
+            <Logo invert priority className="shrink-0 text-2xl sm:text-3xl" />
+            <span className="hidden h-10 w-px bg-cream/20 sm:block" />
             <div>
-              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-cream/70">The offbeat</p>
-              <h1 className="display text-3xl leading-[0.95] text-cream sm:text-4xl">
+              <p className="text-[0.66rem] font-semibold uppercase tracking-[0.22em] text-cream/70">The offbeat</p>
+              <h1 className="display text-2xl leading-[0.95] text-cream sm:text-3xl">
                 Walk the <span className="text-[#6b8e1f]">wild side</span>
               </h1>
             </div>
           </div>
 
-          <div className="mt-6">
+          <div className="mt-5">
             <HeroSearch />
           </div>
 
-          <p className="mt-4 text-sm text-cream/75">
+          <p className="mt-3.5 text-[0.82rem] text-cream/75">
             Upcoming treks:{" "}
             <Link href="/treks/dolpo" className="font-semibold text-cream underline-offset-4 hover:text-[#6b8e1f] hover:underline">
               Dolpo

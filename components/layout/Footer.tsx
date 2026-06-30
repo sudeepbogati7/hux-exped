@@ -41,7 +41,7 @@ export default function Footer() {
       <div className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8">
         {/* big wordmark */}
         <div className="flex items-center justify-between gap-6 border-b border-cream/15 pb-12">
-          <Logo invert className="h-20 sm:h-28" />
+          <Logo invert className="text-5xl sm:text-7xl" />
           <a href="#top" className="hidden shrink-0 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-cream/60 transition-colors hover:text-[#6b8e1f] sm:inline">
             Back to top ↑
           </a>

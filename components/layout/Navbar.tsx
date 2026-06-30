@@ -3,15 +3,16 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Logo from "@/components/ui/Logo";
-import { ChevronDown, ArrowIcon, FacebookIcon, InstagramIcon, XIcon, YoutubeIcon } from "@/components/ui/icons";
+import { ChevronDown, ArrowIcon, FacebookIcon, InstagramIcon, WhatsappIcon, MailIcon, TripadvisorIcon } from "@/components/ui/icons";
 import PersonalizeTrip from "@/components/ui/PersonalizeTrip";
-import { nav } from "@/lib/data";
+import { nav, site } from "@/lib/data";
 
 const socials = [
   { label: "Facebook", href: "https://facebook.com", Icon: FacebookIcon },
-  { label: "X", href: "https://x.com", Icon: XIcon },
   { label: "Instagram", href: "https://instagram.com", Icon: InstagramIcon },
-  { label: "YouTube", href: "https://youtube.com", Icon: YoutubeIcon },
+  { label: "WhatsApp", href: `https://wa.me/${site.whatsapp}`, Icon: WhatsappIcon },
+  { label: "Email", href: `mailto:${site.email}`, Icon: MailIcon },
+  { label: "Tripadvisor", href: "https://tripadvisor.com", Icon: TripadvisorIcon },
 ];
 
 const topLinks = [
@@ -90,7 +91,7 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
       <nav className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-5 sm:px-8">
         {/* left: brand */}
         <Link href={subpage ? "/" : "#top"} className="flex items-center text-ink">
-          <Logo className="h-11 sm:h-12" priority invert={onDark} />
+          <Logo className="text-2xl sm:text-[1.7rem]" priority invert={onDark} />
         </Link>
 
         {/* center/right: desktop nav */}

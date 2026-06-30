@@ -12,7 +12,7 @@ export default function ExpeditionMarquee({ items }: { items: Trek[] }) {
   const reps = Math.max(1, Math.ceil(6 / items.length));
   const base = Array.from({ length: reps }, () => items).flat();
   const loop = [...base, ...base];
-  const duration = `${Math.max(30, base.length * 6)}s`;
+  const duration = `${Math.max(48, base.length * 9)}s`;
 
   return (
     <div className="relative overflow-hidden py-4 [mask-image:linear-gradient(to_right,transparent,#000_3%,#000_97%,transparent)]">
