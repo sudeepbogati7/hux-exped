@@ -42,7 +42,7 @@ export default function Footer() {
         {/* big wordmark */}
         <div className="flex items-center justify-between gap-6 border-b border-cream/15 pb-12">
           <Logo invert className="text-5xl sm:text-7xl" />
-          <a href="#top" className="hidden shrink-0 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-cream/60 transition-colors hover:text-[#6b8e1f] sm:inline">
+          <a href="#top" className="hidden shrink-0 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-cream/60 transition-colors hover:text-[#1f6f96] sm:inline">
             Back to top ↑
           </a>
         </div>
@@ -61,7 +61,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               {navLinks.map((l) => (
                 <li key={l.href}>
-                  <a href={l.href.startsWith("#") ? `/${l.href}` : l.href} className="text-cream/80 hover:text-[#6b8e1f]">{l.label}</a>
+                  <a href={l.href.startsWith("#") ? `/${l.href}` : l.href} className="text-cream/80 hover:text-[#1f6f96]">{l.label}</a>
                 </li>
               ))}
             </ul>
@@ -74,7 +74,7 @@ export default function Footer() {
                 const Icon = socialIcon[s];
                 return (
                   <li key={s}>
-                    <a href="#" className="group inline-flex items-center gap-3 text-cream/80 hover:text-[#6b8e1f]">
+                    <a href="#" className="group inline-flex items-center gap-3 text-cream/80 hover:text-[#1f6f96]">
                       <span className="grid h-9 w-9 place-items-center rounded-full border border-cream/20 transition-colors group-hover:border-coral">
                         {Icon ? <Icon className="h-4 w-4" /> : null}
                       </span>

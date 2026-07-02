@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowIcon } from "@/components/ui/icons";
 import { requireUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import StatusPill from "@/components/ui/StatusPill";
 
 export const metadata = { title: "Your account — HUX EXPED" };
 
@@ -50,7 +51,7 @@ export default async function AccountOverview() {
         <div className="flex items-center justify-between">
           <h2 className="display text-2xl text-ink">Recent bookings</h2>
           {total > 0 && (
-            <Link href="/account/bookings" className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-[#6b8e1f] hover:underline">
+            <Link href="/account/bookings" className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-[#1f6f96] hover:underline">
               View all
             </Link>
           )}
@@ -75,7 +76,7 @@ export default async function AccountOverview() {
                 <div>
                   <Link
                     href={`/${b.expedition.kind === "PEAK" ? "mountaineering" : "treks"}/${b.expedition.slug}`}
-                    className="display text-xl text-ink hover:text-[#6b8e1f]"
+                    className="display text-xl text-ink hover:text-[#1f6f96]"
                   >
                     {b.expedition.name}
                   </Link>
@@ -93,16 +94,3 @@ export default async function AccountOverview() {
   );
 }
 
-function StatusPill({ status }: { status: "PENDING" | "CONFIRMED" | "CANCELLED" }) {
-  const style =
-    status === "CONFIRMED"
-      ? "border-[#6b8e1f]/30 bg-coral/15 text-[#5a7a1a]"
-      : status === "PENDING"
-        ? "border-[#cf9b1d]/40 bg-[#f5c451]/15 text-[#a9781a]"
-        : "border-line bg-cream-deep text-muted";
-  return (
-    <span className={`rounded-full border px-3.5 py-1.5 text-[0.66rem] font-semibold uppercase tracking-[0.14em] ${style}`}>
-      {status.toLowerCase()}
-    </span>
-  );
-}

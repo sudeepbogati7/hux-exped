@@ -11,10 +11,10 @@ export default async function OffbeatTreks() {
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
         <Reveal variant="up">
           <p className="eyebrow mb-4 inline-flex items-center gap-2">
-            <MountainIcon className="h-4 w-4 text-[#6b8e1f]" /> Offbeat Nepal
+            <MountainIcon className="h-4 w-4 text-[#1f6f96]" /> Offbeat Nepal
           </p>
           <h2 className="display text-5xl text-ink sm:text-6xl lg:text-7xl">
-            Trails the crowds never <span className="text-[#6b8e1f]">find</span>
+            Trails the crowds never <span className="text-[#1f6f96]">find</span>
           </h2>
         </Reveal>
       </div>

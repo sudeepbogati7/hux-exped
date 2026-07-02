@@ -77,7 +77,7 @@ export default function AuthView({ mode, callbackUrl }: { mode: Mode; callbackUr
 
           <Link
             href="/"
-            className="mb-8 inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-muted transition-colors hover:text-[#6b8e1f]"
+            className="mb-8 inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-muted transition-colors hover:text-[#1f6f96]"
           >
             <ArrowIcon className="h-3.5 w-3.5 rotate-180" /> Back home
           </Link>
@@ -143,7 +143,7 @@ export default function AuthView({ mode, callbackUrl }: { mode: Mode; callbackUr
                 <label className="flex items-center gap-2 text-ink-soft">
                   <input type="checkbox" className="h-4 w-4 accent-coral" /> Remember me
                 </label>
-                <a href="#" className="text-[0.78rem] font-semibold text-[#6b8e1f] hover:underline">
+                <a href="#" className="text-[0.78rem] font-semibold text-[#1f6f96] hover:underline">
                   Forgot password?
                 </a>
               </div>
@@ -175,7 +175,7 @@ export default function AuthView({ mode, callbackUrl }: { mode: Mode; callbackUr
             {c.switchText}{" "}
             <Link
               href={callbackUrl ? `${c.switchLink}?callbackUrl=${encodeURIComponent(callbackUrl)}` : c.switchLink}
-              className="font-semibold text-[#6b8e1f] hover:underline"
+              className="font-semibold text-[#1f6f96] hover:underline"
             >
               {c.switchLabel}
             </Link>

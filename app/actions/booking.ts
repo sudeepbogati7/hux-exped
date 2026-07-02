@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { getStripe, stripeEnabled } from "@/lib/stripe";
 import { bookingSchema } from "@/lib/validation";
 
 export type BookingState = { error?: string } | undefined;
@@ -55,8 +56,79 @@ export async function createBooking(_state: BookingState, formData: FormData): P
 }
 
 /**
- * Mark a PENDING booking as CONFIRMED (after the mock payment). Ownership is
- * re-verified. Returns true on success.
+ * Start a Stripe Checkout Session for the user's booking. Sets the method +
+ * session id, then redirects to Stripe. Returns an error string on failure.
+ */
+export async function startStripeCheckout(bookingId: string): Promise<{ error: string } | void> {
+  const session = await auth();
+  if (!session?.user) return { error: "You must be signed in." };
+  if (!stripeEnabled) return { error: "Card payments aren't configured yet. Please use bank transfer." };
+
+  const booking = await prisma.booking.findUnique({
+    where: { id: bookingId },
+    select: { userId: true, status: true, totalUSD: true, expedition: { select: { name: true, slug: true, image: true } } },
+  });
+  if (!booking || booking.userId !== session.user.id) return { error: "Booking not found." };
+  if (booking.status === "CONFIRMED") return { error: "This booking is already paid." };
+
+  const base = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+  const stripe = getStripe();
+  const checkout = await stripe.checkout.sessions.create({
+    mode: "payment",
+    line_items: [
+      {
+        quantity: 1,
+        price_data: {
+          currency: "usd",
+          unit_amount: booking.totalUSD * 100,
+          product_data: {
+            name: `${booking.expedition.name} — HUX EXPED`,
+            images: booking.expedition.image?.startsWith("http") ? [booking.expedition.image] : undefined,
+          },
+        },
+      },
+    ],
+    metadata: { bookingId },
+    customer_email: session.user.email ?? undefined,
+    success_url: `${base}/book/${booking.expedition.slug}/success?b=${bookingId}`,
+    cancel_url: `${base}/book/${booking.expedition.slug}/pay?b=${bookingId}&canceled=1`,
+  });
+
+  await prisma.booking.update({
+    where: { id: bookingId },
+    data: { paymentMethod: "STRIPE", stripeSessionId: checkout.id },
+  });
+
+  if (!checkout.url) return { error: "Could not start checkout. Please try again." };
+  redirect(checkout.url);
+}
+
+/**
+ * Submit a bank-transfer proof. Moves the booking to AWAITING_VERIFICATION for
+ * an admin to review. Ownership re-verified.
+ */
+export async function submitBankTransfer(bookingId: string, proofUrl: string): Promise<{ error: string } | void> {
+  const session = await auth();
+  if (!session?.user) return { error: "You must be signed in." };
+  if (!proofUrl) return { error: "Please upload your payment proof first." };
+
+  const booking = await prisma.booking.findUnique({
+    where: { id: bookingId },
+    select: { userId: true, status: true },
+  });
+  if (!booking || booking.userId !== session.user.id) return { error: "Booking not found." };
+  if (booking.status === "CONFIRMED") return { error: "This booking is already paid." };
+
+  await prisma.booking.update({
+    where: { id: bookingId },
+    data: { paymentMethod: "BANK_TRANSFER", paymentProof: proofUrl, status: "AWAITING_VERIFICATION" },
+  });
+  revalidatePath("/account/bookings");
+}
+
+/**
+ * Mark a booking CONFIRMED (used by the Stripe webhook / admin verification).
+ * Ownership is re-verified for the user-facing path.
  */
 export async function confirmBooking(bookingId: string): Promise<boolean> {
   const session = await auth();
@@ -70,7 +142,7 @@ export async function confirmBooking(bookingId: string): Promise<boolean> {
 
   await prisma.booking.update({
     where: { id: bookingId },
-    data: { status: "CONFIRMED" },
+    data: { status: "CONFIRMED", paidAt: new Date() },
   });
   revalidatePath("/account/bookings");
   return true;
@@ -83,9 +155,11 @@ export async function cancelBooking(bookingId: string): Promise<void> {
 
   const booking = await prisma.booking.findUnique({
     where: { id: bookingId },
-    select: { userId: true },
+    select: { userId: true, status: true },
   });
   if (!booking || booking.userId !== session.user.id) return;
+  // Don't let users cancel an already-paid booking from the account page.
+  if (booking.status === "CONFIRMED") return;
 
   await prisma.booking.update({
     where: { id: bookingId },

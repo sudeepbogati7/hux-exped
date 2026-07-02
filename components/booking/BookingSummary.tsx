@@ -37,8 +37,8 @@ export default function BookingSummary({
           <p className="eyebrow">{region}</p>
           <h2 className="display mt-1 text-2xl text-ink">{name}</h2>
           <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-[0.78rem] font-semibold uppercase tracking-[0.1em] text-ink-soft">
-            <span className="inline-flex items-center gap-1.5"><ClockIcon className="h-4 w-4 text-[#6b8e1f]" /> {days}</span>
-            <span className="inline-flex items-center gap-1.5"><MountainIcon className="h-4 w-4 text-[#6b8e1f]" /> {altitude}</span>
+            <span className="inline-flex items-center gap-1.5"><ClockIcon className="h-4 w-4 text-[#1f6f96]" /> {days}</span>
+            <span className="inline-flex items-center gap-1.5"><MountainIcon className="h-4 w-4 text-[#1f6f96]" /> {altitude}</span>
           </div>
 
           <dl className="mt-6 space-y-3 border-t border-line pt-5 text-sm">
@@ -59,7 +59,7 @@ export default function BookingSummary({
               <dd className="display text-2xl text-ink">USD {(total ?? price).toLocaleString("en-US")}</dd>
             </div>
             <p className="flex items-center gap-2 text-[0.78rem] text-muted">
-              <CheckIcon className="h-3.5 w-3.5 text-[#6b8e1f]" /> Or reserve with a USD {deposit.toLocaleString("en-US")} deposit
+              <CheckIcon className="h-3.5 w-3.5 text-[#1f6f96]" /> Or reserve with a USD {deposit.toLocaleString("en-US")} deposit
             </p>
           </dl>
         </div>

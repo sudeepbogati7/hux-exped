@@ -82,7 +82,7 @@ export default async function BlogPostPage({
             <div className="mt-14 border-t border-line pt-8">
               <Link
                 href="/blog"
-                className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:text-[#6b8e1f]"
+                className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:text-[#1f6f96]"
               >
                 <ArrowIcon className="h-4 w-4 rotate-180 transition-transform group-hover:-translate-x-1" />
                 All stories

@@ -29,7 +29,7 @@ export default function CTA() {
           <h2 className="display text-5xl leading-[0.95] sm:text-7xl">
             The map runs out.
             <br />
-            That&apos;s where we <span className="text-[#6b8e1f]">begin.</span>
+            That&apos;s where we <span className="text-[#1f6f96]">begin.</span>
           </h2>
           <p className="mx-auto mt-7 max-w-xl leading-relaxed text-cream/80">
             Tell us where you want to go — or how far out of your comfort zone

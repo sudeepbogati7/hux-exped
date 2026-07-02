@@ -82,7 +82,7 @@ export default function GalleryMasonry({ items = galleryPhotos }: { items?: Gall
           <button
             onClick={() => setOpen(null)}
             aria-label="Close"
-            className="absolute right-5 top-5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-cream/70 hover:text-[#6b8e1f]"
+            className="absolute right-5 top-5 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-cream/70 hover:text-[#1f6f96]"
           >
             Close ✕
           </button>

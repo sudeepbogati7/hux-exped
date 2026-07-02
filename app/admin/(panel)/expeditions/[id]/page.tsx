@@ -46,6 +46,8 @@ export default async function EditExpeditionPage({ params }: { params: Promise<{
             gallery: e.gallery,
             highlights: e.highlights,
             included: e.included,
+            notIncluded: e.notIncluded,
+            availableDates: e.availableDates,
             flagship: e.flagship,
             published: e.published,
             itinerary: e.itinerary.map((d) => ({ day: d.day, title: d.title, detail: d.detail })),

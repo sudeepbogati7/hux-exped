@@ -47,7 +47,7 @@ export default async function BookPage({
       <main className="paper pt-20">
         <section className="py-12 sm:py-16">
           <div className="mx-auto max-w-[1200px] px-5 sm:px-8">
-            <Link href={detailHref} className="inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-muted transition-colors hover:text-[#6b8e1f]">
+            <Link href={detailHref} className="inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-muted transition-colors hover:text-[#1f6f96]">
               <ArrowIcon className="h-4 w-4 rotate-180" /> Back to trip
             </Link>
             <h1 className="display mt-5 text-4xl text-ink sm:text-5xl">Secure your spot</h1>

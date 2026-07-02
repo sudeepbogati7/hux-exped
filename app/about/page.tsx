@@ -64,7 +64,7 @@ export default function AboutPage() {
             </Reveal>
             <Reveal variant="up" delay={0.1} className="order-1 lg:order-2">
               <p className="eyebrow mb-5 inline-flex items-center gap-2">
-                <MountainIcon className="h-4 w-4 text-[#6b8e1f]" /> {about.mission.eyebrow}
+                <MountainIcon className="h-4 w-4 text-[#1f6f96]" /> {about.mission.eyebrow}
               </p>
               <h2 className="display text-4xl text-ink sm:text-5xl">A reason to go.</h2>
               <p className="mt-7 max-w-md text-lg leading-relaxed text-ink">
@@ -103,7 +103,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
             <Reveal variant="up">
               <p className="eyebrow mb-5 inline-flex items-center gap-2">
-                <MountainIcon className="h-4 w-4 text-[#6b8e1f]" /> Our team
+                <MountainIcon className="h-4 w-4 text-[#1f6f96]" /> Our team
               </p>
               <h2 className="display max-w-3xl text-4xl text-ink sm:text-5xl lg:text-6xl">
                 The people who get you up there
@@ -123,7 +123,7 @@ export default function AboutPage() {
                       />
                     </div>
                     <h3 className="display mt-4 text-2xl text-ink">{m.name}</h3>
-                    <p className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-[#6b8e1f]">{m.role}</p>
+                    <p className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-[#1f6f96]">{m.role}</p>
                     <p className="mt-2 text-sm leading-relaxed text-ink-soft">{m.note}</p>
                   </div>
                 </Reveal>
@@ -138,7 +138,7 @@ export default function AboutPage() {
             <div className="grid items-end gap-8 border-b border-line pb-12 lg:grid-cols-[1.4fr_1fr]">
               <Reveal variant="up">
                 <p className="eyebrow mb-5 inline-flex items-center gap-2">
-                  <ShieldIcon className="h-4 w-4 text-[#6b8e1f]" /> Certifications &amp; associations
+                  <ShieldIcon className="h-4 w-4 text-[#1f6f96]" /> Certifications &amp; associations
                 </p>
                 <h2 className="display text-4xl text-ink sm:text-5xl lg:text-6xl">
                   Licensed, insured
@@ -185,10 +185,10 @@ export default function AboutPage() {
           <div className="mx-auto grid max-w-[1400px] items-start gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
             <Reveal variant="up">
               <p className="eyebrow mb-5 inline-flex items-center gap-2">
-                <HeartIcon className="h-4 w-4 text-[#6b8e1f]" /> {giveBack.eyebrow}
+                <HeartIcon className="h-4 w-4 text-[#1f6f96]" /> {giveBack.eyebrow}
               </p>
               <h2 className="display text-4xl text-ink sm:text-5xl lg:text-6xl">
-                Why we <span className="text-[#6b8e1f]">give back</span>
+                Why we <span className="text-[#1f6f96]">give back</span>
               </h2>
               {giveBack.body.map((p, i) => (
                 <p key={i} className={`mt-6 max-w-md leading-relaxed ${i === 0 ? "text-lg text-ink" : "text-ink-soft"}`}>

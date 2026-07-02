@@ -77,7 +77,7 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="grid h-8 w-8 place-items-center rounded-full text-cream/80 transition-colors hover:bg-white/10 hover:text-[#6b8e1f]"
+                  className="grid h-8 w-8 place-items-center rounded-full text-cream/80 transition-colors hover:bg-white/10 hover:text-[#1f6f96]"
                 >
                   <s.Icon className="h-[17px] w-[17px]" />
                 </a>
@@ -111,8 +111,10 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
         <div className="hidden h-full items-center lg:flex">
           <NavigationMenu className="h-full">
             <NavigationMenuList>
-              {nav.map((item) => {
+              {nav.map((item, idx) => {
                 const TopIcon = topIcon[item.label];
+                // wide first menu opens leftward; the last two open rightward
+                const align = idx === 0 ? "start" : idx >= nav.length - 3 ? "end" : "center";
                 return (
                   <NavigationMenuItem key={item.label}>
                     {item.children ? (
@@ -121,7 +123,7 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
                           {TopIcon && <TopIcon className="size-4" aria-hidden />}
                           {item.label}
                         </NavigationMenuTrigger>
-                        <NavigationMenuContent>
+                        <NavigationMenuContent align={align}>
                           <ul className={cn("grid gap-1", item.columns === 2 ? "w-[36rem] grid-cols-2" : "w-72")}>
                             {item.children.map((c) => {
                               const CIcon = c.icon ? childIcon[c.icon] : undefined;
@@ -129,9 +131,9 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
                                 <li key={c.label}>
                                   <NavigationMenuLink asChild className="hover:bg-white/[0.07] focus:bg-white/[0.07]">
                                     <Link href={resolve(c.href)}>
-                                      {CIcon && <CIcon className="size-5 shrink-0 text-cream/60 transition-colors group-hover/mi:text-[#bcd93e]" aria-hidden />}
+                                      {CIcon && <CIcon className="size-5 shrink-0 text-cream/60 transition-colors group-hover/mi:text-coral" aria-hidden />}
                                       <span className="flex min-w-0 flex-col gap-0.5">
-                                        <span className="text-[0.9rem] font-semibold leading-tight text-cream transition-colors group-hover/mi:text-[#bcd93e]">
+                                        <span className="text-[0.9rem] font-semibold leading-tight text-cream transition-colors group-hover/mi:text-coral">
                                           {c.label}
                                         </span>
                                         {c.note && (
@@ -197,9 +199,9 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
                 <Link
                   href={resolve(item.href)}
                   onClick={() => setOpen(false)}
-                  className="display flex items-center gap-3 py-2 text-2xl text-ink transition-colors hover:text-[#6b8e1f]"
+                  className="display flex items-center gap-3 py-2 text-2xl text-ink transition-colors hover:text-[#1f6f96]"
                 >
-                  {TopIcon && <TopIcon className="size-5 text-[#6b8e1f]" aria-hidden />}
+                  {TopIcon && <TopIcon className="size-5 text-[#1f6f96]" aria-hidden />}
                   {item.label}
                 </Link>
                 {item.children && (
@@ -211,7 +213,7 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
                           key={c.label}
                           href={resolve(c.href)}
                           onClick={() => setOpen(false)}
-                          className="flex items-center gap-2.5 py-1 text-sm font-semibold text-ink-soft transition-colors hover:text-[#6b8e1f]"
+                          className="flex items-center gap-2.5 py-1 text-sm font-semibold text-ink-soft transition-colors hover:text-[#1f6f96]"
                         >
                           {CIcon && <CIcon className="size-4 text-muted" aria-hidden />}
                           {c.label}
@@ -222,7 +224,7 @@ export default function Navbar({ subpage = false, overDark = false }: { subpage?
                       <Link
                         href={item.cta.href}
                         onClick={() => setOpen(false)}
-                        className="mt-1 inline-flex w-fit items-center gap-2 py-1 text-sm font-semibold text-[#6b8e1f]"
+                        className="mt-1 inline-flex w-fit items-center gap-2 py-1 text-sm font-semibold text-[#1f6f96]"
                       >
                         {item.cta.label} <ArrowIcon className="h-3.5 w-3.5" />
                       </Link>

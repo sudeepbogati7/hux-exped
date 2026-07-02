@@ -34,7 +34,7 @@ export default async function PeakPage({
   return (
     <>
       <Navbar subpage />
-      <ExpeditionDetail data={peak} similar={similar} />
+      <ExpeditionDetail data={peak} similar={similar} notIncluded={peak.notIncluded} availableDates={peak.availableDates} />
       <Footer />
     </>
   );

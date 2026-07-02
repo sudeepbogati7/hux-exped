@@ -6,7 +6,7 @@ import { useSession, signOut } from "next-auth/react";
 /** Session-aware auth block for the mobile slide-down menu. */
 export default function MobileAuth({ onNavigate }: { onNavigate: () => void }) {
   const { data: session, status } = useSession();
-  const link = "py-1 text-sm font-semibold text-ink-soft transition-colors hover:text-[#6b8e1f]";
+  const link = "py-1 text-sm font-semibold text-ink-soft transition-colors hover:text-[#1f6f96]";
 
   if (status === "authenticated" && session?.user) {
     const isAdmin = session.user.role === "ADMIN";
@@ -18,7 +18,7 @@ export default function MobileAuth({ onNavigate }: { onNavigate: () => void }) {
         <Link href="/account" onClick={onNavigate} className={link}>My account</Link>
         <Link href="/account/bookings" onClick={onNavigate} className={link}>My bookings</Link>
         {isAdmin && (
-          <Link href="/admin" onClick={onNavigate} className="py-1 text-sm font-semibold text-[#6b8e1f]">
+          <Link href="/admin" onClick={onNavigate} className="py-1 text-sm font-semibold text-[#1f6f96]">
             Admin panel
           </Link>
         )}

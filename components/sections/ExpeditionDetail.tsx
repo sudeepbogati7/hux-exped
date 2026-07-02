@@ -37,14 +37,14 @@ const gearIcon: Record<string, (p: { className?: string }) => React.ReactElement
 };
 
 const tierStyle: Record<string, string> = {
-  "Must Have": "border-coral/30 bg-coral/10 text-[#6b8e1f]",
+  "Must Have": "border-coral/30 bg-coral/10 text-[#1f6f96]",
   Recommended: "border-[#cf9b1d]/40 bg-[#f5c451]/15 text-[#a9781a]",
   Optional: "border-line bg-cream-deep text-muted",
 };
 
 function Stars({ className = "h-4 w-4" }: { className?: string }) {
   return (
-    <span className="flex text-[#6b8e1f]">
+    <span className="flex text-[#1f6f96]">
       {Array.from({ length: 5 }).map((_, i) => (
         <StarIcon key={i} className={className} />
       ))}
@@ -60,12 +60,33 @@ function Cross({ className = "h-3 w-3" }: { className?: string }) {
   );
 }
 
-export default function ExpeditionDetail({ data, similar: similarInput = [] }: { data: Trek; similar?: Trek[] }) {
+export default function ExpeditionDetail({
+  data,
+  similar: similarInput = [],
+  notIncluded: notIncludedInput,
+  availableDates,
+}: {
+  data: Trek;
+  similar?: Trek[];
+  notIncluded?: string[];
+  availableDates?: string[];
+}) {
   const isPeak = data.kind === "peak";
   const priceUSD = parseInt(data.price.replace(/[^\d]/g, ""), 10) || 0;
   const reviewCount = 120 + ((data.slug.length * 37) % 220);
   const backHref = isPeak ? "/#mountaineering" : "/#treks";
-  const dates = useMemo(() => departures(data.slug), [data.slug]);
+  // Prefer admin-managed dates; fall back to the deterministic sample set.
+  const dates = useMemo(() => {
+    if (availableDates && availableDates.length) {
+      return availableDates.map((date, i) => {
+        const spots = 2 + ((data.slug.length * (i + 3)) % 8);
+        const status: "Almost full" | "Available" = spots <= 3 ? "Almost full" : "Available";
+        return { date, spots, status };
+      });
+    }
+    return departures(data.slug);
+  }, [availableDates, data.slug]);
+  const excludes = notIncludedInput && notIncludedInput.length ? notIncludedInput : notIncluded;
   const similar = useMemo(() => {
     const pool = similarInput.filter((e) => e.slug !== data.slug);
     const sameKind = pool.filter((e) => e.kind === data.kind);
@@ -111,7 +132,7 @@ export default function ExpeditionDetail({ data, similar: similarInput = [] }: {
         <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/75 to-ink/45" />
         <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8">
           <div className="flex items-center justify-between">
-            <Link href={backHref} className="inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-cream/70 transition-colors hover:text-[#6b8e1f]">
+            <Link href={backHref} className="inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-cream/70 transition-colors hover:text-[#1f6f96]">
               <ArrowIcon className="h-4 w-4 rotate-180" /> {isPeak ? "All peaks" : "All treks"}
             </Link>
             <span className="inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-cream/55">
@@ -123,7 +144,7 @@ export default function ExpeditionDetail({ data, similar: similarInput = [] }: {
           <p className="mt-4 max-w-2xl text-base text-cream/85 sm:text-lg">{data.tagline}.</p>
           <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
             <span className="flex items-center gap-2"><Stars /> <span className="text-cream/70">4.8 · {reviewCount} reviews</span></span>
-            <span className="flex items-center gap-2 text-cream/70"><BadgeCheckIcon className="h-5 w-5 text-[#6b8e1f]" /> {data.days} · {data.grade}</span>
+            <span className="flex items-center gap-2 text-cream/70"><BadgeCheckIcon className="h-5 w-5 text-[#1f6f96]" /> {data.days} · {data.grade}</span>
           </div>
         </div>
       </section>
@@ -183,7 +204,7 @@ export default function ExpeditionDetail({ data, similar: similarInput = [] }: {
                   <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
                     {glance.map((g) => (
                       <div key={g.label} className="rounded-2xl border border-line bg-cream-deep p-5 text-center">
-                        <g.icon className="mx-auto h-6 w-6 text-[#6b8e1f]" />
+                        <g.icon className="mx-auto h-6 w-6 text-[#1f6f96]" />
                         <div className="display mt-3 text-xl text-ink">{g.value}</div>
                         <div className="mt-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-muted">{g.label}</div>
                       </div>
@@ -212,14 +233,14 @@ export default function ExpeditionDetail({ data, similar: similarInput = [] }: {
                     <Image src="/map.jpg" alt={`${data.name} route map`} fill sizes="(max-width: 1024px) 100vw, 60vw" className="object-cover" />
                   </div>
                   <figcaption className="flex items-center gap-2 px-5 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-muted">
-                    <MapPinIcon className="h-4 w-4 text-[#6b8e1f]" /> Route map · {data.region}
+                    <MapPinIcon className="h-4 w-4 text-[#1f6f96]" /> Route map · {data.region}
                   </figcaption>
                 </figure>
 
                 <div className="mt-8 border-t border-line">
                   {data.itinerary.map((d) => (
                     <div key={d.day} className="grid gap-2 border-b border-line py-6 sm:grid-cols-[110px_1fr_2fr] sm:gap-6">
-                      <span className="display text-xl text-[#6b8e1f]">{d.day}</span>
+                      <span className="display text-xl text-[#1f6f96]">{d.day}</span>
                       <span className="display text-lg text-ink">{d.title}</span>
                       <span className="leading-relaxed text-ink-soft">{d.detail}</span>
                     </div>
@@ -244,7 +265,7 @@ export default function ExpeditionDetail({ data, similar: similarInput = [] }: {
                         </div>
                       </div>
                       <div className="flex items-center gap-5">
-                        <span className={`rounded-full px-3 py-1 text-[0.66rem] font-semibold uppercase tracking-[0.12em] ${d.status === "Almost full" ? "bg-coral/10 text-[#6b8e1f]" : "bg-ink/5 text-ink-soft"}`}>
+                        <span className={`rounded-full px-3 py-1 text-[0.66rem] font-semibold uppercase tracking-[0.12em] ${d.status === "Almost full" ? "bg-coral/10 text-[#1f6f96]" : "bg-ink/5 text-ink-soft"}`}>
                           {d.status === "Almost full" ? `${d.spots} spots left` : `${d.spots} spots`}
                         </span>
                         <Link href={`/book/${data.slug}`} className="rounded-full bg-coral px-6 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-coral-dark">
@@ -279,9 +300,9 @@ export default function ExpeditionDetail({ data, similar: similarInput = [] }: {
                     Not included
                   </h2>
                   <ul className="mt-6 space-y-3">
-                    {notIncluded.map((it) => (
-                      <li key={it} className="flex items-start gap-3 rounded-xl border border-coral/20 bg-coral/5 p-4 text-ink">
-                        <Cross className="mt-1 h-3.5 w-3.5 shrink-0 text-[#6b8e1f]" /> {it}
+                    {excludes.map((it) => (
+                      <li key={it} className="flex items-start gap-3 rounded-xl border border-danger/25 bg-danger/5 p-4 text-ink">
+                        <Cross className="mt-1 h-3.5 w-3.5 shrink-0 text-danger" /> {it}
                       </li>
                     ))}
                   </ul>
@@ -391,7 +412,7 @@ export default function ExpeditionDetail({ data, similar: similarInput = [] }: {
                             <div className="text-[0.72rem] text-muted">{r.country} · {r.date}</div>
                           </div>
                         </div>
-                        <span className="flex text-[#6b8e1f]">{Array.from({ length: r.rating }).map((_, i) => <StarIcon key={i} className="h-3.5 w-3.5" />)}</span>
+                        <span className="flex text-[#1f6f96]">{Array.from({ length: r.rating }).map((_, i) => <StarIcon key={i} className="h-3.5 w-3.5" />)}</span>
                       </div>
                       <p className="mt-4 leading-relaxed text-ink-soft">&ldquo;{r.text}&rdquo;</p>
                     </div>
@@ -411,7 +432,7 @@ export default function ExpeditionDetail({ data, similar: similarInput = [] }: {
                       <span className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-muted">From</span>
                       <div className="display text-4xl text-ink">${priceUSD.toLocaleString("en-US")}<span className="text-base font-normal text-muted"> / person</span></div>
                     </div>
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-coral/10 px-3 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-[#6b8e1f]"><ClockIcon className="h-3.5 w-3.5" /> {data.days}</span>
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-coral/10 px-3 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.1em] text-[#1f6f96]"><ClockIcon className="h-3.5 w-3.5" /> {data.days}</span>
                   </div>
                   <div className="mt-3 flex items-center gap-2 text-sm">
                     <Stars className="h-3.5 w-3.5" /> <span className="font-semibold text-ink">4.8</span> <span className="text-muted">({reviewCount} reviews)</span>
@@ -438,13 +459,13 @@ export default function ExpeditionDetail({ data, similar: similarInput = [] }: {
                   <Link href={`/book/${data.slug}`} className="mt-5 block rounded-full bg-coral px-6 py-4 text-center text-sm font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:bg-coral-dark">
                     Book now
                   </Link>
-                  <button onClick={() => setWished((w) => !w)} className="mt-3 flex w-full items-center justify-center gap-2 text-sm font-medium text-ink-soft transition-colors hover:text-[#6b8e1f]">
-                    <HeartIcon className={`h-4 w-4 ${wished ? "text-[#6b8e1f]" : ""}`} /> {wished ? "Saved to wishlist" : "Add to wishlist"}
+                  <button onClick={() => setWished((w) => !w)} className="mt-3 flex w-full items-center justify-center gap-2 text-sm font-medium text-ink-soft transition-colors hover:text-[#1f6f96]">
+                    <HeartIcon className={`h-4 w-4 ${wished ? "text-[#1f6f96]" : ""}`} /> {wished ? "Saved to wishlist" : "Add to wishlist"}
                   </button>
 
                   <ul className="mt-5 space-y-2.5 border-t border-line pt-5 text-[0.85rem] text-ink-soft">
                     {["Free cancellation up to 30 days", "24/7 support during trek", "Expert local guides"].map((t) => (
-                      <li key={t} className="flex items-center gap-2.5"><CheckIcon className="h-4 w-4 shrink-0 text-[#6b8e1f]" /> {t}</li>
+                      <li key={t} className="flex items-center gap-2.5"><CheckIcon className="h-4 w-4 shrink-0 text-[#1f6f96]" /> {t}</li>
                     ))}
                   </ul>
 
@@ -474,7 +495,7 @@ export default function ExpeditionDetail({ data, similar: similarInput = [] }: {
               </div>
               <Link
                 href={isPeak ? "/mountaineering" : "/treks"}
-                className="hidden shrink-0 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:text-[#6b8e1f] sm:inline"
+                className="hidden shrink-0 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:text-[#1f6f96] sm:inline"
               >
                 View all →
               </Link>

@@ -72,7 +72,7 @@ export default function Testimonials({ id = "testimonials" }: { id?: string } = 
         <Reveal variant="up" className="mx-auto max-w-2xl text-center">
           <p className="eyebrow mb-5 text-cream/50">Trekkers</p>
           <h2 className="display text-4xl sm:text-6xl">
-            What the rope team <span className="text-[#6b8e1f]">says</span>
+            What the rope team <span className="text-[#1f6f96]">says</span>
           </h2>
         </Reveal>
       </div>

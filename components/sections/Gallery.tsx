@@ -36,7 +36,7 @@ export default function Gallery() {
         <div className="flex flex-col items-start justify-between gap-8 border-b border-line pb-12 md:flex-row md:items-end">
           <Reveal variant="up">
             <p className="eyebrow mb-5 inline-flex items-center gap-2">
-              <CameraIcon className="h-4 w-4 text-[#6b8e1f]" /> The gallery
+              <CameraIcon className="h-4 w-4 text-[#1f6f96]" /> The gallery
             </p>
             <h2 className="display text-5xl text-ink sm:text-6xl lg:text-7xl">From the field</h2>
           </Reveal>

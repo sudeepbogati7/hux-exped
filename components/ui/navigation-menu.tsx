@@ -7,25 +7,22 @@ import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /**
- * NavigationMenu — shadcn/ui pattern adapted to the HUX EXPED lime/ink theme
- * (Radix navigation-menu 1.2.x). Dark dropdown panels with a shared animated
- * viewport. Animations are plain CSS (see globals.css: nm-* keyframes) so no
- * tailwindcss-animate dependency is needed.
+ * NavigationMenu — shadcn/ui pattern adapted to the HUX EXPED theme
+ * (Radix navigation-menu 1.2.x). Viewport-less: each dropdown panel is anchored
+ * directly under its own trigger (sits close to the parent nav item). Plain-CSS
+ * fade/slide-down animation (see globals.css: nm-drop) — no extra deps.
  */
 function NavigationMenu({
   className,
-  children,
   ...props
 }: React.ComponentProps<typeof NavigationMenuPrimitive.Root>) {
   return (
     <NavigationMenuPrimitive.Root
       data-slot="navigation-menu"
+      // no viewport — content is positioned per-item
       className={cn("relative flex max-w-max flex-1 items-center justify-center", className)}
       {...props}
-    >
-      {children}
-      <NavigationMenuViewport />
-    </NavigationMenuPrimitive.Root>
+    />
   );
 }
 
@@ -50,7 +47,7 @@ function NavigationMenuItem({
 }
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-9 w-max items-center justify-center gap-1.5 rounded-full px-3 py-2 text-[0.76rem] font-semibold uppercase tracking-[0.1em] transition-colors hover:text-[#6b8e1f] focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=open]:text-[#6b8e1f] xl:text-[0.78rem] xl:tracking-[0.12em]",
+  "group inline-flex h-9 w-max items-center justify-center gap-1.5 rounded-full px-3 py-2 text-[0.76rem] font-semibold uppercase tracking-[0.1em] transition-colors hover:text-coral focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=open]:text-coral xl:text-[0.78rem] xl:tracking-[0.12em]",
 );
 
 function NavigationMenuTrigger({
@@ -75,40 +72,27 @@ function NavigationMenuTrigger({
 
 function NavigationMenuContent({
   className,
+  align = "center",
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Content>) {
+}: React.ComponentProps<typeof NavigationMenuPrimitive.Content> & { align?: "start" | "center" | "end" }) {
+  const pos =
+    align === "start"
+      ? "left-0"
+      : align === "end"
+        ? "right-0"
+        : "left-1/2 -translate-x-1/2";
   return (
     <NavigationMenuPrimitive.Content
       data-slot="navigation-menu-content"
       className={cn(
-        // slide between sibling menus + fade the whole panel
-        "left-0 top-0 w-full p-3 md:absolute md:w-auto",
-        "[&[data-motion=from-start]]:[animation:nm-from-left_.25s_ease] [&[data-motion=from-end]]:[animation:nm-from-right_.25s_ease]",
-        "[&[data-motion=to-start]]:[animation:nm-to-left_.25s_ease] [&[data-motion=to-end]]:[animation:nm-to-right_.25s_ease]",
+        // anchored just under this item's trigger
+        "absolute top-full z-50 mt-2 rounded-2xl border border-white/10 bg-ink p-2 text-cream shadow-[0_30px_60px_-25px_rgba(0,0,0,0.75)]",
+        pos,
+        "data-[state=open]:[animation:nm-drop_.18s_ease] data-[state=closed]:[animation:nm-lift_.14s_ease]",
         className,
       )}
       {...props}
     />
-  );
-}
-
-function NavigationMenuViewport({
-  className,
-  ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Viewport>) {
-  return (
-    <div className="absolute left-1/2 top-full isolate z-50 flex -translate-x-1/2 justify-center pt-1.5">
-      <NavigationMenuPrimitive.Viewport
-        data-slot="navigation-menu-viewport"
-        className={cn(
-          "relative h-[var(--radix-navigation-menu-viewport-height)] w-[var(--radix-navigation-menu-viewport-width)] origin-top overflow-hidden rounded-2xl border border-white/10 bg-ink text-cream shadow-[0_40px_80px_-30px_rgba(0,0,0,0.8)]",
-          "transition-[width,height] duration-300 ease-out",
-          "data-[state=open]:[animation:nm-enter_.22s_ease] data-[state=closed]:[animation:nm-exit_.18s_ease]",
-          className,
-        )}
-        {...props}
-      />
-    </div>
   );
 }
 
@@ -135,6 +119,5 @@ export {
   NavigationMenuContent,
   NavigationMenuTrigger,
   NavigationMenuLink,
-  NavigationMenuViewport,
   navigationMenuTriggerStyle,
 };

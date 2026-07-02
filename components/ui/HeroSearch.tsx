@@ -166,7 +166,7 @@ export default function HeroSearch() {
           <Link
             href={`/treks?q=${encodeURIComponent(q.trim())}`}
             onClick={() => setOpen(false)}
-            className="block border-t border-line px-4 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-[#6b8e1f] hover:bg-cream-deep"
+            className="block border-t border-line px-4 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-[#1f6f96] hover:bg-cream-deep"
           >
             See all results for “{q.trim()}” →
           </Link>

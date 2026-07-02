@@ -3,12 +3,14 @@ import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
 import AppFooter from "@/components/layout/AppFooter";
-import PaymentForm from "@/components/booking/PaymentForm";
+import PaymentPanel from "@/components/booking/PaymentPanel";
 import BookingSummary from "@/components/booking/BookingSummary";
 import { ArrowIcon } from "@/components/ui/icons";
 import { requireUser } from "@/lib/auth";
 import { getExpeditionBySlug } from "@/lib/expeditions";
 import { prisma } from "@/lib/prisma";
+import { stripeEnabled } from "@/lib/stripe";
+import { bankDetails } from "@/lib/data";
 
 export const metadata: Metadata = { title: "Payment — HUX EXPED" };
 
@@ -17,10 +19,10 @@ export default async function PayPage({
   searchParams,
 }: {
   params: Promise<{ slug: string }>;
-  searchParams: Promise<{ b?: string }>;
+  searchParams: Promise<{ b?: string; canceled?: string }>;
 }) {
   const { slug } = await params;
-  const { b: bookingId } = await searchParams;
+  const { b: bookingId, canceled } = await searchParams;
   const user = await requireUser(`/book/${slug}`);
 
   const trip = await getExpeditionBySlug(slug);
@@ -42,7 +44,7 @@ export default async function PayPage({
       <main className="paper pt-20">
         <section className="py-12 sm:py-16">
           <div className="mx-auto max-w-[1200px] px-5 sm:px-8">
-            <Link href={`/book/${slug}`} className="inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-muted transition-colors hover:text-[#6b8e1f]">
+            <Link href={`/book/${slug}`} className="inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-muted transition-colors hover:text-[#1f6f96]">
               <ArrowIcon className="h-4 w-4 rotate-180" /> Back to trip details
             </Link>
             <h1 className="display mt-5 text-4xl text-ink sm:text-5xl">Payment</h1>
@@ -52,7 +54,14 @@ export default async function PayPage({
 
             <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_420px] lg:gap-12">
               <div className="order-2 lg:order-1">
-                <PaymentForm total={booking.totalUSD} slug={trip.slug} bookingId={booking.id} />
+                <PaymentPanel
+                  bookingId={booking.id}
+                  slug={trip.slug}
+                  total={booking.totalUSD}
+                  stripeEnabled={stripeEnabled}
+                  bank={bankDetails}
+                  canceled={!!canceled}
+                />
               </div>
               <aside className="order-1 lg:order-2">
                 <BookingSummary

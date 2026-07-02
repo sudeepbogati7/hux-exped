@@ -4,6 +4,7 @@ import { ArrowIcon } from "@/components/ui/icons";
 import { requireUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import CancelBookingButton from "@/components/account/CancelBookingButton";
+import StatusPill from "@/components/ui/StatusPill";
 
 export const metadata = { title: "My bookings — HUX EXPED" };
 
@@ -20,6 +21,7 @@ export default async function BookingsPage() {
       departureDate: true,
       totalUSD: true,
       createdAt: true,
+      paymentMethod: true,
       expedition: { select: { name: true, slug: true, kind: true, image: true, region: true } },
     },
   });
@@ -54,7 +56,7 @@ export default async function BookingsPage() {
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <p className="eyebrow">{b.expedition.region}</p>
-                  <Link href={detailHref} className="display text-xl text-ink hover:text-[#6b8e1f]">
+                  <Link href={detailHref} className="display text-xl text-ink hover:text-[#1f6f96]">
                     {b.expedition.name}
                   </Link>
                 </div>
@@ -65,34 +67,29 @@ export default async function BookingsPage() {
                 <div><dt className="inline text-muted">Departure: </dt><dd className="inline font-semibold text-ink">{b.departureDate}</dd></div>
                 <div><dt className="inline text-muted">Travellers: </dt><dd className="inline font-semibold text-ink">{b.travellers}</dd></div>
                 <div><dt className="inline text-muted">Total: </dt><dd className="inline font-semibold text-ink">USD {b.totalUSD.toLocaleString("en-US")}</dd></div>
+                {b.paymentMethod && (
+                  <div><dt className="inline text-muted">Paid via: </dt><dd className="inline font-semibold text-ink">{b.paymentMethod === "STRIPE" ? "Card" : "Bank transfer"}</dd></div>
+                )}
               </dl>
+
+              {b.status === "AWAITING_VERIFICATION" && (
+                <p className="mt-3 rounded-lg bg-coral/10 px-3 py-2 text-[0.78rem] text-accent-ink">
+                  We&apos;ve received your transfer proof — we&apos;ll confirm your booking once it&apos;s verified.
+                </p>
+              )}
 
               <div className="mt-auto flex flex-wrap items-center gap-4 pt-4">
                 {b.status === "PENDING" && (
-                  <Link href={`/book/${b.expedition.slug}`} className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-[#6b8e1f] hover:underline">
+                  <Link href={`/book/${b.expedition.slug}/pay?b=${b.id}`} className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-accent-ink hover:underline">
                     Complete payment
                   </Link>
                 )}
-                {b.status !== "CANCELLED" && <CancelBookingButton id={b.id} />}
+                {b.status !== "CANCELLED" && b.status !== "CONFIRMED" && <CancelBookingButton id={b.id} />}
               </div>
             </div>
           </div>
         );
       })}
     </div>
-  );
-}
-
-function StatusPill({ status }: { status: "PENDING" | "CONFIRMED" | "CANCELLED" }) {
-  const style =
-    status === "CONFIRMED"
-      ? "border-[#6b8e1f]/30 bg-coral/15 text-[#5a7a1a]"
-      : status === "PENDING"
-        ? "border-[#cf9b1d]/40 bg-[#f5c451]/15 text-[#a9781a]"
-        : "border-line bg-cream-deep text-muted";
-  return (
-    <span className={`rounded-full border px-3.5 py-1.5 text-[0.66rem] font-semibold uppercase tracking-[0.14em] ${style}`}>
-      {status.toLowerCase()}
-    </span>
   );
 }

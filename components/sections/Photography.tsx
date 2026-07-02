@@ -20,7 +20,7 @@ export default function Photography() {
                 className="object-cover"
               />
               <span className="absolute left-5 top-5 flex items-center gap-2 rounded-full bg-cream/90 px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-ink backdrop-blur">
-                <CameraIcon className="h-4 w-4 text-[#6b8e1f]" /> Once a year · select treks
+                <CameraIcon className="h-4 w-4 text-[#1f6f96]" /> Once a year · select treks
               </span>
             </div>
             {/* thumbnail strip */}

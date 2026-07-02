@@ -34,7 +34,7 @@ export default async function TrekPage({
   return (
     <>
       <Navbar subpage />
-      <ExpeditionDetail data={trek} similar={similar} />
+      <ExpeditionDetail data={trek} similar={similar} notIncluded={trek.notIncluded} availableDates={trek.availableDates} />
       <Footer />
     </>
   );

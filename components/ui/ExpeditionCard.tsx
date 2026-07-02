@@ -32,7 +32,7 @@ export default function ExpeditionCard({ item }: { item: Trek }) {
       {/* body */}
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <p className="text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-muted">{item.region}</p>
-        <h3 className="display mt-1.5 text-2xl leading-tight text-ink transition-colors duration-300 group-hover:text-[#6b8e1f]">{item.name}</h3>
+        <h3 className="display mt-1.5 text-2xl leading-tight text-ink transition-colors duration-300 group-hover:text-[#1f6f96]">{item.name}</h3>
 
         <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.82rem] font-medium text-ink-soft">
           <span className="inline-flex items-center gap-1.5">
@@ -42,7 +42,7 @@ export default function ExpeditionCard({ item }: { item: Trek }) {
             <GaugeIcon className="h-4 w-4 text-muted" /> {item.grade}
           </span>
           <span className="inline-flex items-center gap-1.5">
-            <StarIcon className="h-4 w-4 text-[#6b8e1f]" /> 5.0
+            <StarIcon className="h-4 w-4 text-[#1f6f96]" /> 5.0
           </span>
         </div>
 

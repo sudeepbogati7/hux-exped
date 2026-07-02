@@ -97,16 +97,18 @@ model Expedition {
   season     String
   tagline    String
   blurb      String
-  overview   String[]
-  image      String
-  hero       String
-  gallery    String[]
-  highlights String[]
-  included   String[]
-  flagship   Boolean  @default(false)
-  published  Boolean  @default(true)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  overview      String[]
+  image         String
+  hero          String
+  gallery       String[]
+  highlights    String[]
+  included      String[]
+  notIncluded   String[] @default([])
+  availableDates String[] @default([])
+  flagship      Boolean  @default(false)
+  published     Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 
   itinerary ItineraryDay[]
   bookings  Booking[]
@@ -129,22 +131,32 @@ model ItineraryDay {
 /* ----------------------------------------------------------------- */
 
 enum BookingStatus {
-  PENDING
-  CONFIRMED
+  PENDING // created, not yet paid
+  AWAITING_VERIFICATION // bank transfer proof uploaded, admin to review
+  CONFIRMED // paid (Stripe) or admin-verified (bank)
   CANCELLED
 }
 
+enum PaymentMethod {
+  STRIPE
+  BANK_TRANSFER
+}
+
 model Booking {
-  id            String        @id @default(cuid())
-  userId        String
-  expeditionId  String
-  travellers    Int           @default(1)
-  departureDate String
-  totalUSD      Int
-  status        BookingStatus @default(PENDING)
-  note          String?
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
+  id              String         @id @default(cuid())
+  userId          String
+  expeditionId    String
+  travellers      Int            @default(1)
+  departureDate   String
+  totalUSD        Int
+  status          BookingStatus  @default(PENDING)
+  note            String?
+  paymentMethod   PaymentMethod? // chosen at the pay step
+  paymentProof    String? // uploaded transfer-proof URL (bank transfer)
+  stripeSessionId String? // Stripe Checkout Session id
+  paidAt          DateTime? // when confirmed/paid
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
 
   user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   expedition Expedition @relation(fields: [expeditionId], references: [id], onDelete: Restrict)

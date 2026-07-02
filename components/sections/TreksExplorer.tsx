@@ -81,7 +81,7 @@ export default function TreksExplorer({ treks }: { treks: Trek[] }) {
               setQuery("");
               setSeason("Any season");
             }}
-            className="mt-5 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[#6b8e1f]"
+            className="mt-5 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[#1f6f96]"
           >
             Clear filters
           </button>

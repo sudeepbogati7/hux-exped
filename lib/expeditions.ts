@@ -28,12 +28,19 @@ type DbExpedition = {
   gallery: string[];
   highlights: string[];
   included: string[];
+  notIncluded: string[];
+  availableDates: string[];
   flagship: boolean;
   itinerary?: { order: number; day: string; title: string; detail: string }[];
 };
 
-/** A Trek (the UI shape) plus the DB id, so consumers can link records. */
-export type ExpeditionRecord = Trek & { id: string; priceUSD: number };
+/** A Trek (the UI shape) plus the DB id + editable list fields. */
+export type ExpeditionRecord = Trek & {
+  id: string;
+  priceUSD: number;
+  notIncluded: string[];
+  availableDates: string[];
+};
 
 function toTrek(e: DbExpedition): ExpeditionRecord {
   const itinerary: ItineraryDay[] = (e.itinerary ?? [])
@@ -63,6 +70,8 @@ function toTrek(e: DbExpedition): ExpeditionRecord {
     gallery: e.gallery,
     highlights: e.highlights,
     included: e.included,
+    notIncluded: e.notIncluded,
+    availableDates: e.availableDates,
     itinerary,
     flagship: e.flagship,
   };
@@ -89,6 +98,8 @@ const baseSelect = {
   gallery: true,
   highlights: true,
   included: true,
+  notIncluded: true,
+  availableDates: true,
   flagship: true,
 } as const;
 

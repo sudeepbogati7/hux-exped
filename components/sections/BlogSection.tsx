@@ -17,7 +17,7 @@ export default function BlogSection() {
           <Reveal variant="up">
             <p className="eyebrow mb-4">From the journal</p>
             <h2 className="display text-5xl text-ink sm:text-6xl lg:text-7xl">
-              Stories from <span className="text-[#6b8e1f]">the trail</span>
+              Stories from <span className="text-[#1f6f96]">the trail</span>
             </h2>
           </Reveal>
           <Reveal variant="fade" className="hidden shrink-0 sm:block">
@@ -84,10 +84,10 @@ export default function BlogSection() {
                     <p className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-muted">
                       {post.date}
                     </p>
-                    <h4 className="display mt-1.5 text-lg leading-tight text-ink transition-colors group-hover:text-[#6b8e1f] sm:text-xl">
+                    <h4 className="display mt-1.5 text-lg leading-tight text-ink transition-colors group-hover:text-[#1f6f96] sm:text-xl">
                       {post.title}
                     </h4>
-                    <span className="mt-2 inline-block text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-[#6b8e1f]">
+                    <span className="mt-2 inline-block text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-[#1f6f96]">
                       {post.category}
                     </span>
                   </div>

@@ -52,6 +52,7 @@ export default auth((req) => {
 });
 
 export const config = {
-  // Run on everything except static assets and the auth API.
-  matcher: ["/((?!api/auth|_next/static|_next/image|favicon.ico|.*\\.(?:png|jpg|jpeg|gif|svg|webp|mp4|ico)$).*)"],
+  // Run on page routes only — skip all API routes and static assets. API
+  // handlers do their own auth (upload, stripe webhook needs the raw body).
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:png|jpg|jpeg|gif|svg|webp|mp4|ico)$).*)"],
 };

@@ -1107,6 +1107,16 @@ export const site = {
   email: "hello@huxexped.com",
 };
 
+/** Bank details shown on the manual bank-transfer payment option. Placeholders. */
+export const bankDetails = {
+  bankName: "Nabil Bank Ltd.",
+  accountName: "HUX EXPED Pvt. Ltd.",
+  accountNumber: "0123 4567 8901 2345",
+  swift: "NARBNPKA",
+  branch: "Thamel, Kathmandu, Nepal",
+  currencyNote: "Transfers accepted in USD or NPR equivalent. Please email your reference to hello@huxexped.com.",
+};
+
 /* ----------------------------------------------------------------- */
 /*  Our team + accreditation (About page)                            */
 /* ----------------------------------------------------------------- */

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CalendarCheck, DollarSign, Users, Mountain, MountainSnow, Clock, CheckCircle2, XCircle, ArrowUpRight } from "lucide-react";
 import { requireAdmin } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import StatusPill from "@/components/ui/StatusPill";
 
 export default async function AdminDashboard() {
   const admin = await requireAdmin();
@@ -109,7 +110,7 @@ export default async function AdminDashboard() {
       <div className="mt-10">
         <div className="flex items-center justify-between">
           <h2 className="display text-2xl text-ink">Recent bookings</h2>
-          <Link href="/admin/bookings" className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-[#6b8e1f] hover:underline">View all</Link>
+          <Link href="/admin/bookings" className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-[#1f6f96] hover:underline">View all</Link>
         </div>
         <div className="mt-5 overflow-hidden rounded-2xl border border-line bg-cream">
           <table className="w-full text-sm">
@@ -144,16 +145,3 @@ export default async function AdminDashboard() {
   );
 }
 
-function StatusPill({ status }: { status: "PENDING" | "CONFIRMED" | "CANCELLED" }) {
-  const style =
-    status === "CONFIRMED"
-      ? "border-[#6b8e1f]/30 bg-coral/15 text-[#5a7a1a]"
-      : status === "PENDING"
-        ? "border-[#cf9b1d]/40 bg-[#f5c451]/15 text-[#a9781a]"
-        : "border-line bg-cream-deep text-muted";
-  return (
-    <span className={`rounded-full border px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.12em] ${style}`}>
-      {status.toLowerCase()}
-    </span>
-  );
-}

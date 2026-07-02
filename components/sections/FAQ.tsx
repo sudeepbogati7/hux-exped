@@ -27,7 +27,7 @@ export default function FAQ() {
         <Reveal variant="up" className="mb-12 max-w-2xl">
           <p className="eyebrow mb-5">Good to know</p>
           <h2 className="display text-5xl text-ink sm:text-6xl lg:text-7xl">
-            Frequently <span className="text-[#6b8e1f]">asked</span>
+            Frequently <span className="text-[#1f6f96]">asked</span>
           </h2>
         </Reveal>
 
@@ -68,7 +68,7 @@ export default function FAQ() {
                           <div className="relative aspect-[16/10] w-full">
                             <Image src={q.img} alt="" fill sizes="100vw" className="object-cover" />
                             <div className="absolute inset-0 bg-linear-to-t from-ink/55 to-transparent" />
-                            <span className="absolute left-4 top-4 grid h-10 w-10 place-items-center rounded-xl bg-cream text-[#6b8e1f]">
+                            <span className="absolute left-4 top-4 grid h-10 w-10 place-items-center rounded-xl bg-cream text-[#1f6f96]">
                               <Icon className="h-5 w-5" />
                             </span>
                           </div>
@@ -89,7 +89,7 @@ export default function FAQ() {
                 <div className="relative aspect-[16/10] w-full">
                   <Image src={f.img} alt="" fill sizes="50vw" className="object-cover" />
                   <div className="absolute inset-0 bg-linear-to-t from-ink/55 to-transparent" />
-                  <span className="absolute left-5 top-5 grid h-12 w-12 place-items-center rounded-2xl bg-cream text-[#6b8e1f] shadow-lg">
+                  <span className="absolute left-5 top-5 grid h-12 w-12 place-items-center rounded-2xl bg-cream text-[#1f6f96] shadow-lg">
                     <ActiveIcon className="h-6 w-6" />
                   </span>
                 </div>
@@ -101,7 +101,7 @@ export default function FAQ() {
 
               <p className="mt-6 text-sm text-ink-soft">
                 Still wondering about something?{" "}
-                <Link href="/#contact" className="font-semibold text-[#6b8e1f] hover:underline">
+                <Link href="/#contact" className="font-semibold text-[#1f6f96] hover:underline">
                   Drop us a line
                 </Link>{" "}
                 — we&apos;re trekkers, not a call centre.

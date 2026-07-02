@@ -49,7 +49,7 @@ export default function BookingStep({
               <button
                 type="button"
                 onClick={() => setTravellers((n) => Math.max(1, n - 1))}
-                className="grid h-11 w-11 place-items-center text-xl text-ink transition-colors hover:text-[#6b8e1f] disabled:opacity-30"
+                className="grid h-11 w-11 place-items-center text-xl text-ink transition-colors hover:text-[#1f6f96] disabled:opacity-30"
                 disabled={travellers <= 1}
                 aria-label="Fewer travellers"
               >
@@ -59,7 +59,7 @@ export default function BookingStep({
               <button
                 type="button"
                 onClick={() => setTravellers((n) => Math.min(10, n + 1))}
-                className="grid h-11 w-11 place-items-center text-xl text-ink transition-colors hover:text-[#6b8e1f] disabled:opacity-30"
+                className="grid h-11 w-11 place-items-center text-xl text-ink transition-colors hover:text-[#1f6f96] disabled:opacity-30"
                 disabled={travellers >= 10}
                 aria-label="More travellers"
               >

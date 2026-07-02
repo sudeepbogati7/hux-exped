@@ -41,10 +41,14 @@ function parseExpeditionForm(formData: FormData) {
     blurb: String(formData.get("blurb") ?? "").trim(),
     overview: lines(formData.get("overview")),
     image: String(formData.get("image") ?? "").trim(),
-    hero: String(formData.get("hero") ?? formData.get("image") ?? "").trim(),
-    gallery: lines(formData.get("gallery")),
+    // hero mirrors the card image (single uploader drives both)
+    hero: String(formData.get("image") ?? "").trim(),
+    // gallery + availableDates arrive as multiple inputs of the same name
+    gallery: formData.getAll("gallery").map((v) => String(v).trim()).filter(Boolean),
     highlights: lines(formData.get("highlights")),
     included: lines(formData.get("included")),
+    notIncluded: lines(formData.get("notIncluded")),
+    availableDates: formData.getAll("availableDates").map((v) => String(v).trim()).filter(Boolean),
     flagship: formData.get("flagship") === "on",
     published: formData.get("published") === "on",
   };
@@ -122,9 +126,15 @@ export async function deleteExpedition(id: string): Promise<void> {
   revalidatePath("/mountaineering");
 }
 
-export async function setBookingStatus(id: string, status: "PENDING" | "CONFIRMED" | "CANCELLED"): Promise<void> {
+export async function setBookingStatus(
+  id: string,
+  status: "PENDING" | "AWAITING_VERIFICATION" | "CONFIRMED" | "CANCELLED",
+): Promise<void> {
   await assertAdmin();
-  await prisma.booking.update({ where: { id }, data: { status } });
+  await prisma.booking.update({
+    where: { id },
+    data: { status, paidAt: status === "CONFIRMED" ? new Date() : null },
+  });
   revalidatePath("/admin/bookings");
 }
 

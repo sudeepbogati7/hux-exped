@@ -56,13 +56,13 @@ export default async function AdminExpeditions() {
                 <td className="px-4 py-3 text-ink-soft">USD {e.priceUSD.toLocaleString("en-US")}</td>
                 <td className="px-4 py-3 text-ink-soft">{e._count.bookings}</td>
                 <td className="px-4 py-3">
-                  <span className={`rounded-full border px-2.5 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.12em] ${e.published ? "border-[#6b8e1f]/30 bg-coral/15 text-[#5a7a1a]" : "border-line bg-cream-deep text-muted"}`}>
+                  <span className={`rounded-full border px-2.5 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.12em] ${e.published ? "border-[#1f6f96]/30 bg-coral/15 text-[#5a7a1a]" : "border-line bg-cream-deep text-muted"}`}>
                     {e.published ? "Published" : "Hidden"}
                   </span>
                 </td>
                 <td className="px-4 py-3">
                   <div className="flex items-center justify-end gap-3">
-                    <Link href={`/admin/expeditions/${e.id}`} className="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-[#6b8e1f] hover:underline">Edit</Link>
+                    <Link href={`/admin/expeditions/${e.id}`} className="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-[#1f6f96] hover:underline">Edit</Link>
                     <DeleteExpeditionButton id={e.id} name={e.name} hasBookings={e._count.bookings > 0} />
                   </div>
                 </td>

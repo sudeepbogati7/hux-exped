@@ -12,7 +12,7 @@ export default async function AccountLayout({ children }: { children: React.Reac
       <main className="paper flex-1 pt-20">
         <section className="py-10 sm:py-14">
           <div className="mx-auto max-w-[1200px] px-5 sm:px-8">
-            <p className="eyebrow text-[#6b8e1f]">Your account</p>
+            <p className="eyebrow text-[#1f6f96]">Your account</p>
             <h1 className="display mt-2 text-4xl text-ink sm:text-5xl">
               {user.name ? `Hi, ${user.name.split(" ")[0]}` : "Welcome"}
             </h1>

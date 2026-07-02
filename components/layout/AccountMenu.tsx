@@ -77,14 +77,14 @@ export default function AccountMenu({ onDark }: { onDark: boolean }) {
             <p className="truncate text-[0.74rem] text-cream/50">{user.email}</p>
           </div>
           <nav className="mt-1.5 grid gap-0.5">
-            <Link href="/account" onClick={() => setOpen(false)} className="rounded-xl px-3 py-2 text-sm font-semibold text-cream transition-colors hover:bg-white/[0.07] hover:text-[#bcd93e]">
+            <Link href="/account" onClick={() => setOpen(false)} className="rounded-xl px-3 py-2 text-sm font-semibold text-cream transition-colors hover:bg-white/[0.07] hover:text-[#3c9dcc]">
               My account
             </Link>
-            <Link href="/account/bookings" onClick={() => setOpen(false)} className="rounded-xl px-3 py-2 text-sm font-semibold text-cream transition-colors hover:bg-white/[0.07] hover:text-[#bcd93e]">
+            <Link href="/account/bookings" onClick={() => setOpen(false)} className="rounded-xl px-3 py-2 text-sm font-semibold text-cream transition-colors hover:bg-white/[0.07] hover:text-[#3c9dcc]">
               My bookings
             </Link>
             {isAdmin && (
-              <Link href="/admin" onClick={() => setOpen(false)} className="rounded-xl px-3 py-2 text-sm font-semibold text-[#bcd93e] transition-colors hover:bg-white/[0.07]">
+              <Link href="/admin" onClick={() => setOpen(false)} className="rounded-xl px-3 py-2 text-sm font-semibold text-[#3c9dcc] transition-colors hover:bg-white/[0.07]">
                 Admin panel
               </Link>
             )}

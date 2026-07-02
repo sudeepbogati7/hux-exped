@@ -41,7 +41,7 @@ export default function GuidancePage() {
           <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
             <Reveal variant="up">
               <p className="eyebrow mb-5 inline-flex items-center gap-2">
-                <CompassIcon className="h-4 w-4 text-[#6b8e1f]" /> Guidance
+                <CompassIcon className="h-4 w-4 text-[#1f6f96]" /> Guidance
               </p>
               <h1 className="display text-5xl text-ink sm:text-7xl lg:text-8xl">
                 Before you go
@@ -64,7 +64,7 @@ export default function GuidancePage() {
                   <a
                     key={t.slug}
                     href={`#${t.slug}`}
-                    className="-ml-px block border-l-2 border-transparent py-2 pl-5 text-sm font-medium text-ink-soft transition-colors hover:border-coral hover:text-[#6b8e1f]"
+                    className="-ml-px block border-l-2 border-transparent py-2 pl-5 text-sm font-medium text-ink-soft transition-colors hover:border-coral hover:text-[#1f6f96]"
                   >
                     {t.title}
                   </a>

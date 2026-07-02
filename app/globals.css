@@ -4,14 +4,33 @@
 /*  HUX EXPED — design tokens (Tailwind v4 @theme)                     */
 /* ------------------------------------------------------------------ */
 @theme {
-  --color-cream: #f4f1ea;
-  --color-cream-deep: #ece7dc;
-  --color-ink: #141414;
-  --color-ink-soft: #2b2b2b;
-  --color-muted: #8d887e;
-  --color-line: #d8d2c6;
-  --color-coral: #bcd93e;
-  --color-coral-dark: #a7c52f;
+  /* ---- Himalayan palette ----
+     Light surfaces (Summit White / Stone Gray), Himalayan Navy for dark
+     surfaces + text, Glacier Blue as the primary accent, plus Saffron,
+     Alpine green and Expedition Red for meaning-bearing accents.
+     Token names are kept (cream/ink/coral) so the whole app remaps cleanly;
+     their *values* now carry the new roles. */
+  --color-cream: #f7fafc; /* Summit White — main light bg */
+  --color-cream-deep: #eaf0f4; /* pale stone — secondary surface */
+  --color-ink: #0b1f33; /* Himalayan Navy — nav, footer, dark surfaces */
+  --color-ink-soft: #43515c; /* Slate — secondary text */
+  --color-muted: #6b7a85; /* muted slate */
+  --color-line: #d9e2e8; /* Stone Gray — borders/dividers */
+
+  /* primary accent = Glacier Blue (the old `coral` token role) */
+  --color-coral: #3c9dcc;
+  --color-coral-dark: #2e80a8;
+  --color-coral-bright: #67b9e3; /* glacier for dark backgrounds (wordmark) */
+
+  /* meaning-bearing accents */
+  --color-saffron: #e79b24; /* premium CTAs, ratings, featured */
+  --color-saffron-dark: #cf8815;
+  --color-alpine: #176b57; /* eco/forest, sustainability, difficulty */
+  --color-navy: #0b1f33; /* alias for clarity */
+  --color-danger: #c84b3a; /* alerts, limited spots, warnings */
+
+  /* accent text that must read on light backgrounds */
+  --color-accent-ink: #1f6f96; /* deep glacier for links/eyebrows on light */
 
   --font-display: var(--font-archivo), "Arial Black", sans-serif;
   --font-body: var(--font-inter), system-ui, sans-serif;
@@ -24,7 +43,13 @@
 }
 
 html {
-  scroll-behavior: auto; /* Lenis owns scrolling */
+  scroll-behavior: smooth; /* native smooth scroll for in-page anchors */
+  scroll-padding-top: 6rem; /* keep anchored sections clear of the fixed navbar */
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 /* keep anchored sections clear of the fixed navbar */
@@ -39,18 +64,6 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
-}
-
-/* Lenis smooth scroll */
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-.lenis.lenis-stopped {
-  overflow: hidden;
 }
 
 /* ------------------------------------------------------------------ */
@@ -209,61 +222,30 @@ html.lenis body {
   }
 }
 
-/* NavigationMenu (shadcn/Radix) — viewport open/close + cross-menu slide */
-@keyframes nm-enter {
+/* NavigationMenu (shadcn/Radix) — per-item dropdown fade + slide down.
+   Animate opacity + top offset (not transform) so it doesn't fight the
+   -translate-x-1/2 used to center a panel under its trigger. */
+@keyframes nm-drop {
   from {
     opacity: 0;
-    transform: translateY(-6px) scale(0.97);
+    margin-top: -0.25rem;
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    margin-top: 0.5rem;
   }
 }
-@keyframes nm-exit {
+@keyframes nm-lift {
   from {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    margin-top: 0.5rem;
   }
   to {
     opacity: 0;
-    transform: translateY(-6px) scale(0.97);
-  }
-}
-@keyframes nm-from-right {
-  from {
-    opacity: 0;
-    transform: translateX(28px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-@keyframes nm-from-left {
-  from {
-    opacity: 0;
-    transform: translateX(-28px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-@keyframes nm-to-right {
-  to {
-    opacity: 0;
-    transform: translateX(28px);
-  }
-}
-@keyframes nm-to-left {
-  to {
-    opacity: 0;
-    transform: translateX(-28px);
+    margin-top: -0.25rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  [data-slot="navigation-menu-viewport"],
   [data-slot="navigation-menu-content"] {
     animation: none !important;
   }

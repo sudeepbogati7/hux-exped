@@ -75,7 +75,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-10">
         <div className="mx-auto flex h-full max-w-[1400px] flex-col px-5 pt-[19vh] sm:px-8 sm:pt-[17vh] lg:pt-[18vh]">
           <p className="hero-eyebrow eyebrow mb-5 inline-flex items-center gap-2 sm:mb-7">
-            <span className="h-1.5 w-1.5 rounded-full bg-coral" /> Restricted trails · <span className="text-[#6b8e1f]">Real Himalaya</span>
+            <span className="h-1.5 w-1.5 rounded-full bg-coral" /> Restricted trails · <span className="text-[#1f6f96]">Real Himalaya</span>
           </p>
           <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
             <h1 className="display text-ink">
@@ -83,7 +83,7 @@ export default function Hero() {
                 <span className="hero-line block text-[19vw] leading-[0.82] sm:text-[13vw] lg:text-[8.5rem]">Beyond</span>
               </span>
               <span className="block overflow-hidden">
-                <span className="hero-line block text-[19vw] leading-[0.82] sm:text-[13vw] lg:text-[8.5rem]">the <span className="text-[#6b8e1f]">trail</span></span>
+                <span className="hero-line block text-[19vw] leading-[0.82] sm:text-[13vw] lg:text-[8.5rem]">the <span className="text-[#1f6f96]">trail</span></span>
               </span>
             </h1>
             <p className="hero-para max-w-sm text-[0.95rem] leading-relaxed text-ink-soft sm:text-[0.98rem] lg:pt-4">

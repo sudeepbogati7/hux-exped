@@ -54,7 +54,7 @@ export default function PersonalizeTrip() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="border-b-2 border-coral pb-0.5 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-[#6b8e1f] transition-colors hover:text-cream"
+        className="border-b-2 border-coral pb-0.5 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-[#1f6f96] transition-colors hover:text-cream"
       >
         <span className="hidden sm:inline">Personalize your trip</span>
         <span className="sm:hidden">Plan a trip</span>
@@ -93,7 +93,7 @@ export default function PersonalizeTrip() {
               </div>
             ) : (
               <>
-                <p className="eyebrow mb-2 text-[#6b8e1f]">Tailor-made</p>
+                <p className="eyebrow mb-2 text-[#1f6f96]">Tailor-made</p>
                 <h2 className="display text-3xl text-ink sm:text-4xl">Personalize your trip</h2>
                 <p className="mt-2 text-sm leading-relaxed text-ink-soft">
                   Tell us a little about your dream trip and we&apos;ll shape an

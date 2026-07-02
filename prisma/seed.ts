@@ -5,7 +5,7 @@
  */
 import { PrismaClient, Kind } from "@prisma/client";
 import bcrypt from "bcryptjs";
-import { allExpeditions, type Trek } from "../lib/data";
+import { allExpeditions, notIncluded, departures, type Trek } from "../lib/data";
 
 const prisma = new PrismaClient();
 
@@ -39,9 +39,13 @@ async function seedExpedition(t: Trek) {
     published: true,
   };
 
+  // notIncluded + availableDates are admin-editable; only seed them on create
+  // so re-seeding never clobbers changes made in the admin panel.
+  const seededDates = departures(t.slug).map((d) => d.date);
+
   const exp = await prisma.expedition.upsert({
     where: { slug: t.slug },
-    create: data,
+    create: { ...data, notIncluded, availableDates: seededDates },
     update: data,
   });
 

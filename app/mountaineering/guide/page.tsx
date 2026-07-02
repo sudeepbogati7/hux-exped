@@ -65,7 +65,7 @@ export default function MountaineeringGuidePage() {
           <div className="relative mx-auto w-full max-w-[1400px] px-5 pb-12 sm:px-8 sm:pb-16">
             <Reveal variant="up">
               <p className="eyebrow mb-5 inline-flex items-center gap-2 text-cream/70">
-                <MountainIcon className="h-4 w-4 text-[#6b8e1f]" /> Mountaineering guide
+                <MountainIcon className="h-4 w-4 text-[#1f6f96]" /> Mountaineering guide
               </p>
               <h1 className="display max-w-4xl text-4xl leading-[0.98] text-cream sm:text-6xl lg:text-7xl">
                 From first summit to full expedition
@@ -108,7 +108,7 @@ export default function MountaineeringGuidePage() {
                 </ul>
                 <Link
                   href="/mountaineering"
-                  className="group mt-7 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:text-[#6b8e1f]"
+                  className="group mt-7 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-ink transition-colors hover:text-[#1f6f96]"
                 >
                   Browse the peaks
                   <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />

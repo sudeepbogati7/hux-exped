@@ -2,6 +2,8 @@
 
 import { useActionState, useState } from "react";
 import Link from "next/link";
+import ImageUpload from "@/components/admin/ImageUpload";
+import GalleryUpload from "@/components/admin/GalleryUpload";
 import type { AdminState } from "@/app/actions/admin";
 
 export type ExpeditionFormValues = {
@@ -24,6 +26,8 @@ export type ExpeditionFormValues = {
   gallery: string[];
   highlights: string[];
   included: string[];
+  notIncluded: string[];
+  availableDates: string[];
   flagship: boolean;
   published: boolean;
   itinerary: { day: string; title: string; detail: string }[];
@@ -45,6 +49,7 @@ export default function ExpeditionForm({
   const [state, formAction, pending] = useActionState<AdminState, FormData>(action, undefined);
   const [kind, setKind] = useState<"TREK" | "PEAK">(initial?.kind ?? "TREK");
   const [itin, setItin] = useState(initial?.itinerary?.length ? initial.itinerary : [{ day: "", title: "", detail: "" }]);
+  const [dates, setDates] = useState<string[]>(initial?.availableDates?.length ? initial.availableDates : [""]);
 
   const join = (a?: string[]) => (a ?? []).join("\n");
 
@@ -102,17 +107,50 @@ export default function ExpeditionForm({
           <label className="block"><span className={label}>Blurb (short)</span><textarea name="blurb" defaultValue={initial?.blurb} rows={3} className={`${field} resize-none`} /></label>
           <label className="block"><span className={label}>Overview (one paragraph per line)</span><textarea name="overview" defaultValue={join(initial?.overview)} rows={4} className={`${field} resize-none`} /></label>
           <label className="block"><span className={label}>Highlights (one per line)</span><textarea name="highlights" defaultValue={join(initial?.highlights)} rows={4} className={`${field} resize-none`} /></label>
-          <label className="block"><span className={label}>Included (one per line)</span><textarea name="included" defaultValue={join(initial?.included)} rows={4} className={`${field} resize-none`} /></label>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <label className="block"><span className={label}>What&apos;s included (one per line)</span><textarea name="included" defaultValue={join(initial?.included)} rows={5} className={`${field} resize-none`} /></label>
+            <label className="block"><span className={label}>What&apos;s not included (one per line)</span><textarea name="notIncluded" defaultValue={join(initial?.notIncluded)} rows={5} className={`${field} resize-none`} /></label>
+          </div>
         </div>
       </section>
 
-      {/* media */}
+      {/* media — real uploads */}
       <section className="rounded-2xl border border-line bg-cream p-6">
         <h2 className="display text-xl text-ink">Media</h2>
-        <div className="mt-4 space-y-4">
-          <label className="block"><span className={label}>Card / hero image URL</span><input name="image" defaultValue={initial?.image} className={field} placeholder="/moutains/kanchenjunga.png" /></label>
-          <input type="hidden" name="hero" value={initial?.hero ?? initial?.image ?? ""} />
-          <label className="block"><span className={label}>Gallery image URLs (one per line)</span><textarea name="gallery" defaultValue={join(initial?.gallery)} rows={4} className={`${field} resize-none`} /></label>
+        <p className="mt-1 text-sm text-ink-soft">Upload images directly — no file paths needed.</p>
+        <div className="mt-5 space-y-6">
+          <ImageUpload name="image" label="Card / hero image" initialUrl={initial?.image} />
+          {/* hero mirrors the card image */}
+          <GalleryUpload name="gallery" label="Gallery images" initialUrls={initial?.gallery} />
+        </div>
+      </section>
+
+      {/* available dates */}
+      <section className="rounded-2xl border border-line bg-cream p-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="display text-xl text-ink">Available departures</h2>
+            <p className="mt-1 text-sm text-ink-soft">Dates travellers can choose when booking.</p>
+          </div>
+          <button type="button" onClick={() => setDates((d) => [...d, ""])} className="rounded-full border border-line px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-ink transition-colors hover:border-coral">
+            + Add date
+          </button>
+        </div>
+        <div className="mt-4 grid gap-2 sm:grid-cols-2">
+          {dates.map((d, i) => (
+            <div key={i} className="flex items-center gap-2">
+              <input
+                name="availableDates"
+                value={d}
+                onChange={(e) => setDates((prev) => prev.map((v, j) => (j === i ? e.target.value : v)))}
+                className={field}
+                placeholder="e.g. 15 Mar 2026"
+              />
+              <button type="button" onClick={() => setDates((prev) => prev.filter((_, j) => j !== i))} className="shrink-0 rounded-lg px-2.5 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-muted transition-colors hover:text-danger">
+                Remove
+              </button>
+            </div>
+          ))}
         </div>
       </section>
 

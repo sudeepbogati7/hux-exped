@@ -66,7 +66,7 @@ export default function Statement() {
 
       {/* locked text */}
       <div className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-center px-5 sm:px-8">
-        <p className="st-sub eyebrow mb-6 text-[#6b8e1f]">The HUX difference</p>
+        <p className="st-sub eyebrow mb-6 text-[#1f6f96]">The HUX difference</p>
         <h2 className="display max-w-4xl text-[8vw] leading-[0.92] text-cream sm:text-6xl lg:text-7xl">
           <span className="block overflow-hidden">
             <span className="st-line block">Everyone walks to</span>
@@ -75,7 +75,7 @@ export default function Statement() {
             <span className="st-line block">Everest Base Camp.</span>
           </span>
           <span className="block overflow-hidden">
-            <span className="st-line block text-[#6b8e1f]">We walk the other way.</span>
+            <span className="st-line block text-[#1f6f96]">We walk the other way.</span>
           </span>
         </h2>
         <span className="st-rule mt-8 block h-px w-40 origin-left bg-cream/40" />

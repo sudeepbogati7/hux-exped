@@ -19,7 +19,7 @@ export default function WhoWeAre() {
             <span className="h-px w-8 bg-coral" /> Who we are
           </p>
           <h2 className="display text-5xl leading-[0.95] sm:text-6xl lg:text-7xl">
-            Born in the <span className="text-[#6b8e1f]">mountains</span>,
+            Born in the <span className="text-[#1f6f96]">mountains</span>,
             <br />
             built for adventurers.
           </h2>
@@ -37,7 +37,7 @@ export default function WhoWeAre() {
           <div className="mt-10 grid max-w-md grid-cols-3 gap-6 border-t border-cream/15 pt-8">
             {stats.map((s) => (
               <div key={s.label}>
-                <div className="display text-4xl text-[#6b8e1f] sm:text-5xl">{s.value}</div>
+                <div className="display text-4xl text-[#1f6f96] sm:text-5xl">{s.value}</div>
                 <div className="mt-1 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-cream/50">
                   {s.label}
                 </div>
@@ -81,9 +81,9 @@ export default function WhoWeAre() {
                 </div>
                 <div className="p-6">
                   <h3 className="display text-xl leading-tight text-cream">{m.name}</h3>
-                  <p className="mt-0.5 text-[0.76rem] font-semibold uppercase tracking-[0.12em] text-[#6b8e1f]">{m.role}</p>
+                  <p className="mt-0.5 text-[0.76rem] font-semibold uppercase tracking-[0.12em] text-[#1f6f96]">{m.role}</p>
                   <p className="mt-4 inline-flex items-center gap-2 border-t border-cream/10 pt-4 text-[0.8rem] text-cream/65">
-                    <CheckIcon className="h-3.5 w-3.5 shrink-0 text-[#6b8e1f]" /> {m.meta}
+                    <CheckIcon className="h-3.5 w-3.5 shrink-0 text-[#1f6f96]" /> {m.meta}
                   </p>
                 </div>
               </article>

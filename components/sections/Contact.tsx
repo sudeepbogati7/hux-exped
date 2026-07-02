@@ -37,7 +37,7 @@ export default function Contact() {
           <h2 className="display text-4xl leading-[0.95] sm:text-5xl lg:text-6xl">
             Book a trip, or just
             <br />
-            <span className="text-[#6b8e1f]">start a conversation</span>
+            <span className="text-[#1f6f96]">start a conversation</span>
           </h2>
           <p className="mt-7 max-w-md text-lg leading-relaxed text-cream/80">
             {about.bespoke.body}
@@ -78,7 +78,7 @@ export default function Contact() {
                 </p>
                 <button
                   onClick={() => setSent(false)}
-                  className="mt-8 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[#6b8e1f]"
+                  className="mt-8 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-[#1f6f96]"
                 >
                   Send another
                 </button>

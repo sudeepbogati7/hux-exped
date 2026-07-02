@@ -16,10 +16,10 @@ export default async function Mountaineering() {
       <div className="relative mx-auto max-w-[1400px] px-5 sm:px-8">
         <Reveal variant="up">
           <p className="eyebrow mb-4 inline-flex items-center gap-2 text-cream/50">
-            <MountainIcon className="h-4 w-4 text-[#6b8e1f]" /> Mountaineering · 6,000–7,000 m
+            <MountainIcon className="h-4 w-4 text-[#1f6f96]" /> Mountaineering · 6,000–7,000 m
           </p>
           <h2 className="display text-5xl sm:text-6xl lg:text-7xl">
-            When the trail runs out, <span className="text-[#6b8e1f]">rope up</span>
+            When the trail runs out, <span className="text-[#1f6f96]">rope up</span>
           </h2>
         </Reveal>
 

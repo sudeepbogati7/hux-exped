@@ -1,6 +1,10 @@
 /**
- * HUX-PED text wordmark. `invert` switches to light text for dark backgrounds.
- * Pass a Tailwind text-size class via `className` (e.g. `text-2xl`) to size it.
+ * HUX-PED text wordmark (the brand's visual identity — no separate logo).
+ *   HUX  — Himalayan Navy  (Summit White on dark)
+ *   –    — Saffron Gold
+ *   PED  — Glacier Blue    (bright glacier on dark)
+ * `invert` switches to the dark-background variant. Pass a Tailwind text-size
+ * class via `className` (e.g. `text-2xl`).
  */
 export default function Logo({
   className = "text-2xl",
@@ -13,14 +17,13 @@ export default function Logo({
 }) {
   return (
     <span
-      className={`display inline-flex select-none items-center whitespace-nowrap font-extrabold uppercase leading-none tracking-[-0.02em] ${
+      className={`display inline-flex select-none items-center whitespace-nowrap font-extrabold uppercase leading-none tracking-[0.01em] ${
         invert ? "text-cream" : "text-ink"
       } ${className}`}
     >
-      HU
-      <span className={invert ? "text-coral" : "text-[#6b8e1f]"}>X</span>
-      <span className={`mx-[0.04em] ${invert ? "text-coral" : "text-[#6b8e1f]"}`}>-</span>
-      <span className={invert ? "text-coral" : "text-[#6b8e1f]"}>PED</span>
+      HUX
+      <span className="mx-[0.03em] text-saffron">-</span>
+      <span className={invert ? "text-coral-bright" : "text-coral"}>PED</span>
     </span>
   );
 }

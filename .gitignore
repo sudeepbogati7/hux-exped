@@ -41,3 +41,6 @@ yarn-error.log*
 next-env.d.ts
 
 design-references/
+
+# user-uploaded files (admin images, payment proofs) — runtime data, not source
+/public/uploads/

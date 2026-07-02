@@ -32,7 +32,7 @@ export default function AccountNav({ isAdmin }: { isAdmin: boolean }) {
       {isAdmin && (
         <Link
           href="/admin"
-          className="rounded-xl px-4 py-2.5 text-sm font-semibold text-[#6b8e1f] transition-colors hover:bg-ink/5"
+          className="rounded-xl px-4 py-2.5 text-sm font-semibold text-[#1f6f96] transition-colors hover:bg-ink/5"
         >
           Admin panel
         </Link>

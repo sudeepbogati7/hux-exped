@@ -10,7 +10,7 @@ export default function Newsletter() {
     <section className="bg-cream-deep">
       <div className="mx-auto grid max-w-[1400px] items-center gap-8 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[1fr_1fr] lg:gap-16">
         <div>
-          <p className="eyebrow mb-4 text-[#6b8e1f]">The dispatch</p>
+          <p className="eyebrow mb-4 text-[#1f6f96]">The dispatch</p>
           <h2 className="display text-3xl text-ink sm:text-4xl lg:text-5xl">
             Trail notes, new departures &amp; the odd photo
           </h2>

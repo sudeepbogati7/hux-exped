@@ -44,10 +44,10 @@ export default function GiveBack() {
           {/* content */}
           <Reveal variant="up">
             <p className="eyebrow mb-4 inline-flex items-center gap-2">
-              <HeartIcon className="h-4 w-4 text-[#6b8e1f]" /> {giveBack.eyebrow}
+              <HeartIcon className="h-4 w-4 text-[#1f6f96]" /> {giveBack.eyebrow}
             </p>
             <h2 className="display text-4xl text-ink sm:text-5xl">
-              Nepal first, <span className="text-[#6b8e1f]">always.</span>
+              Nepal first, <span className="text-[#1f6f96]">always.</span>
             </h2>
             <p className="mt-5 max-w-lg leading-relaxed text-ink-soft">{giveBack.body[0]}</p>
 

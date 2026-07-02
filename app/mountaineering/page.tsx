@@ -56,7 +56,7 @@ export default async function MountaineeringIndexPage() {
           <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
             <Reveal variant="up">
               <p className="eyebrow mb-5 inline-flex items-center gap-2">
-                <MountainIcon className="h-4 w-4 text-[#6b8e1f]" /> Mountaineering
+                <MountainIcon className="h-4 w-4 text-[#1f6f96]" /> Mountaineering
               </p>
               <h1 className="display text-5xl text-ink sm:text-7xl lg:text-8xl">
                 Rope up

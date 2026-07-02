@@ -71,7 +71,7 @@ export default function TrekCard({
       {/* text */}
       <div className={flip ? "lg:order-1" : ""}>
         {upcoming && (
-          <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-coral/10 px-3.5 py-1.5 text-[0.66rem] font-semibold uppercase tracking-[0.14em] text-[#6b8e1f]">
+          <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-coral/10 px-3.5 py-1.5 text-[0.66rem] font-semibold uppercase tracking-[0.14em] text-[#1f6f96]">
             <span className="h-1.5 w-1.5 rounded-full bg-coral motion-safe:animate-pulse" /> Departing soon
           </p>
         )}
